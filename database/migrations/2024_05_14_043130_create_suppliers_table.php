@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateDisplaysTable extends Migration
+class CreateSuppliersTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,15 +13,12 @@ class CreateDisplaysTable extends Migration
      */
     public function up()
     {
-        Schema::create('displays', function (Blueprint $table) {
+        Schema::create('suppliers', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('beer_id');
-            $table->integer('type_product');
-            $table->integer('display_quantity');
-            $table->text('name');
+            $table->string('name');
+            $table->string('address');
+            $table->string('phone');
             $table->timestamps();
-
-            $table->foreign('beer_id')->references('id')->on('beer_formats');
         });
     }
 
@@ -32,6 +29,6 @@ class CreateDisplaysTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('displays');
+        Schema::dropIfExists('suppliers');
     }
 }
