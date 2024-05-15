@@ -12,6 +12,9 @@ use App\Http\Controllers\PostController;
 | contains the "web" middleware group. Now create something great!
 |
 */
+
+
+
 Route::get('/', function () {
     return view('welcome');
 })->name('welcome');
@@ -40,7 +43,6 @@ Route::get('/packs', function () {
 Route::get('/dondeestamos', function () {
     return view('dondeestamos');
 });
-
 // returns the home page with all posts
 // Route::get('/', PostController::class .'@index')->name('posts.index');
 // returns the form for adding a post
@@ -55,6 +57,30 @@ Route::get('/posts/{post}/edit', PostController::class .'@edit')->name('posts.ed
 Route::put('/posts/{post}', PostController::class .'@update')->name('posts.update');
 // deletes a post
 Route::delete('/posts/{post}', PostController::class .'@destroy')->name('posts.destroy');
+
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+
+use App\Http\Controllers\SupplierController;
+Route::resource('suppliers', SupplierController::class);
+
+use App\Http\Controllers\CompanyController;
+Route::resource('companies', CompanyController::class);
+
+use App\Http\Controllers\BranchController;
+Route::resource('branches', BranchController::class);
+
+use App\Http\Controllers\Dish_typeController;
+Route::resource('dish_types', Dish_typeController::class);
+
+use App\Http\Controllers\DishController;
+Route::resource('dishes', DishController::class);
+
+use App\Http\Controllers\Beverage_typeController;
+Route::resource('beverage_types', Beverage_typeController::class);
+
+use App\Http\Controllers\BeverageController;
+Route::resource('beverages', BeverageController::class);
+
