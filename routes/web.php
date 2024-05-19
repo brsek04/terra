@@ -72,15 +72,28 @@ Route::resource('companies', CompanyController::class);
 use App\Http\Controllers\BranchController;
 Route::resource('branches', BranchController::class);
 
-use App\Http\Controllers\Dish_typeController;
-Route::resource('dish_types', Dish_typeController::class);
+use App\Http\Controllers\DishTypeController;
+Route::resource('dish-types', DishTypeController::class);
 
 use App\Http\Controllers\DishController;
 Route::resource('dishes', DishController::class);
 
-use App\Http\Controllers\Beverage_typeController;
-Route::resource('beverage_types', Beverage_typeController::class);
+use App\Http\Controllers\BeverageTypeController;
+Route::resource('beverage_types', BeverageTypeController::class);
 
 use App\Http\Controllers\BeverageController;
 Route::resource('beverages', BeverageController::class);
+
+use App\Http\Controllers\CartController;
+Route::get('/shop', [CartController::class, 'shop'])->name('shop.index');
+Route::get('/cart', [CartController::class, 'cart'])->name('cart.index');
+Route::post('/cart', [CartController::class, 'add'])->name('cart.store');
+
+Route::delete('/cart/{id}', [CartController::class, 'remove'])->name('cart.remove');
+
+Route::patch('/cart/{id}', [CartController::class, 'update'])->name('cart.update');
+
+Route::get('/cart/clear', [CartController::class, 'clear'])->name('cart.clear');
+
+Route::post('/cart/add', 'CartController@add')->name('cart.add');
 
