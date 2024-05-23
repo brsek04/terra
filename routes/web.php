@@ -94,6 +94,9 @@ Route::resource('beverage_types', BeverageTypeController::class);
 use App\Http\Controllers\BeverageController;
 Route::resource('beverages', BeverageController::class);
 
+use App\Http\Controllers\MenuController;
+Route::resource('menus', MenuController::class);
+
 use App\Http\Controllers\CartController;
 Route::get('/shop', [CartController::class, 'shop'])->name('shop.index');
 Route::get('/cart', [CartController::class, 'cart'])->name('cart.index');
