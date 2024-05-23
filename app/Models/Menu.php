@@ -5,26 +5,24 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 
 /**
- * Class Company
+ * Class Menu
  *
  * @property $id
  * @property $name
- * @property $address
- * @property $phone
+ * @property $branch_id
  * @property $created_at
  * @property $updated_at
  *
- * @property Branch[] $branches
+ * @property Branch $branch
  * @package App
  * @mixin \Illuminate\Database\Eloquent\Builder
  */
-class Company extends Model
+class Menu extends Model
 {
     
     static $rules = [
 		'name' => 'required',
-		'address' => 'required',
-		'phone' => 'required',
+		'branch_id' => 'required',
     ];
 
     protected $perPage = 20;
@@ -34,15 +32,15 @@ class Company extends Model
      *
      * @var array
      */
-    protected $fillable = ['name','address','phone'];
+    protected $fillable = ['name','branch_id'];
 
 
     /**
-     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     * @return \Illuminate\Database\Eloquent\Relations\HasOne
      */
-    public function branches()
+    public function branch()
     {
-        return $this->hasMany('App\Models\Branch', 'company_id', 'id');
+        return $this->hasOne('App\Models\Branch', 'id', 'branch_id');
     }
     
 

@@ -16,6 +16,9 @@ use App\Http\Controllers\UsuarioController;
 | contains the "web" middleware group. Now create something great!
 |
 */
+
+
+
 Route::get('/', function () {
     return view('welcome');
 })->name('welcome');
@@ -44,7 +47,6 @@ Route::get('/packs', function () {
 Route::get('/dondeestamos', function () {
     return view('dondeestamos');
 });
-
 // returns the home page with all posts
 // Route::get('/', PostController::class .'@index')->name('posts.index');
 // returns the form for adding a post
@@ -59,10 +61,7 @@ Route::get('/posts/{post}/edit', PostController::class .'@edit')->name('posts.ed
 Route::put('/posts/{post}', PostController::class .'@update')->name('posts.update');
 // deletes a post
 Route::delete('/posts/{post}', PostController::class .'@destroy')->name('posts.destroy');
-Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 Auth::routes();
 
@@ -72,3 +71,39 @@ Route::group(['middleware' =>[ 'auth']], function(){
     Route::resource('roles', RolController::class);
     Route::resource('usuarios', UsuarioController::class);
 });
+
+
+use App\Http\Controllers\SupplierController;
+Route::resource('suppliers', SupplierController::class);
+
+use App\Http\Controllers\CompanyController;
+Route::resource('companies', CompanyController::class);
+
+use App\Http\Controllers\BranchController;
+Route::resource('branches', BranchController::class);
+
+use App\Http\Controllers\DishTypeController;
+Route::resource('dish-types', DishTypeController::class);
+
+use App\Http\Controllers\DishController;
+Route::resource('dishes', DishController::class);
+
+use App\Http\Controllers\BeverageTypeController;
+Route::resource('beverage_types', BeverageTypeController::class);
+
+use App\Http\Controllers\BeverageController;
+Route::resource('beverages', BeverageController::class);
+
+use App\Http\Controllers\CartController;
+Route::get('/shop', [CartController::class, 'shop'])->name('shop.index');
+Route::get('/cart', [CartController::class, 'cart'])->name('cart.index');
+Route::post('/cart', [CartController::class, 'add'])->name('cart.store');
+
+Route::delete('/cart/{id}', [CartController::class, 'remove'])->name('cart.remove');
+
+Route::patch('/cart/{id}', [CartController::class, 'update'])->name('cart.update');
+
+Route::get('/cart/clear', [CartController::class, 'clear'])->name('cart.clear');
+
+Route::post('/cart/add', 'CartController@add')->name('cart.add');
+

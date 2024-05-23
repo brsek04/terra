@@ -2,14 +2,14 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Region;
+use App\Models\Supplier;
 use Illuminate\Http\Request;
 
 /**
- * Class RegionController
+ * Class SupplierController
  * @package App\Http\Controllers
  */
-class RegionController extends Controller
+class SupplierController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -18,10 +18,10 @@ class RegionController extends Controller
      */
     public function index()
     {
-        $regions = Region::paginate();
+        $suppliers = Supplier::paginate();
 
-        return view('region.index', compact('regions'))
-            ->with('i', (request()->input('page', 1) - 1) * $regions->perPage());
+        return view('supplier.index', compact('suppliers'))
+            ->with('i', (request()->input('page', 1) - 1) * $suppliers->perPage());
     }
 
     /**
@@ -31,8 +31,8 @@ class RegionController extends Controller
      */
     public function create()
     {
-        $region = new Region();
-        return view('region.create', compact('region'));
+        $supplier = new Supplier();
+        return view('supplier.create', compact('supplier'));
     }
 
     /**
@@ -43,12 +43,12 @@ class RegionController extends Controller
      */
     public function store(Request $request)
     {
-        request()->validate(Region::$rules);
+        request()->validate(Supplier::$rules);
 
-        $region = Region::create($request->all());
+        $supplier = Supplier::create($request->all());
 
-        return redirect()->route('regions.index')
-            ->with('success', 'Region created successfully.');
+        return redirect()->route('suppliers.index')
+            ->with('success', 'Supplier created successfully.');
     }
 
     /**
@@ -59,9 +59,9 @@ class RegionController extends Controller
      */
     public function show($id)
     {
-        $region = Region::find($id);
+        $supplier = Supplier::find($id);
 
-        return view('region.show', compact('region'));
+        return view('supplier.show', compact('supplier'));
     }
 
     /**
@@ -72,26 +72,26 @@ class RegionController extends Controller
      */
     public function edit($id)
     {
-        $region = Region::find($id);
+        $supplier = Supplier::find($id);
 
-        return view('region.edit', compact('region'));
+        return view('supplier.edit', compact('supplier'));
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request $request
-     * @param  Region $region
+     * @param  Supplier $supplier
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Region $region)
+    public function update(Request $request, Supplier $supplier)
     {
-        request()->validate(Region::$rules);
+        request()->validate(Supplier::$rules);
 
-        $region->update($request->all());
+        $supplier->update($request->all());
 
-        return redirect()->route('regions.index')
-            ->with('success', 'Region updated successfully');
+        return redirect()->route('suppliers.index')
+            ->with('success', 'Supplier updated successfully');
     }
 
     /**
@@ -101,9 +101,9 @@ class RegionController extends Controller
      */
     public function destroy($id)
     {
-        $region = Region::find($id)->delete();
+        $supplier = Supplier::find($id)->delete();
 
-        return redirect()->route('regions.index')
-            ->with('success', 'Region deleted successfully');
+        return redirect()->route('suppliers.index')
+            ->with('success', 'Supplier deleted successfully');
     }
 }

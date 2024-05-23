@@ -2,14 +2,14 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Region;
+use App\Models\DishType;
 use Illuminate\Http\Request;
 
 /**
- * Class RegionController
+ * Class DishTypeController
  * @package App\Http\Controllers
  */
-class RegionController extends Controller
+class DishTypeController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -18,10 +18,10 @@ class RegionController extends Controller
      */
     public function index()
     {
-        $regions = Region::paginate();
+        $dishTypes = DishType::paginate();
 
-        return view('region.index', compact('regions'))
-            ->with('i', (request()->input('page', 1) - 1) * $regions->perPage());
+        return view('dish-type.index', compact('dishTypes'))
+            ->with('i', (request()->input('page', 1) - 1) * $dishTypes->perPage());
     }
 
     /**
@@ -31,8 +31,8 @@ class RegionController extends Controller
      */
     public function create()
     {
-        $region = new Region();
-        return view('region.create', compact('region'));
+        $dishType = new DishType();
+        return view('dish-type.create', compact('dishType'));
     }
 
     /**
@@ -43,12 +43,12 @@ class RegionController extends Controller
      */
     public function store(Request $request)
     {
-        request()->validate(Region::$rules);
+        request()->validate(DishType::$rules);
 
-        $region = Region::create($request->all());
+        $dishType = DishType::create($request->all());
 
-        return redirect()->route('regions.index')
-            ->with('success', 'Region created successfully.');
+        return redirect()->route('dish-types.index')
+            ->with('success', 'DishType created successfully.');
     }
 
     /**
@@ -59,9 +59,9 @@ class RegionController extends Controller
      */
     public function show($id)
     {
-        $region = Region::find($id);
+        $dishType = DishType::find($id);
 
-        return view('region.show', compact('region'));
+        return view('dish-type.show', compact('dishType'));
     }
 
     /**
@@ -72,26 +72,26 @@ class RegionController extends Controller
      */
     public function edit($id)
     {
-        $region = Region::find($id);
+        $dishType = DishType::find($id);
 
-        return view('region.edit', compact('region'));
+        return view('dish-type.edit', compact('dishType'));
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request $request
-     * @param  Region $region
+     * @param  DishType $dishType
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Region $region)
+    public function update(Request $request, DishType $dishType)
     {
-        request()->validate(Region::$rules);
+        request()->validate(DishType::$rules);
 
-        $region->update($request->all());
+        $dishType->update($request->all());
 
-        return redirect()->route('regions.index')
-            ->with('success', 'Region updated successfully');
+        return redirect()->route('dish-types.index')
+            ->with('success', 'DishType updated successfully');
     }
 
     /**
@@ -101,9 +101,9 @@ class RegionController extends Controller
      */
     public function destroy($id)
     {
-        $region = Region::find($id)->delete();
+        $dishType = DishType::find($id)->delete();
 
-        return redirect()->route('regions.index')
-            ->with('success', 'Region deleted successfully');
+        return redirect()->route('dish-types.index')
+            ->with('success', 'DishType deleted successfully');
     }
 }

@@ -5,26 +5,25 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 
 /**
- * Class Company
+ * Class Commune
  *
  * @property $id
  * @property $name
- * @property $address
- * @property $phone
+ * @property $region_id
  * @property $created_at
  * @property $updated_at
  *
  * @property Branch[] $branches
+ * @property Region $region
  * @package App
  * @mixin \Illuminate\Database\Eloquent\Builder
  */
-class Company extends Model
+class Commune extends Model
 {
     
     static $rules = [
 		'name' => 'required',
-		'address' => 'required',
-		'phone' => 'required',
+		'region_id' => 'required',
     ];
 
     protected $perPage = 20;
@@ -34,7 +33,7 @@ class Company extends Model
      *
      * @var array
      */
-    protected $fillable = ['name','address','phone'];
+    protected $fillable = ['name','region_id'];
 
 
     /**
@@ -42,7 +41,15 @@ class Company extends Model
      */
     public function branches()
     {
-        return $this->hasMany('App\Models\Branch', 'company_id', 'id');
+        return $this->hasMany('App\Models\Branch', 'commune_id', 'id');
+    }
+    
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasOne
+     */
+    public function region()
+    {
+        return $this->hasOne('App\Models\Region', 'id', 'region_id');
     }
     
 

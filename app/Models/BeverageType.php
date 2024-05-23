@@ -5,18 +5,17 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 
 /**
- * Class Region
+ * Class BeverageType
  *
  * @property $id
  * @property $name
  * @property $created_at
  * @property $updated_at
  *
- * @property Commune[] $communes
  * @package App
  * @mixin \Illuminate\Database\Eloquent\Builder
  */
-class Region extends Model
+class BeverageType extends Model
 {
     
     static $rules = [
@@ -33,13 +32,5 @@ class Region extends Model
     protected $fillable = ['name'];
 
 
-    /**
-     * @return \Illuminate\Database\Eloquent\Relations\HasMany
-     */
-    public function communes()
-    {
-        return $this->hasMany('App\Models\Commune', 'region_id', 'id');
-    }
-    
 
 }

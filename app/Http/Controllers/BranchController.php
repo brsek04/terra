@@ -2,14 +2,14 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Region;
+use App\Models\Branch;
 use Illuminate\Http\Request;
 
 /**
- * Class RegionController
+ * Class BranchController
  * @package App\Http\Controllers
  */
-class RegionController extends Controller
+class BranchController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -18,10 +18,10 @@ class RegionController extends Controller
      */
     public function index()
     {
-        $regions = Region::paginate();
+        $branches = Branch::paginate();
 
-        return view('region.index', compact('regions'))
-            ->with('i', (request()->input('page', 1) - 1) * $regions->perPage());
+        return view('branch.index', compact('branches'))
+            ->with('i', (request()->input('page', 1) - 1) * $branches->perPage());
     }
 
     /**
@@ -31,8 +31,8 @@ class RegionController extends Controller
      */
     public function create()
     {
-        $region = new Region();
-        return view('region.create', compact('region'));
+        $branch = new Branch();
+        return view('branch.create', compact('branch'));
     }
 
     /**
@@ -43,12 +43,12 @@ class RegionController extends Controller
      */
     public function store(Request $request)
     {
-        request()->validate(Region::$rules);
+        request()->validate(Branch::$rules);
 
-        $region = Region::create($request->all());
+        $branch = Branch::create($request->all());
 
-        return redirect()->route('regions.index')
-            ->with('success', 'Region created successfully.');
+        return redirect()->route('branches.index')
+            ->with('success', 'Branch created successfully.');
     }
 
     /**
@@ -59,9 +59,9 @@ class RegionController extends Controller
      */
     public function show($id)
     {
-        $region = Region::find($id);
+        $branch = Branch::find($id);
 
-        return view('region.show', compact('region'));
+        return view('branch.show', compact('branch'));
     }
 
     /**
@@ -72,26 +72,26 @@ class RegionController extends Controller
      */
     public function edit($id)
     {
-        $region = Region::find($id);
+        $branch = Branch::find($id);
 
-        return view('region.edit', compact('region'));
+        return view('branch.edit', compact('branch'));
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request $request
-     * @param  Region $region
+     * @param  Branch $branch
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Region $region)
+    public function update(Request $request, Branch $branch)
     {
-        request()->validate(Region::$rules);
+        request()->validate(Branch::$rules);
 
-        $region->update($request->all());
+        $branch->update($request->all());
 
-        return redirect()->route('regions.index')
-            ->with('success', 'Region updated successfully');
+        return redirect()->route('branches.index')
+            ->with('success', 'Branch updated successfully');
     }
 
     /**
@@ -101,9 +101,9 @@ class RegionController extends Controller
      */
     public function destroy($id)
     {
-        $region = Region::find($id)->delete();
+        $branch = Branch::find($id)->delete();
 
-        return redirect()->route('regions.index')
-            ->with('success', 'Region deleted successfully');
+        return redirect()->route('branches.index')
+            ->with('success', 'Branch deleted successfully');
     }
 }

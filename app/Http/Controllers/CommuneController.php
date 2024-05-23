@@ -2,14 +2,14 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Region;
+use App\Models\Commune;
 use Illuminate\Http\Request;
 
 /**
- * Class RegionController
+ * Class CommuneController
  * @package App\Http\Controllers
  */
-class RegionController extends Controller
+class CommuneController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -18,10 +18,10 @@ class RegionController extends Controller
      */
     public function index()
     {
-        $regions = Region::paginate();
+        $communes = Commune::paginate();
 
-        return view('region.index', compact('regions'))
-            ->with('i', (request()->input('page', 1) - 1) * $regions->perPage());
+        return view('commune.index', compact('communes'))
+            ->with('i', (request()->input('page', 1) - 1) * $communes->perPage());
     }
 
     /**
@@ -31,8 +31,8 @@ class RegionController extends Controller
      */
     public function create()
     {
-        $region = new Region();
-        return view('region.create', compact('region'));
+        $commune = new Commune();
+        return view('commune.create', compact('commune'));
     }
 
     /**
@@ -43,12 +43,12 @@ class RegionController extends Controller
      */
     public function store(Request $request)
     {
-        request()->validate(Region::$rules);
+        request()->validate(Commune::$rules);
 
-        $region = Region::create($request->all());
+        $commune = Commune::create($request->all());
 
-        return redirect()->route('regions.index')
-            ->with('success', 'Region created successfully.');
+        return redirect()->route('communes.index')
+            ->with('success', 'Commune created successfully.');
     }
 
     /**
@@ -59,9 +59,9 @@ class RegionController extends Controller
      */
     public function show($id)
     {
-        $region = Region::find($id);
+        $commune = Commune::find($id);
 
-        return view('region.show', compact('region'));
+        return view('commune.show', compact('commune'));
     }
 
     /**
@@ -72,26 +72,26 @@ class RegionController extends Controller
      */
     public function edit($id)
     {
-        $region = Region::find($id);
+        $commune = Commune::find($id);
 
-        return view('region.edit', compact('region'));
+        return view('commune.edit', compact('commune'));
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request $request
-     * @param  Region $region
+     * @param  Commune $commune
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Region $region)
+    public function update(Request $request, Commune $commune)
     {
-        request()->validate(Region::$rules);
+        request()->validate(Commune::$rules);
 
-        $region->update($request->all());
+        $commune->update($request->all());
 
-        return redirect()->route('regions.index')
-            ->with('success', 'Region updated successfully');
+        return redirect()->route('communes.index')
+            ->with('success', 'Commune updated successfully');
     }
 
     /**
@@ -101,9 +101,9 @@ class RegionController extends Controller
      */
     public function destroy($id)
     {
-        $region = Region::find($id)->delete();
+        $commune = Commune::find($id)->delete();
 
-        return redirect()->route('regions.index')
-            ->with('success', 'Region deleted successfully');
+        return redirect()->route('communes.index')
+            ->with('success', 'Commune deleted successfully');
     }
 }

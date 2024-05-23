@@ -5,26 +5,22 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 
 /**
- * Class Company
+ * Class DishType
  *
  * @property $id
  * @property $name
- * @property $address
- * @property $phone
  * @property $created_at
  * @property $updated_at
  *
- * @property Branch[] $branches
+ * @property Dish[] $dishes
  * @package App
  * @mixin \Illuminate\Database\Eloquent\Builder
  */
-class Company extends Model
+class DishType extends Model
 {
     
     static $rules = [
 		'name' => 'required',
-		'address' => 'required',
-		'phone' => 'required',
     ];
 
     protected $perPage = 20;
@@ -34,15 +30,15 @@ class Company extends Model
      *
      * @var array
      */
-    protected $fillable = ['name','address','phone'];
+    protected $fillable = ['name'];
 
 
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
-    public function branches()
+    public function dishes()
     {
-        return $this->hasMany('App\Models\Branch', 'company_id', 'id');
+        return $this->hasMany('App\Models\Dish', 'type_id', 'id');
     }
     
 

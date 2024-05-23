@@ -2,14 +2,14 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Region;
+use App\Models\Beverage;
 use Illuminate\Http\Request;
 
 /**
- * Class RegionController
+ * Class BeverageController
  * @package App\Http\Controllers
  */
-class RegionController extends Controller
+class BeverageController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -18,10 +18,10 @@ class RegionController extends Controller
      */
     public function index()
     {
-        $regions = Region::paginate();
+        $beverages = Beverage::paginate();
 
-        return view('region.index', compact('regions'))
-            ->with('i', (request()->input('page', 1) - 1) * $regions->perPage());
+        return view('beverage.index', compact('beverages'))
+            ->with('i', (request()->input('page', 1) - 1) * $beverages->perPage());
     }
 
     /**
@@ -31,8 +31,8 @@ class RegionController extends Controller
      */
     public function create()
     {
-        $region = new Region();
-        return view('region.create', compact('region'));
+        $beverage = new Beverage();
+        return view('beverage.create', compact('beverage'));
     }
 
     /**
@@ -43,12 +43,12 @@ class RegionController extends Controller
      */
     public function store(Request $request)
     {
-        request()->validate(Region::$rules);
+        request()->validate(Beverage::$rules);
 
-        $region = Region::create($request->all());
+        $beverage = Beverage::create($request->all());
 
-        return redirect()->route('regions.index')
-            ->with('success', 'Region created successfully.');
+        return redirect()->route('beverages.index')
+            ->with('success', 'Beverage created successfully.');
     }
 
     /**
@@ -59,9 +59,9 @@ class RegionController extends Controller
      */
     public function show($id)
     {
-        $region = Region::find($id);
+        $beverage = Beverage::find($id);
 
-        return view('region.show', compact('region'));
+        return view('beverage.show', compact('beverage'));
     }
 
     /**
@@ -72,26 +72,26 @@ class RegionController extends Controller
      */
     public function edit($id)
     {
-        $region = Region::find($id);
+        $beverage = Beverage::find($id);
 
-        return view('region.edit', compact('region'));
+        return view('beverage.edit', compact('beverage'));
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request $request
-     * @param  Region $region
+     * @param  Beverage $beverage
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Region $region)
+    public function update(Request $request, Beverage $beverage)
     {
-        request()->validate(Region::$rules);
+        request()->validate(Beverage::$rules);
 
-        $region->update($request->all());
+        $beverage->update($request->all());
 
-        return redirect()->route('regions.index')
-            ->with('success', 'Region updated successfully');
+        return redirect()->route('beverages.index')
+            ->with('success', 'Beverage updated successfully');
     }
 
     /**
@@ -101,9 +101,9 @@ class RegionController extends Controller
      */
     public function destroy($id)
     {
-        $region = Region::find($id)->delete();
+        $beverage = Beverage::find($id)->delete();
 
-        return redirect()->route('regions.index')
-            ->with('success', 'Region deleted successfully');
+        return redirect()->route('beverages.index')
+            ->with('success', 'Beverage deleted successfully');
     }
 }

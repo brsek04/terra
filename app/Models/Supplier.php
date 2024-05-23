@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 
 /**
- * Class Company
+ * Class Supplier
  *
  * @property $id
  * @property $name
@@ -14,11 +14,10 @@ use Illuminate\Database\Eloquent\Model;
  * @property $created_at
  * @property $updated_at
  *
- * @property Branch[] $branches
  * @package App
  * @mixin \Illuminate\Database\Eloquent\Builder
  */
-class Company extends Model
+class Supplier extends Model
 {
     
     static $rules = [
@@ -37,13 +36,5 @@ class Company extends Model
     protected $fillable = ['name','address','phone'];
 
 
-    /**
-     * @return \Illuminate\Database\Eloquent\Relations\HasMany
-     */
-    public function branches()
-    {
-        return $this->hasMany('App\Models\Branch', 'company_id', 'id');
-    }
-    
 
 }
