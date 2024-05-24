@@ -9,8 +9,10 @@
 
                     <div class="card-body">
                         @foreach ($menus as $menu)
-                            <div>{{ $menu->name }}</div>
-                            <!-- Aquí puedes mostrar más detalles del menú si lo deseas -->
+                            <div>
+                                <!-- Enlace al detalle del menú que pasa el ID del menú como parámetro -->
+                                <a href="{{ route('menus.showPublic', $menu->id) }}">{{ $menu->name }}</a>
+                            </div>
                         @endforeach
                     </div>
                 </div>

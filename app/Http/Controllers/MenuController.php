@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Menu;
 use Illuminate\Http\Request;
+use App\Models\Dish;
 
 /**
  * Class MenuController
@@ -30,10 +31,13 @@ class MenuController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function create()
-    {
-        $menu = new Menu();
-        return view('menu.create', compact('menu'));
-    }
+{
+    $menu = new Menu();
+    $dishes = Dish::all(); // Cargar todos los platos disponibles
+    $selectedDishes = []; // No hay platos seleccionados en el caso de crear un nuevo menú
+
+    return view('menu.create', compact('menu', 'dishes', 'selectedDishes'));
+}
 
     /**
      * Store a newly created resource in storage.
@@ -63,7 +67,10 @@ class MenuController extends Controller
 
         return view('menu.show', compact('menu'));
     }
-
+    public function showPublic(Menu $menu)
+    {
+        return view('menu.showPublic', compact('menu'));
+    }
     /**
      * Show the form for editing the specified resource.
      *
@@ -73,8 +80,10 @@ class MenuController extends Controller
     public function edit($id)
     {
         $menu = Menu::find($id);
+        $dishes = Dish::all();
+        $selectedDishes = $menu->dishes->pluck('id')->toArray();
 
-        return view('menu.edit', compact('menu'));
+        return view('menu.edit', compact('menu', 'dishes', 'selectedDishes'));
     }
 
     /**
@@ -89,6 +98,9 @@ class MenuController extends Controller
         request()->validate(Menu::$rules);
 
         $menu->update($request->all());
+
+        // Actualizar la relación many-to-many
+        $menu->dishes()->sync($request->input('dishes', []));
 
         return redirect()->route('menus.index')
             ->with('success', 'Menu updated successfully');
@@ -106,4 +118,8 @@ class MenuController extends Controller
         return redirect()->route('menus.index')
             ->with('success', 'Menu deleted successfully');
     }
+
+    
+
+
 }
