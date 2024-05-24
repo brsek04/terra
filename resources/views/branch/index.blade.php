@@ -35,13 +35,11 @@
                                 <thead class="thead">
                                     <tr>
                                         <th>No</th>
-                                        
-										<th>Name</th>
-										<th>Address</th>
-										<th>Phone</th>
-										<th>Company Id</th>
-										<th>Commune Id</th>
-
+                                        <th>Name</th>
+                                        <th>Address</th>
+                                        <th>Phone</th>
+                                        <th>Company</th>
+                                        <th>Commune</th>
                                         <th></th>
                                     </tr>
                                 </thead>
@@ -49,16 +47,14 @@
                                     @foreach ($branches as $branch)
                                         <tr>
                                             <td>{{ ++$i }}</td>
-                                            
-											<td>{{ $branch->name }}</td>
-											<td>{{ $branch->address }}</td>
-											<td>{{ $branch->phone }}</td>
-											<td>{{ $branch->company_id }}</td>
-											<td>{{ $branch->commune_id }}</td>
-
+                                            <td>{{ $branch->name }}</td>
+                                            <td>{{ $branch->address }}</td>
+                                            <td>{{ $branch->phone }}</td>
+                                            <td>{{ $branch->company->name }}</td>
+                                            <td>{{ $branch->commune->name }}</td>
                                             <td>
                                                 <form action="{{ route('branches.destroy',$branch->id) }}" method="POST">
-                                                    <a class="btn btn-sm btn-primary " href="{{ route('branches.show',$branch->id) }}"><i class="fa fa-fw fa-eye"></i> {{ __('Show') }}</a>
+                                                    <a class="btn btn-sm btn-primary" href="{{ route('branches.show',$branch->id) }}"><i class="fa fa-fw fa-eye"></i> {{ __('Show') }}</a>
                                                     <a class="btn btn-sm btn-success" href="{{ route('branches.edit',$branch->id) }}"><i class="fa fa-fw fa-edit"></i> {{ __('Edit') }}</a>
                                                     @csrf
                                                     @method('DELETE')

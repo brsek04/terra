@@ -1,8 +1,8 @@
 <?php
-
 namespace App\Http\Controllers;
 
 use App\Models\Menu;
+use App\Models\Branch; // Asegúrate de importar el modelo Branch
 use Illuminate\Http\Request;
 
 /**
@@ -32,7 +32,8 @@ class MenuController extends Controller
     public function create()
     {
         $menu = new Menu();
-        return view('menu.create', compact('menu'));
+        $branches = Branch::pluck('name', 'id');
+        return view('menu.create', compact('menu', 'branches'));
     }
 
     /**
@@ -73,8 +74,8 @@ class MenuController extends Controller
     public function edit($id)
     {
         $menu = Menu::find($id);
-
-        return view('menu.edit', compact('menu'));
+        $branches = Branch::pluck('name', 'id');
+        return view('menu.edit', compact('menu', 'branches'));
     }
 
     /**

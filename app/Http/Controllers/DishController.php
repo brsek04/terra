@@ -3,12 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Dish;
+use App\Models\DishType;
 use Illuminate\Http\Request;
 
-/**
- * Class DishController
- * @package App\Http\Controllers
- */
 class DishController extends Controller
 {
     /**
@@ -32,7 +29,8 @@ class DishController extends Controller
     public function create()
     {
         $dish = new Dish();
-        return view('dish.create', compact('dish'));
+        $types = DishType::pluck('name', 'id');
+        return view('dish.create', compact('dish', 'types'));
     }
 
     /**
@@ -43,9 +41,17 @@ class DishController extends Controller
      */
     public function store(Request $request)
     {
-        request()->validate(Dish::$rules);
+        $validatedData = $request->validate([
+            'name' => 'required',
+            'description' => 'required',
+            'price' => 'required|numeric',
+            'rating' => 'required|numeric',
+            'prep_time' => 'required',
+            'photo' => 'required',
+            'type_id' => 'required',
+        ]);
 
-        $dish = Dish::create($request->all());
+        $dish = Dish::create($validatedData);
 
         return redirect()->route('dishes.index')
             ->with('success', 'Dish created successfully.');
@@ -73,8 +79,8 @@ class DishController extends Controller
     public function edit($id)
     {
         $dish = Dish::find($id);
-
-        return view('dish.edit', compact('dish'));
+        $types = DishType::pluck('name', 'id');
+        return view('dish.edit', compact('dish', 'types'));
     }
 
     /**
@@ -86,22 +92,32 @@ class DishController extends Controller
      */
     public function update(Request $request, Dish $dish)
     {
-        request()->validate(Dish::$rules);
+        $validatedData = $request->validate([
+            'name' => 'required',
+            'description' => 'required',
+            'price' => 'required|numeric',
+            'rating' => 'required|numeric',
+            'prep_time' => 'required',
+            'photo' => 'required',
+            'type_id' => 'required',
+        ]);
 
-        $dish->update($request->all());
+        $dish->update($validatedData);
 
         return redirect()->route('dishes.index')
             ->with('success', 'Dish updated successfully');
     }
 
     /**
-     * @param int $id
-     * @return \Illuminate\Http\RedirectResponse
-     * @throws \Exception
+     * Remove the specified resource from storage.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
      */
     public function destroy($id)
     {
-        $dish = Dish::find($id)->delete();
+        $dish = Dish::find($id);
+        $dish->delete();
 
         return redirect()->route('dishes.index')
             ->with('success', 'Dish deleted successfully');

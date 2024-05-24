@@ -89,7 +89,7 @@ use App\Http\Controllers\DishController;
 Route::resource('dishes', DishController::class);
 
 use App\Http\Controllers\BeverageTypeController;
-Route::resource('beverage_types', BeverageTypeController::class);
+Route::resource('beverage-types', BeverageTypeController::class);
 
 use App\Http\Controllers\BeverageController;
 Route::resource('beverages', BeverageController::class);

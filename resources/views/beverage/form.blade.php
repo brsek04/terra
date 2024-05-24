@@ -32,8 +32,8 @@
             {!! $errors->first('rating', '<div class="invalid-feedback">:message</div>') !!}
         </div>
         <div class="form-group">
-            {{ Form::label('type_id') }}
-            {{ Form::text('type_id', $beverage->type_id, ['class' => 'form-control' . ($errors->has('type_id') ? ' is-invalid' : ''), 'placeholder' => 'Type Id']) }}
+            {{ Form::label('type_id', 'Type') }}
+            {{ Form::select('type_id', $types, $beverage->type_id, ['class' => 'form-control' . ($errors->has('type_id') ? ' is-invalid' : ''), 'placeholder' => 'Select Type']) }}
             {!! $errors->first('type_id', '<div class="invalid-feedback">:message</div>') !!}
         </div>
 

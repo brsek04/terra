@@ -42,7 +42,7 @@
 										<th>Alcohol</th>
 										<th>Photo</th>
 										<th>Rating</th>
-										<th>Type Id</th>
+										<th>Type</th>
 
                                         <th></th>
                                     </tr>
@@ -58,7 +58,7 @@
 											<td>{{ $beverage->alcohol }}</td>
 											<td>{{ $beverage->photo }}</td>
 											<td>{{ $beverage->rating }}</td>
-											<td>{{ $beverage->type_id }}</td>
+											<td>{{ $beverage->beverageType->name }}</td>
 
                                             <td>
                                                 <form action="{{ route('beverages.destroy',$beverage->id) }}" method="POST">
