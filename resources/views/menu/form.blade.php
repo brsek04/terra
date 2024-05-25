@@ -7,14 +7,13 @@
             {{ Form::text('name', $menu->name, ['class' => 'form-control' . ($errors->has('name') ? ' is-invalid' : ''), 'placeholder' => 'Name']) }}
             {!! $errors->first('name', '<div class="invalid-feedback">:message</div>') !!}
         </div>
-        
         <div class="form-group">
-            {{ Form::label('branch_id', 'Branch') }}
-            {{ Form::select('branch_id', $branches, $menu->branch_id, ['class' => 'form-control' . ($errors->has('branch_id') ? ' is-invalid' : ''), 'placeholder' => 'Select a Branch']) }}
+            {{ Form::label('branch_id') }}
+            {{ Form::text('branch_id', $menu->branch_id, ['class' => 'form-control' . ($errors->has('branch_id') ? ' is-invalid' : ''), 'placeholder' => 'Branch Id']) }}
             {!! $errors->first('branch_id', '<div class="invalid-feedback">:message</div>') !!}
         </div>
         <div class="form-group">
-            <label for="dishes">{{ __('Select Dishes') }}</label>
+            <label for="dishes">{{ ('Select Dishes') }}</label>
             <div class="checkbox-group">
                 @foreach($dishes as $dish)
                     <div class="form-check">
@@ -28,6 +27,6 @@
         </div>
     </div>
     <div class="box-footer mt20">
-        <button type="submit" class="btn btn-primary">{{ __('Submit') }}</button>
+        <button type="submit" class="btn btn-primary">{{ ('Submit') }}</button>
     </div>
 </div>
