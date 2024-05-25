@@ -3,47 +3,37 @@
 namespace App\Http\Controllers;
 
 use App\Models\Beverage;
+use App\Models\BeverageType;
 use Illuminate\Http\Request;
 
-/**
- * Class BeverageController
- * @package App\Http\Controllers
- */
 class BeverageController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function index()
     {
-        $beverages = Beverage::paginate();
+        $beverages = Beverage::with('beverageType')->latest()->paginate(5);
 
         return view('beverage.index', compact('beverages'))
             ->with('i', (request()->input('page', 1) - 1) * $beverages->perPage());
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function create()
     {
         $beverage = new Beverage();
-        return view('beverage.create', compact('beverage'));
+        $types = BeverageType::pluck('name', 'id');
+        return view('beverage.create', compact('beverage', 'types'));
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(Request $request)
     {
-        request()->validate(Beverage::$rules);
+        $request->validate([
+            'name' => 'required|string|max:255',
+            'description' => 'nullable|string',
+            'price' => 'required|numeric|min:0',
+            'alcohol' => 'nullable|numeric|min:0',
+            'photo' => 'nullable|string|max:255',
+            'rating' => 'nullable|numeric|min:0',
+            'type_id' => 'required|exists:beverage_types,id'
+        ]);
 
         $beverage = Beverage::create($request->all());
 
@@ -51,42 +41,26 @@ class BeverageController extends Controller
             ->with('success', 'Beverage created successfully.');
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        $beverage = Beverage::find($id);
+    // Other methods (show, edit, update, destroy) remain unchanged...
 
-        return view('beverage.show', compact('beverage'));
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int $id
-     * @return \Illuminate\Http\Response
-     */
     public function edit($id)
     {
-        $beverage = Beverage::find($id);
-
-        return view('beverage.edit', compact('beverage'));
+        $beverage = Beverage::findOrFail($id);
+        $types = BeverageType::pluck('name', 'id');
+        return view('beverage.edit', compact('beverage', 'types'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request $request
-     * @param  Beverage $beverage
-     * @return \Illuminate\Http\Response
-     */
     public function update(Request $request, Beverage $beverage)
     {
-        request()->validate(Beverage::$rules);
+        $request->validate([
+            'name' => 'required|string|max:255',
+            'description' => 'nullable|string',
+            'price' => 'required|numeric|min:0',
+            'alcohol' => 'nullable|numeric|min:0',
+            'photo' => 'nullable|string|max:255',
+            'rating' => 'nullable|numeric|min:0',
+            'type_id' => 'required|exists:beverage_types,id'
+        ]);
 
         $beverage->update($request->all());
 
@@ -94,16 +68,18 @@ class BeverageController extends Controller
             ->with('success', 'Beverage updated successfully');
     }
 
-    /**
-     * @param int $id
-     * @return \Illuminate\Http\RedirectResponse
-     * @throws \Exception
-     */
-    public function destroy($id)
+    public function destroy(Beverage $beverage)
     {
-        $beverage = Beverage::find($id)->delete();
+        $beverage->delete();
 
         return redirect()->route('beverages.index')
             ->with('success', 'Beverage deleted successfully');
     }
+
+    public function show($id)
+    {
+        $beverage = Beverage::findOrFail($id);
+        return view('beverage.show', compact('beverage'));
+    }
+    
 }

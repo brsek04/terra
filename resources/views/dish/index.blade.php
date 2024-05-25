@@ -11,16 +11,15 @@
                 <div class="card">
                     <div class="card-header">
                         <div style="display: flex; justify-content: space-between; align-items: center;">
-
                             <span id="card_title">
                                 {{ __('Dish') }}
                             </span>
 
-                             <div class="float-right">
+                            <div class="float-right">
                                 <a href="{{ route('dishes.create') }}" class="btn btn-primary btn-sm float-right"  data-placement="left">
                                   {{ __('Create New') }}
                                 </a>
-                              </div>
+                            </div>
                         </div>
                     </div>
                     @if ($message = Session::get('success'))
@@ -35,15 +34,13 @@
                                 <thead class="thead">
                                     <tr>
                                         <th>No</th>
-                                        
-										<th>Name</th>
-										<th>Description</th>
-										<th>Price</th>
-										<th>Rating</th>
-										<th>Prep Time</th>
-										<th>Photo</th>
-										<th>Type Id</th>
-
+                                        <th>Name</th>
+                                        <th>Description</th>
+                                        <th>Price</th>
+                                        <th>Rating</th>
+                                        <th>Prep Time</th>
+                                        <th>Photo</th>
+                                        <th>Type</th>
                                         <th></th>
                                     </tr>
                                 </thead>
@@ -51,15 +48,13 @@
                                     @foreach ($dishes as $dish)
                                         <tr>
                                             <td>{{ ++$i }}</td>
-                                            
-											<td>{{ $dish->name }}</td>
-											<td>{{ $dish->description }}</td>
-											<td>{{ $dish->price }}</td>
-											<td>{{ $dish->rating }}</td>
-											<td>{{ $dish->prep_time }}</td>
-											<td>{{ $dish->photo }}</td>
-											<td>{{ $dish->type_id }}</td>
-
+                                            <td>{{ $dish->name }}</td>
+                                            <td>{{ $dish->description }}</td>
+                                            <td>{{ $dish->price }}</td>
+                                            <td>{{ $dish->rating }}</td>
+                                            <td>{{ $dish->prep_time }}</td>
+                                            <td>{{ $dish->photo }}</td>
+                                            <td>{{ $dish->dishType->name }}</td>
                                             <td>
                                                 <form action="{{ route('dishes.destroy',$dish->id) }}" method="POST">
                                                     <a class="btn btn-sm btn-primary " href="{{ route('dishes.show',$dish->id) }}"><i class="fa fa-fw fa-eye"></i> {{ __('Show') }}</a>
@@ -81,3 +76,4 @@
         </div>
     </div>
 @endsection
+

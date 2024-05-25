@@ -7,9 +7,10 @@
             {{ Form::text('name', $menu->name, ['class' => 'form-control' . ($errors->has('name') ? ' is-invalid' : ''), 'placeholder' => 'Name']) }}
             {!! $errors->first('name', '<div class="invalid-feedback">:message</div>') !!}
         </div>
+        
         <div class="form-group">
-            {{ Form::label('branch_id') }}
-            {{ Form::text('branch_id', $menu->branch_id, ['class' => 'form-control' . ($errors->has('branch_id') ? ' is-invalid' : ''), 'placeholder' => 'Branch Id']) }}
+            {{ Form::label('branch_id', 'Branch') }}
+            {{ Form::select('branch_id', $branches, $menu->branch_id, ['class' => 'form-control' . ($errors->has('branch_id') ? ' is-invalid' : ''), 'placeholder' => 'Select a Branch']) }}
             {!! $errors->first('branch_id', '<div class="invalid-feedback">:message</div>') !!}
         </div>
         <div class="form-group">

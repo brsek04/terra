@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Branch;
+use App\Models\Company; // Asegúrate de importar los modelos correctos
+use App\Models\Commune; // Asegúrate de importar los modelos correctos
 use Illuminate\Http\Request;
 
 /**
@@ -32,7 +34,9 @@ class BranchController extends Controller
     public function create()
     {
         $branch = new Branch();
-        return view('branch.create', compact('branch'));
+        $companies = Company::pluck('name', 'id');
+        $communes = Commune::pluck('name', 'id');
+        return view('branch.create', compact('branch', 'companies', 'communes'));
     }
 
     /**
@@ -73,8 +77,9 @@ class BranchController extends Controller
     public function edit($id)
     {
         $branch = Branch::find($id);
-
-        return view('branch.edit', compact('branch'));
+        $companies = Company::pluck('name', 'id');
+        $communes = Commune::pluck('name', 'id');
+        return view('branch.edit', compact('branch', 'companies', 'communes'));
     }
 
     /**
