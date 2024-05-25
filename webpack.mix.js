@@ -1,5 +1,5 @@
 const mix = require('laravel-mix');
-
+const tailwindcss = require('tailwindcss');
 /*
  |--------------------------------------------------------------------------
  | Mix Asset Management
@@ -13,6 +13,9 @@ const mix = require('laravel-mix');
 
 mix.js('resources/js/app.js', 'public/js');
 mix.styles(['resources/js/app.js'], 'public/css/app.css').version();
+mix.js('resources/js/app.js', 'public/js')
+   .sass('resources/sass/app.scss', 'public/css')
+   .version();
 
 mix.styles([
     'public/css/social-icons.css',
@@ -30,6 +33,10 @@ mix.js(
     .js('resources/assets/js/custom/custom-datatable.js', 'public/assets/js/custom/custom-datatable.js')
     .version();
 
+mix.js('resources/js/app.js', 'public/js')
+    .postCss('resources/css/app.css', 'public/css', [
+    tailwindcss('./tailwind.config.js'),
+]);
 
 mix.copy('node_modules/bootstrap/dist/css/bootstrap.min.css',
     'public/assets/css/bootstrap.min.css');
