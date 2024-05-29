@@ -57,7 +57,13 @@
 											<td>{{ $dish->price }}</td>
 											<td>{{ $dish->rating }}</td>
 											<td>{{ $dish->prep_time }}</td>
-											<td>{{ $dish->photo }}</td>
+											<td>@if($dish->photo)
+                                                <img src="{{ asset($dish->photo) }}" alt="Foto del plato" style="max-width: 100px; max-height: 100px;">
+
+                                                @else
+                                                    Sin imagen
+                                                @endif </td>
+                                            
 											<td>{{ $dish->type_id }}</td>
 
                                             <td>
