@@ -48,13 +48,21 @@
                                     @foreach ($dishes as $dish)
                                         <tr>
                                             <td>{{ ++$i }}</td>
-                                            <td>{{ $dish->name }}</td>
-                                            <td>{{ $dish->description }}</td>
-                                            <td>{{ $dish->price }}</td>
-                                            <td>{{ $dish->rating }}</td>
-                                            <td>{{ $dish->prep_time }}</td>
-                                            <td>{{ $dish->photo }}</td>
-                                            <td>{{ $dish->dishType->name }}</td>
+                                            
+											<td>{{ $dish->name }}</td>
+											<td>{{ $dish->description }}</td>
+											<td>{{ $dish->price }}</td>
+											<td>{{ $dish->rating }}</td>
+											<td>{{ $dish->prep_time }}</td>
+											<td>@if($dish->photo)
+                                                <img src="{{ asset($dish->photo) }}" alt="Foto del plato" style="max-width: 100px; max-height: 100px;">
+
+                                                @else
+                                                    Sin imagen
+                                                @endif </td>
+                                            
+											<td>{{ $dish->type_id }}</td>
+
                                             <td>
                                                 <form action="{{ route('dishes.destroy',$dish->id) }}" method="POST">
                                                     <a class="btn btn-sm btn-primary " href="{{ route('dishes.show',$dish->id) }}"><i class="fa fa-fw fa-eye"></i> {{ __('Show') }}</a>
