@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}"/>  
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.css"  rel="stylesheet" />
@@ -12,11 +12,16 @@
     <title>@yield('title') | {{ config('app.name') }}</title>
 </head>
 <body class="font-sans antialiased w-full">
-    <div class="min-h-screen bg-gray-100">
-        <header>
+    <div class="min-h-screen bg-gray-100 flex flex-col ">
+        <header class="max-w" >
             @include('layouts.header')
         </header>
-        <main>
+        <div class="max-w">
+            @include('layouts.sidebar')
+        </div>
+           
+      
+        <main >
             @yield('content')
         </main>
         <footer>

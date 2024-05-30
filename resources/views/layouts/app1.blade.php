@@ -16,21 +16,24 @@
 <body class="font-sans antialiased w-full">
         
             
-        <div class="min-h-screen bg-gray-100">
-           
-            <header class="bg-white shadow">
-                @include('layouts.header')
-            </header>
-                @include('layouts.sidebar')
-            <main>
-                    @yield('content')
-            </main>
-               
-            </div>
-            <footer class="main-footer">
-                @include('layouts.footer')
-            </footer>
-        </div>
+     <div class="min-h-screen bg-gray-100">
+        
+         <header class="bg-white shadow">
+             @include('layouts.header')
+         </header>
+         <section>
+            @include('layouts.sidebar')
+         </section>
+            
+         <main>
+                 @yield('content')
+         </main>
+             
+         
+         <footer class="main-footer">
+             @include('layouts.footer')
+         </footer>
+     </div>
       
 
         <!-- Main Content -->
