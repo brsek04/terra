@@ -12,17 +12,17 @@
             <div class="col-lg-12">
                 <div class="row">
                     <div class="col-lg-7">
-                        <h4>Productos</h4>
+                        <h4>{{ $menu->name }}</h4>
                     </div>
                 </div>
                 <hr>
                 <div class="row">
-                    @foreach($dishes as $dish)
+                    @foreach($menu->dishes as $dish)
                         <div class="col-lg-3">
                             <div class="card" style="margin-bottom: 20px; height: auto;">
                                 <img src="/images/{{ $dish->photo }}"
                                      class="card-img-top mx-auto"
-                                     style="height: 150px; width: 150px;display: block;"
+                                     style="height: 150px; width: 150px; display: block;"
                                      alt="{{ $dish->name }}"
                                 >
                                 <div class="card-body">

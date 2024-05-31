@@ -60,7 +60,8 @@ Route::get('/packs', function () {
 Route::get('/dondeestamos', function () {
     return view('dondeestamos');
 });
-
+Route::get('/menus', [MenuController::class, 'index'])->name('menus.index');
+Route::get('/menus/{menu}', [MenuController::class, 'show'])->name('menus.show');
 // Post Routes
 Route::get('/posts/create', [PostController::class, 'create'])->name('posts.create');
 Route::post('/posts', [PostController::class, 'store'])->name('posts.store');
@@ -87,11 +88,13 @@ Route::group(['middleware' =>['auth']], function(){
 });
 
 // Cart Routes
-Route::get('/shop', [CartController::class, 'shop'])->name('shop.index');
+Route::get('/menus/{id}/shop', [MenuController::class, 'shop'])->name('menus.shop');
 Route::get('/cart', [CartController::class, 'cart'])->name('cart.index');
-Route::post('/cart', [CartController::class, 'add'])->name('cart.store');
-Route::delete('/cart/{id}', [CartController::class, 'remove'])->name('cart.remove');
-Route::patch('/cart/{id}', [CartController::class, 'update'])->name('cart.update');
-Route::get('/cart/clear', [CartController::class, 'clear'])->name('cart.clear');
 Route::post('/cart/add', [CartController::class, 'add'])->name('cart.add');
+Route::post('/cart/update', [CartController::class, 'update'])->name('cart.update');
+Route::post('/cart/remove', [CartController::class, 'remove'])->name('cart.remove');
+Route::get('/cart/clear', [CartController::class, 'clear'])->name('cart.clear');
+Route::get('/menus/{menu}/shop', 'MenuController@showShop')->name('menus.shop');
+
+
 

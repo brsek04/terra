@@ -7,17 +7,15 @@ use App\Models\Dish;
 
 class CartController extends Controller
 {
-    public function shop()
+    public function shop($menuId)
     {
-        $dishes = Dish::all();
-        // dd($dishes);
-        return view('shop')->withTitle('E-COMMERCE STORE | SHOP')->with(['dishes' => $dishes]);
+        $menu = Menu::with('dishes')->findOrFail($menuId);
+        return view('shop', compact('menu'));
     }
 
     public function cart()
     {
         $cartCollection = \Cart::getContent();
-        // dd($cartCollection);
         return view('cart')->withTitle('E-COMMERCE STORE | CART')->with(['cartCollection' => $cartCollection]);
     }
 
@@ -59,4 +57,3 @@ class CartController extends Controller
         return redirect()->route('cart.index')->with('success_msg', 'Cart is cleared!');
     }
 }
-
