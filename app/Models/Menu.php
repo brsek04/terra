@@ -49,4 +49,13 @@ class Menu extends Model
     {
         return $this->belongsToMany(Dish::class, 'dishes_in_menu');
     }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+     */
+    public function beverages()
+    {
+        return $this->belongsToMany(Beverage::class, 'beverages_in_menu');
+    }
+
 }
