@@ -13,13 +13,15 @@
 </head>
 <body class="font-sans antialiased w-full">
     <div class="min-h-screen bg-gray-100 flex flex-col ">
-        <header class="max-w" >
-            @include('layouts.header')
-        </header>
-        <div class="max-w">
-            @include('layouts.sidebar')
-        </div>
-           
+
+       
+            <header class="max-w" >
+                @include('layouts.header')
+            </header>
+            <div class="max-w">
+                @include('layouts.sidebar-admin')
+            </div>    
+            
       
         <main >
             @yield('content')

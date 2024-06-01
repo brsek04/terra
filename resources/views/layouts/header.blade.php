@@ -1,25 +1,7 @@
-<nav class=" bg-white border-gray-200 dark:bg-gray-900 dark:border-gray-700" x-data="{ open: false }">
-    <div class=" max-w-screen-xl flex flex-wrap items-start justify-between mx-auto p-2 ">
-      
-        <a href="#" class=" flex items-center space-x-3 rtl:space-x-reverse">
-            <img src="https://cdn-icons-png.flaticon.com/512/1996/1996055.png" class="h-8" alt="TerralomasLogo">
-            <strong> TerraAdmin</strong>
-        </a>
-         <button type="button" class="flex items-center text-white bg-gradient-to-br from-pink-500 to-orange-400 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-pink-200 dark:focus:ring-pink-800 font-medium rounded-lg text-sm px-3 py-2.5 text-center me-2 mb-2">
-            <svg class="w-6 h-6 text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
-                <path fill-rule="evenodd" d="M12 4a4 4 0 1 0 0 8 4 4 0 0 0 0-8Zm-2 9a4 4 0 0 0-4 4v1a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2v-1a4 4 0 0 0-4-4h-4Z" clip-rule="evenodd"/>
-            </svg>
-            <a href="{{ route('login') }}">
-                {{ __('messages.common.login') }}
-            </a>              
-            </button>
-    </div>
-</nav>
-
-<nav class="fixed top-0 z-50 w-full bg-white border-b border-gray-200 dark:bg-gray-800 dark:border-gray-700">
-    <div class="px-3 py-3 lg:px-5 lg:pl-3">
+<nav class="fixed flex-wrap top-0 z-50 w-full  bg-white border-b border-gray-200 dark:bg-gray-800 dark:border-gray-700 ">
+    <div class="px-1 py-3 lg:px-5 lg:pl-3">
       <div class="flex items-center justify-between">
-        <div class="flex items-center justify-start rtl:justify-end">
+        <div class="flex items-center justify-start rtl:justify-end ">
           <button data-drawer-target="logo-sidebar" data-drawer-toggle="logo-sidebar" aria-controls="logo-sidebar" type="button" class="inline-flex items-center p-2 text-sm text-gray-500 rounded-lg sm:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600">
               <span class="sr-only">Open sidebar</span>
               <svg class="w-6 h-6" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
@@ -29,11 +11,11 @@
            <a href="#" class=" flex items-center space-x-3 rtl:space-x-reverse">
             <img src="https://cdn-icons-png.flaticon.com/512/1996/1996055.png" class="h-8" alt="TerralomasLogo">
             <strong> TerraAdmin</strong>
-        </a>
+            </a>
         </div>
         <div class="flex items-center">
             <div class="flex items-center ms-3">
-              <div>
+              <div class="flex ">
                 <button type="button" class="flex items-center text-white bg-gradient-to-br from-pink-500 to-orange-400 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-pink-200 dark:focus:ring-pink-800 font-medium rounded-lg text-sm px-3 py-2.5 text-center me-2 ">
                     <svg class="w-6 h-6 text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
                         <path fill-rule="evenodd" d="M12 4a4 4 0 1 0 0 8 4 4 0 0 0 0-8Zm-2 9a4 4 0 0 0-4 4v1a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2v-1a4 4 0 0 0-4-4h-4Z" clip-rule="evenodd"/>

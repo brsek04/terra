@@ -8,8 +8,14 @@
     <!-- General CSS Files -->
     <link href="{{ asset('assets/css/bootstrap.min.css') }}" rel="stylesheet" type="text/css"/>
     <link rel="stylesheet" href="{{ asset('css/font-awesome.min.css') }}">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.css"  rel="stylesheet" />
 
     <!-- Template CSS -->
+        <!-- Styles -->
+        <link href="{{ mix('css/app.css') }}" rel="stylesheet"> 
+
+        <!-- Scripts -->
+        <script src="{{ mix('js/app.js') }}" defer></script>
     <link rel="stylesheet" href="{{ asset('web/css/style.css') }}">
     <link rel="stylesheet" href="{{ asset('web/css/components.css')}}">
     <link rel="stylesheet" href="{{ asset('assets/css/iziToast.min.css') }}">
@@ -18,6 +24,7 @@
 </head>
 
 <body>
+
 <div id="app">
     <section class="section">
         <div class="container mt-5">
@@ -27,7 +34,7 @@
                         <img src="{{ asset('img/logo.png') }}" alt="logo" width="100"
                              class="shadow-light">
                     </div>
-                    @yield('content')
+                    @yield('contenido')
                     <div class="simple-footer">
 {{--                        Copyright &copy; {{ getSettingValue('application_name') }}  {{ date('Y') }}--}}
                     </div>
@@ -42,6 +49,8 @@
 <script src="{{ asset('assets/js/popper.min.js') }}"></script>
 <script src="{{ asset('assets/js/bootstrap.min.js') }}"></script>
 <script src="{{ asset('assets/js/jquery.nicescroll.js') }}"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.js"></script>
+<script src="{{ asset('resources/js/scripts.js') }}"></script>
 
 <!-- JS Libraies -->
 

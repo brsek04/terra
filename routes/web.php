@@ -15,6 +15,7 @@ use App\Http\Controllers\BeverageController;
 use App\Http\Controllers\MenuController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\VisitanteController;
+use App\Http\Controllers\HomeController;
 
 /*
 |--------------------------------------------------------------------------
@@ -31,6 +32,8 @@ use App\Http\Controllers\VisitanteController;
 Route::redirect('/', '/visitante');
 Route::get('/visitante', [VisitanteController::class, 'index']);
 Route::get('/menus/{menu}/public', [MenuController::class, 'showPublic'])->name('menus.showPublic');
+Route::get('/home', [HomeController::class, 'index'])->name('home');
+
 
 
 
