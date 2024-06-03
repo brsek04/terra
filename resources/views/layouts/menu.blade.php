@@ -57,5 +57,6 @@
     <a class="nav-link" href="/register">
         <i class="fas fa-user-plus"></i><span>Register</span>
     </a>
+
 </li>
 @endguest

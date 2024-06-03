@@ -15,6 +15,7 @@ use App\Http\Controllers\BeverageController;
 use App\Http\Controllers\MenuController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\VisitanteController;
+use App\Http\Controllers\HomeController;
 
 /*
 |--------------------------------------------------------------------------
@@ -31,36 +32,10 @@ use App\Http\Controllers\VisitanteController;
 Route::redirect('/', '/visitante');
 Route::get('/visitante', [VisitanteController::class, 'index'])->name('visitante.index');
 Route::get('/menus/{menu}/public', [MenuController::class, 'showPublic'])->name('menus.showPublic');
-Route::get('/branch/{branch}/menus', [VisitanteController::class, 'showBranchMenus'])->name('branch.menus');
+Route::get('/home', [HomeController::class, 'index'])->name('home');
 
 
-// Static Pages Routes
-Route::get('/cervezas', function () {
-    return view('cervezas');
-});
-Route::get('/armatupack', function () {
-    return view('armatupack');
-});
-Route::get('/product-pack6', function () {
-    return view('product-pack6');
-});
-Route::get('/product-pack12', function () {
-    return view('product-pack12');
-});
-Route::get('/contacto', function () {
-    return view('contacto');
-});
-Route::get('/nosotros', function () {
-    return view('nosotros');
-});
-Route::get('/packs', function () {
-    return view('packs');
-});
-Route::get('/dondeestamos', function () {
-    return view('dondeestamos');
-});
-Route::get('/menus', [MenuController::class, 'index'])->name('menus.index');
-Route::get('/menus/{menu}', [MenuController::class, 'show'])->name('menus.show');
+
 // Post Routes
 Route::get('/posts/create', [PostController::class, 'create'])->name('posts.create');
 Route::post('/posts', [PostController::class, 'store'])->name('posts.store');
