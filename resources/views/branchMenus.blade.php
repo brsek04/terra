@@ -11,7 +11,7 @@
                         @foreach ($menus as $menu)
                             <div>
                                 <!-- Muestra el nombre del menú y enlace a su página de detalles -->
-                                <a href="{{ route('menus.showPublic', $menu->id) }}">{{ $menu->name }}</a>
+                                <a href="{{ route('menus.shop', ['menu' => $menu->id]) }}">{{ $menu->name }}</a>
                             </div>
                         @endforeach
                     </div>
