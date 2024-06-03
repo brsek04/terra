@@ -12,7 +12,7 @@
         </div>
         <div class="form-group">
             {{ Form::label('price') }}
-            {{ Form::text('price', $dish->price ?? '', ['class' => 'form-control' . ($errors->has('price') ? ' is-invalid' : ''), 'placeholder' => 'Price']) }}
+            {{ Form::number('price', $dish->price ?? '', ['class' => 'form-control' . ($errors->has('price') ? ' is-invalid' : ''), 'placeholder' => 'Price']) }}
             {!! $errors->first('price', '<div class="invalid-feedback">:message</div>') !!}
         </div>
         <div class="form-group">
@@ -22,7 +22,7 @@
         </div>
         <div class="form-group">
             {{ Form::label('prep_time') }}
-            {{ Form::text('prep_time', $dish->prep_time ?? '', ['class' => 'form-control' . ($errors->has('prep_time') ? ' is-invalid' : ''), 'placeholder' => 'Prep Time']) }}
+            {{ Form::number('prep_time', $dish->prep_time ?? '', ['class' => 'form-control' . ($errors->has('prep_time') ? ' is-invalid' : ''), 'placeholder' => 'Prep Time']) }}
             {!! $errors->first('prep_time', '<div class="invalid-feedback">:message</div>') !!}
         </div>
         <div class="form-group">

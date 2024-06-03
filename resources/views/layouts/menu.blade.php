@@ -12,6 +12,40 @@
     <a class="nav-link" href="/menus">
         <i class="fas fa-building"></i><span>Menu admin</span>
     </a>
+
+    <!-- Mantenedores Links -->
+    <a class="nav-link" href="/suppliers">
+        <i class="fas fa-truck"></i><span>Suppliers</span>
+    </a>
+    @can('ver-compañias')
+    <a class="nav-link" href="/companies">
+        <i class="fas fa-building"></i><span>Companies</span>
+    </a>
+    @endcan
+
+    @can('ver-ramas')
+    <a class="nav-link" href="/branches">
+        <i class="fas fa-code-branch"></i><span>Branches</span>
+    </a>
+    @endcan
+
+    @can('ver-plato')
+    <a class="nav-link" href="/dish-types">
+        <i class="fas fa-utensils"></i><span>Dish Types</span>
+    </a>
+    <a class="nav-link" href="/dishes">
+        <i class="fas fa-hamburger"></i><span>Dishes</span>
+    </a>
+    @endcan
+
+    @can('ver-bebestibles')
+    <a class="nav-link" href="/beverage_types">
+        <i class="fas fa-wine-glass-alt"></i><span>Beverage Types</span>
+    </a>
+    <a class="nav-link" href="/beverages">
+        <i class="fas fa-coffee"></i><span>Beverages</span>
+    </a>
+    @endcan
 </li>
 @endauth
 

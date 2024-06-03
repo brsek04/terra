@@ -9,6 +9,15 @@ use Illuminate\Support\Facades\Storage;
 
 class DishController extends Controller
 {
+
+
+
+    function __construct(){
+        $this->middleware('permission:ver-plato',['only'=>['index']]);
+
+    }
+
+
     /**
      * Display a listing of the resource.
      *
@@ -61,7 +70,7 @@ class DishController extends Controller
     
         // Redireccionar a la vista de index con un mensaje de éxito
         return redirect()->route('dishes.index')
-            ->with('success', 'Dish created successfully.');
+            ->with('success_add', 'Dish created successfully.');
     }
 
     /**
@@ -133,7 +142,7 @@ class DishController extends Controller
         $dish->save();
     
         return redirect()->route('dishes.index')
-            ->with('success', 'Dish updated successfully');
+            ->with('success_edit', 'Dish updated successfully');
     }
     
 

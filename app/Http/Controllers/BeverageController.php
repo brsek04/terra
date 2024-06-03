@@ -8,6 +8,11 @@ use Illuminate\Http\Request;
 
 class BeverageController extends Controller
 {
+
+    function __construct(){
+        $this->middleware('permission:ver-bebestibles',['only'=>['index']]);
+
+    }
     public function index()
     {
         $beverages = Beverage::with('beverageType')->latest()->paginate(5);
@@ -38,7 +43,7 @@ class BeverageController extends Controller
         $beverage = Beverage::create($request->all());
 
         return redirect()->route('beverages.index')
-            ->with('success', 'Beverage created successfully.');
+            ->with('success_add', 'Beverage created successfully.');
     }
 
     // Other methods (show, edit, update, destroy) remain unchanged...
@@ -65,7 +70,7 @@ class BeverageController extends Controller
         $beverage->update($request->all());
 
         return redirect()->route('beverages.index')
-            ->with('success', 'Beverage updated successfully');
+            ->with('success_edit', 'Beverage updated successfully');
     }
 
     public function destroy(Beverage $beverage)
@@ -73,7 +78,7 @@ class BeverageController extends Controller
         $beverage->delete();
 
         return redirect()->route('beverages.index')
-            ->with('success', 'Beverage deleted successfully');
+            ->with('success_del', 'Beverage deleted successfully');
     }
 
     public function show($id)

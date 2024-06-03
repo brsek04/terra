@@ -21,10 +21,15 @@ class SeederTablaPermisos extends Seeder
             'crear-rol',
             'editar-rol',
             'borrar-rol',
+            'ver-plato',
+            'ver-bebestibles',
+            'ver-compañias',
+            'ver-menu',
+            'ver-ramas',
         ];
 
-        foreach($permisos as $permiso){
-            Permission::create(['name'=>$permiso]);
+        foreach ($permisos as $permiso) {
+            Permission::updateOrCreate(['name' => $permiso], ['guard_name' => 'web']);
         }
 
 

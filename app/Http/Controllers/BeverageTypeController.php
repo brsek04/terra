@@ -16,6 +16,10 @@ class BeverageTypeController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    function __construct(){
+        $this->middleware('permission:ver-bebestibles',['only'=>['index']]);
+
+    }
     public function index()
     {
         $beverageTypes = BeverageType::paginate();
@@ -48,7 +52,7 @@ class BeverageTypeController extends Controller
         $beverageType = BeverageType::create($request->all());
 
         return redirect()->route('beverage-types.index')
-            ->with('success', 'BeverageType created successfully.');
+            ->with('success_add', 'BeverageType created successfully.');
     }
 
     /**
@@ -91,7 +95,7 @@ class BeverageTypeController extends Controller
         $beverageType->update($request->all());
 
         return redirect()->route('beverage-types.index')
-            ->with('success', 'BeverageType updated successfully');
+            ->with('success_edit', 'BeverageType updated successfully');
     }
 
     /**
@@ -104,6 +108,6 @@ class BeverageTypeController extends Controller
         $beverageType = BeverageType::find($id)->delete();
 
         return redirect()->route('beverage-types.index')
-            ->with('success', 'BeverageType deleted successfully');
+            ->with('success_del', 'BeverageType deleted successfully');
     }
 }
