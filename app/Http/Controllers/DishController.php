@@ -99,21 +99,43 @@ class DishController extends Controller
      */
     public function update(Request $request, Dish $dish)
     {
-        $validatedData = $request->validate([
-            'name' => 'required',
-            'description' => 'required',
+        // Validate the request
+        $request->validate([
+            'name' => 'required|string|max:255',
+            'description' => 'nullable|string|max:255',
             'price' => 'required|numeric',
-            'rating' => 'required|numeric',
-            'prep_time' => 'required',
-            'photo' => 'required',
-            'type_id' => 'required',
+            'rating' => 'nullable|numeric|min:0|max:5',
+            'prep_time' => 'nullable|string|max:255',
+            'photo' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
+            'type_id' => 'nullable|integer',
         ]);
-
-        $dish->update($validatedData);
-
+    
+        // Check if a new photo has been uploaded
+        if ($request->hasFile('photo')) {
+            // Delete the old photo if it exists
+            if ($dish->photo && Storage::disk('public')->exists($dish->photo)) {
+                Storage::disk('public')->delete($dish->photo);
+            }
+    
+            // Store the new photo
+            $image = $request->file('photo');
+            $imageName = time().'.'.$image->extension();
+            $image->move(public_path('images'), $imageName);
+    
+            // Update the photo path in the dish
+            $dish->photo = 'images/'.$imageName;
+        }
+    
+        // Update the rest of the dish details
+        $dish->update($request->except('photo'));
+    
+        // Save the updated dish
+        $dish->save();
+    
         return redirect()->route('dishes.index')
             ->with('success', 'Dish updated successfully');
     }
+    
 
     /**
      * Remove the specified resource from storage.
@@ -122,24 +144,25 @@ class DishController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
-    {
-        $dish = Dish::find($id);
-    
-        // Verificar si el plato existe
-        if ($dish) {
-            // Eliminar la imagen si existe
-            if ($dish->photo && Storage::disk('public')->exists($dish->photo)) {
-                Storage::disk('public')->delete($dish->photo);
-            }
-    
-            // Eliminar el plato de la base de datos
-            $dish->delete();
-    
-            return redirect()->route('dishes.index')
-                ->with('success_del', 'Dish deleted successfully');
-        } else {
-            return redirect()->route('dishes.index')
-                ->with('error', 'Dish not found');
+{
+    $dish = Dish::find($id);
+
+    // Verify if the dish exists
+    if ($dish) {
+        // Delete the image if it exists
+        if ($dish->photo && file_exists(public_path($dish->photo))) {
+            unlink(public_path($dish->photo));
         }
+
+        // Delete the dish from the database
+        $dish->delete();
+
+        return redirect()->route('dishes.index')
+            ->with('success_del', 'Dish deleted successfully');
+    } else {
+        return redirect()->route('dishes.index')
+            ->with('error', 'Dish not found');
     }
+}
+
 }

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Branch;
 use App\Models\Menu;
 use Illuminate\Http\Request;
 use App\Models\Dish;
@@ -98,7 +99,14 @@ class MenuController extends Controller
     public function shop($id)
     {
         $menu = Menu::with('dishes', 'beverages')->findOrFail($id);
-
         return view('shop', compact('menu'));
+    }
+    
+   
+
+    public function showMenusByBranch(Branch $branch)
+    {
+        $menus = $branch->menus;
+        return view('branch.menus', compact('menus', 'branch'));
     }
 }
