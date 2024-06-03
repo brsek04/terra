@@ -36,34 +36,6 @@ Route::get('/home', [HomeController::class, 'index'])->name('home');
 
 
 
-
-
-// Static Pages Routes
-Route::get('/cervezas', function () {
-    return view('cervezas');
-});
-Route::get('/armatupack', function () {
-    return view('armatupack');
-});
-Route::get('/product-pack6', function () {
-    return view('product-pack6');
-});
-Route::get('/product-pack12', function () {
-    return view('product-pack12');
-});
-Route::get('/contacto', function () {
-    return view('contacto');
-});
-Route::get('/nosotros', function () {
-    return view('nosotros');
-});
-Route::get('/packs', function () {
-    return view('packs');
-});
-Route::get('/dondeestamos', function () {
-    return view('dondeestamos');
-});
-
 // Post Routes
 Route::get('/posts/create', [PostController::class, 'create'])->name('posts.create');
 Route::post('/posts', [PostController::class, 'store'])->name('posts.store');

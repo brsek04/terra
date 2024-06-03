@@ -1,8 +1,14 @@
-@extends('layouts.auth_app')
+@extends('layouts.app-user')
 @section('title')
     Forgot Password
 @endsection
-@section('content')
+@section('contenido')
+
+
+
+
+
+
     <div class="card card-primary">
         <div class="card-header"><h4>Reset Password</h4></div>
 
@@ -31,6 +37,6 @@
         </div>
     </div>
     <div class="mt-5 text-muted text-center">
-        Recalled your login info? <a href="{{ route('login') }}">Sign In</a>
+        Recalled your logidasfgassadn info? <a href="{{ route('login') }}">Sign In</a>
     </div>
 @endsection

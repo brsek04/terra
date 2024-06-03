@@ -1,10 +1,10 @@
-@extends('layouts.auth_app')
+@extends('layouts.app-user')
 @section('title')
     Reset Password
 @endsection
-@section('content')
+@section('contenido')
     <div class="card card-primary">
-        <div class="card-header"><h4>Set a New Password</h4></div>
+        <div class="card-header"><h4>Set a New Pasword</h4></div>
 
         <div class="card-body">
             <form method="POST" action="{{ url('/password/reset') }}">

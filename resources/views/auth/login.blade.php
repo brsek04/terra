@@ -3,6 +3,7 @@
     Admin Login
 @endsection
 @section('contenido')
+<section class=" min-h-screen flex items-center justify-center">
         <div class="bg-gray-100 flex rounded-2xl shadow-lg max-w-3xl p-5 items-center">
             <div class="md:w-1/2 px-5 md:px-16">
                 <h2 class="font-bold text-2xl text-[#002D74]">Iniciar Sesión</h2>
@@ -47,7 +48,7 @@
                     
                     <div class="mt-5">
                         <a class="underline text-sm  text-gray-600 hover:text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" href="{{ route('password.request') }}">
-                            {{ __('Forgot your password?') }}
+                            {{ __('¿Olvidaste tu contraseña?') }}
                         </a>
                     </div>
                 </div>
@@ -55,7 +56,7 @@
                     <p class="mr-3">¿No tienes cuenta?</p>
                     <button class="py-2 px-5 bg-orange-400 border rounded-xl hover:scale-105 duration-300">
                       @if (Route::has('register'))
-                      <a href="{{ route('register') }}" class="text-sm  text-white dark:text-gray-500 underline">Register</a>
+                      <a href="{{ route('register') }}" class="text-sm  text-white dark:text-gray-500 underline">Registrate</a>
                       @endif
                     </button>
                 </div>
@@ -64,7 +65,7 @@
                 <img class="rounded-2xl" src="https://i.pinimg.com/564x/a5/12/d1/a512d1f51eccf437d733ea952beb88b9.jpg">
             </div>
         </div>
-
+</section>
 <!---
     <div class="card card-primary">
         <div class="card-header"><h4>Admin Login</h4></div>

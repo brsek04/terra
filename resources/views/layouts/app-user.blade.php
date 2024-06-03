@@ -22,9 +22,8 @@
         <nav class="bg-gray-900 dark:bg-gray-900 fixed w-full z-20 top-0 start-0 border-b border-orange-700 dark:border-gray-600 shadow-xl">
             @include('elements.header')
         </nav>
-        <section class=" min-h-screen flex items-center justify-center">
+        
             @yield('contenido')
-        </section>
      
     </div>
 

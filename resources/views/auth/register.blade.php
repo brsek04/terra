@@ -3,147 +3,118 @@
     Register
 @endsection
 @section('contenido')
-<!--
-<div class="bg-gray-100 flex rounded-2xl shadow-xl max-w-3xl p-5 items-center">
 
-    <div class="md:w-1/2 px-8 md:px-4">
-      <h2 class="font-bold text-2xl text-[#002D74]">Formulario de Registro</h2>
-      <p lass="text-xs mt-4 text-[#002D74]">Registrate rellenando el formulario</p>
-          <form method="POST" action="{{ route('register') }}" class="flex flex-col gap-4">
-                  @csrf
-                  <div class="mt-4">
-                      <div>
-                          <label for="name" class="mb-2 block  text-gray-700 font-bold">
-                              Nombre
-                          </label>
-                          <input id="name"
-                                 name="name"
-                                 type="text"
-                                 placeholder="Escribir Nombre"
-                                 class="border  p-2 w-full rounded-xl
-                                 @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}"
-                                 required autocomplete="name" 
-                                 autofocus
-                          >
-                          @error('name')
-                          <span class="invalid-feedback" role="alert">
-                              <strong>{{ $message }}</strong>
-                          </span>
-                          @enderror   
-                      </div>
-                      <div class="mb-2 mt-2">
-                          <label for="email" class="mb-2 block text-gray-700 font-bold">
-                              Correo
-                          </label>
-                          <input id="email"
-                                 name="email"
-                                 type="email"
-                                 placeholder="correo@gmail.com"
-                                 class="border p-2 w-full rounded-xl
-                                 @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}"
-                                 required autocomplete="email" 
-                          >
-                          @error('email')
-                              <span class="invalid-feedback" role="alert">
-                                  <strong>{{ $message }}</strong>
-                              </span>
-                          @enderror  
-                      </div>
-  
-                      <div class="mb-2">
-                          <label for="password" class="mb-2 block text-gray-700 font-bold">
-                              Contraseña
-                          </label>
-                          <input id="password"
-                                 name="password"
-                                 type="password"
-                                 placeholder="Escribe tu contraseña"
-                                 class="border  p-2 w-full rounded-xl
-                                 @error('password') is-invalid @enderror" name="password" 
-                                 required autocomplete="new-password" 
-                          >
-                          @error('password')
-                              <span class="invalid-feedback" role="alert">
-                                  <strong>{{ $message }}</strong>
-                              </span>
-                          @enderror
-                      </div>
-                      <div class="mb-2">
-                          <label for="password_confirmation" class="mb-2 block  text-gray-700 font-bold">
-                              Confirmar contraseña
-                          </label>
-                          <input id="password_confirmation"
-                                 name="password_confirmation"
-                                 type="password"
-                                 placeholder="Repite tu contraseña"
-                                 class="border p-2 w-full rounded-xl
-                                 @error('password_confirmation') is-invalid @enderror" name="password_confirmation" 
-                                 required autocomplete="new-password" 
-                          >
-                          @error('password_confirmation')
-                              <span class="invalid-feedback" role="alert">
-                                  <strong>{{ $message }}</strong>
-                              </span>
-                          @enderror
-                      </div>
-                  </div>
 
-              <button class="bg-orange-400 rounded-xl text-white py-2 mx-2 hover:scale-105 duration-300">
-                  {{ __('Register') }}
+<section class="flex min-h-screen justify-center items-center">
+    <div class="bg-gray-100 flex rounded-2xl shadow-xl max-w-3xl p-5 items-center">
+        <div class="md:w-1/2 px-8 md:px-4">
+          <h2 class="font-bold text-2xl text-[#002D74]">Formulario de Registro</h2>
+          <p class="text-xs mt-4 text-[#002D74]">Registrate rellenando el formulario</p>
+              <form method="POST" action="{{ route('register') }}" class="flex flex-col gap-4">
+                      @csrf
+                      <div class="mt-4">
+                          <div>
+                              <label for="name" class="mb-2 block  text-gray-700 font-bold">
+                                  Nombre
+                              </label>
+                              <input id="name"
+                                     name="name"
+                                     type="text"
+                                     placeholder="Escribir Nombre"
+                                     class="border  p-2 w-full rounded-xl
+                                     @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}"
+                                     required autocomplete="name" 
+                                     autofocus
+                              >
+                              @error('name')
+                              <span class="invalid-feedback" role="alert">
+                                  <strong>{{ $message }}</strong>
+                              </span>
+                              @enderror   
+                          </div>
+                          <div class="mb-2 mt-2">
+                              <label for="email" class="mb-2 block text-gray-700 font-bold">
+                                  Correo
+                              </label>
+                              <input id="email"
+                                     name="email"
+                                     type="email"
+                                     placeholder="correo@gmail.com"
+                                     class="border p-2 w-full rounded-xl
+                                     @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}"
+                                     required autocomplete="email" 
+                              >
+                              @error('email')
+                                  <span class="invalid-feedback" role="alert">
+                                      <strong>{{ $message }}</strong>
+                                  </span>
+                              @enderror  
+                          </div>
+      
+                          <div class="mb-2">
+                              <label for="password" class="mb-2 block text-gray-700 font-bold">
+                                  Contraseña
+                              </label>
+                              <input id="password"
+                                     name="password"
+                                     type="password"
+                                     placeholder="Escribe tu contraseña"
+                                     class="border  p-2 w-full rounded-xl
+                                     @error('password') is-invalid @enderror" name="password" 
+                                     required autocomplete="new-password" 
+                              >
+                              @error('password')
+                                  <span class="invalid-feedback" role="alert">
+                                      <strong>{{ $message }}</strong>
+                                  </span>
+                              @enderror
+                          </div>
+                          <div class="mb-2">
+                              <label for="password_confirmation" class="mb-2 block  text-gray-700 font-bold">
+                                  Confirmar contraseña
+                              </label>
+                              <input id="password_confirmation"
+                                     name="password_confirmation"
+                                     type="password"
+                                     placeholder="Repite tu contraseña"
+                                     class="border p-2 w-full rounded-xl
+                                     @error('password_confirmation') is-invalid @enderror" name="password_confirmation" 
+                                     required autocomplete="new-password" 
+                              >
+                              @error('password_confirmation')
+                                  <span class="invalid-feedback" role="alert">
+                                      <strong>{{ $message }}</strong>
+                                  </span>
+                              @enderror
+                          </div>
+                      </div>
+    
+                  <button class="bg-orange-400 rounded-xl text-white py-2 mx-2 hover:scale-105 duration-300">
+                      {{ __('Register') }}
+                  </button>
+              </form>
+    
+              <div class="m-3 text-xs border-b border-[#002D74]  text-[#002D74]">
+              </div>
+    
+            <div class="mt-3 text-xs flex justify-between aling-items-center items-center text-[#002D74]">
+              <p >¿Ya tienes cuenta?</p>
+              <button class="py-2 px-5 bg-orange-400 border rounded-xl hover:scale-105 duration-300">
+                @if (Route::has('login'))
+                <a href="{{ route('login') }}" class="text-sm text-white dark:text-gray-500 underline">Inicia Sesión</a>
+                @endif
               </button>
-          </form>
-
-          <div class="m-3 text-xs border-b border-[#002D74]  text-[#002D74]">
+            </div>
           </div>
-
-        <div class="mt-3 text-xs flex justify-between aling-items-center items-center text-[#002D74]">
-          <p class=>¿Ya tienes cuenta?</p>
-          <button class="py-2 px-5 bg-orange-400 border rounded-xl hover:scale-105 duration-300">
-            @if (Route::has('login'))
-            <a href="{{ route('login') }}" class="text-sm text-white dark:text-gray-500 underline">Login</a>
-            @endif
-          </button>
+    
+        <div class="md:block hidden w-1/2">
+          <img class="rounded-2xl" src="https://i.pinimg.com/564x/a5/12/d1/a512d1f51eccf437d733ea952beb88b9.jpg">
         </div>
-      </div>
+      </div>   
 
-    <div class="md:block hidden w-1/2">
-      <img class="rounded-2xl" src="https://i.pinimg.com/564x/a5/12/d1/a512d1f51eccf437d733ea952beb88b9.jpg">
-    </div>
-  </div>
----->
+</section>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+<!---
     <div class="card card-primary">
         <div class="card-header"><h4>Register</h4></div>
 
@@ -220,6 +191,6 @@
         Already have an account ? <a
                 href="{{ route('login') }}">SignIn</a>
     </div>
-
+-->
 
 @endsection
