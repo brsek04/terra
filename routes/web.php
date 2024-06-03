@@ -29,10 +29,9 @@ use App\Http\Controllers\VisitanteController;
 
 // Welcome Routes
 Route::redirect('/', '/visitante');
-Route::get('/visitante', [VisitanteController::class, 'index']);
+Route::get('/visitante', [VisitanteController::class, 'index'])->name('visitante.index');
 Route::get('/menus/{menu}/public', [MenuController::class, 'showPublic'])->name('menus.showPublic');
-
-
+Route::get('/branch/{branch}/menus', [VisitanteController::class, 'showBranchMenus'])->name('branch.menus');
 
 
 // Static Pages Routes

@@ -5,13 +5,13 @@
         <div class="row justify-content-center">
             <div class="col-md-8">
                 <div class="card">
-                    <div class="card-header">{{ __('Menus') }}</div>
+                    <div class="card-header">{{ __('Branches') }}</div>
 
                     <div class="card-body">
-                        @foreach ($menus as $menu)
+                        @foreach ($branches as $branch)
                             <div>
-                                <!-- Enlace al detalle del menú que pasa el ID del menú como parámetro -->
-                                <a href="{{ route('menus.showPublic', $menu->id) }}">{{ $menu->name }}</a>
+                                <!-- Enlace a la página de menús de la sucursal -->
+                                <a href="{{ route('branch.menus', $branch->id) }}">{{ $branch->name }}</a>
                             </div>
                         @endforeach
                     </div>

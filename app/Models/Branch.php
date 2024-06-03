@@ -67,5 +67,9 @@ class Branch extends Model
         return $this->hasMany('App\Models\Menu', 'branch_id', 'id');
     }
     
+    public function menus()
+    {
+        return $this->hasMany(Menu::class);
+    }
 
 }
