@@ -1,5 +1,3 @@
-<!-- resources/views/menu/form.blade.php -->
-
 <div class="box box-info padding-1">
     <div class="box-body">
         <div class="form-group">
@@ -13,7 +11,7 @@
             {!! $errors->first('branch_id', '<div class="invalid-feedback">:message</div>') !!}
         </div>
         <div class="form-group">
-            <label for="dishes">{{ ('Select Dishes') }}</label>
+            <label for="dishes">{{ __('Select Dishes') }}</label>
             <div class="checkbox-group">
                 @foreach($dishes as $dish)
                     <div class="form-check">
@@ -25,8 +23,21 @@
                 @endforeach
             </div>
         </div>
+        <div class="form-group">
+            <label for="beverages">{{ __('Select Beverages') }}</label>
+            <div class="checkbox-group">
+                @foreach($beverages as $beverage)
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" name="beverages[]" value="{{ $beverage->id }}" {{ in_array($beverage->id, $selectedBeverages) ? 'checked' : '' }}>
+                        <label class="form-check-label" for="beverage{{ $beverage->id }}">
+                            {{ $beverage->name }}
+                        </label>
+                    </div>
+                @endforeach
+            </div>
+        </div>
     </div>
     <div class="box-footer mt20">
-        <button type="submit" class="btn btn-primary">{{ ('Submit') }}</button>
+        <button type="submit" class="btn btn-primary">{{ __('Submit') }}</button>
     </div>
 </div>

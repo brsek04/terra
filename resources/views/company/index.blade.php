@@ -23,11 +23,45 @@
                               </div>
                         </div>
                     </div>
-                    @if ($message = Session::get('success'))
-                        <div class="alert alert-success">
-                            <p>{{ $message }}</p>
-                        </div>
-                    @endif
+                    @if ($message = Session::get('success_add'))
+                                                
+                                                <script>
+                                                    Swal.fire({
+                                                    
+                                                    icon: "success",
+                                                    title: "Agregado exitosamente",
+                                                    showConfirmButton: false,
+                                                    timer: 1500
+                                                    });
+                                                        </script>
+                                                @endif
+    
+                                                @if ($message = Session::get('success_del'))
+                                                    
+                                                <script>
+                                                    Swal.fire({
+                                                    
+                                                    icon: "success",
+                                                    title: "Eliminado exitosamente",
+                                                    showConfirmButton: false,
+                                                    timer: 1500
+                                                    });
+                                                        </script>
+                                                @endif
+    
+                                                @if ($message = Session::get('success_edit'))
+                                                    
+                                                <script>
+                                                    Swal.fire({
+                                                    
+                                                    icon: "success",
+                                                    title: "Editado exitosamente",
+                                                    showConfirmButton: false,
+                                                    timer: 1500
+                                                    });
+                                                        </script>
+                                                @endif
+
 
                     <div class="card-body">
                         <div class="table-responsive">

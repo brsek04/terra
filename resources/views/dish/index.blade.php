@@ -1,3 +1,4 @@
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 @extends('layouts.app')
 
 @section('template_title')
@@ -22,11 +23,44 @@
                             </div>
                         </div>
                     </div>
-                    @if ($message = Session::get('success'))
-                        <div class="alert alert-success">
-                            <p>{{ $message }}</p>
-                        </div>
-                    @endif
+                    @if ($message = Session::get('success_add'))
+                                                
+                                                <script>
+                                                    Swal.fire({
+                                                    
+                                                    icon: "success",
+                                                    title: "Agregado exitosamente",
+                                                    showConfirmButton: false,
+                                                    timer: 1500
+                                                    });
+                                                        </script>
+                                                @endif
+    
+                                                @if ($message = Session::get('success_del'))
+                                                    
+                                                <script>
+                                                    Swal.fire({
+                                                    
+                                                    icon: "success",
+                                                    title: "Eliminado exitosamente",
+                                                    showConfirmButton: false,
+                                                    timer: 1500
+                                                    });
+                                                        </script>
+                                                @endif
+    
+                                                @if ($message = Session::get('success_edit'))
+                                                    
+                                                <script>
+                                                    Swal.fire({
+                                                    
+                                                    icon: "success",
+                                                    title: "Editado exitosamente",
+                                                    showConfirmButton: false,
+                                                    timer: 1500
+                                                    });
+                                                        </script>
+                                                @endif
 
                     <div class="card-body">
                         <div class="table-responsive">
@@ -48,21 +82,31 @@
                                     @foreach ($dishes as $dish)
                                         <tr>
                                             <td>{{ ++$i }}</td>
-                                            <td>{{ $dish->name }}</td>
-                                            <td>{{ $dish->description }}</td>
-                                            <td>{{ $dish->price }}</td>
-                                            <td>{{ $dish->rating }}</td>
-                                            <td>{{ $dish->prep_time }}</td>
-                                            <td>{{ $dish->photo }}</td>
-                                            <td>{{ $dish->dishType->name }}</td>
+                                            
+											<td>{{ $dish->name }}</td>
+											<td>{{ $dish->description }}</td>
+											<td>{{ $dish->price }}</td>
+											<td>{{ $dish->rating }}</td>
+											<td>{{ $dish->prep_time }}</td>
+											<td>@if($dish->photo)
+                                                <img src="{{ asset($dish->photo) }}" alt="Foto del plato" style="max-width: 100px; max-height: 100px;">
+
+                                                @else
+                                                    Sin imagen
+                                                @endif </td>
+                                            
+											<td>{{ $dish->type_id }}</td>
+
                                             <td>
                                                 <form action="{{ route('dishes.destroy',$dish->id) }}" method="POST">
                                                     <a class="btn btn-sm btn-primary " href="{{ route('dishes.show',$dish->id) }}"><i class="fa fa-fw fa-eye"></i> {{ __('Show') }}</a>
                                                     <a class="btn btn-sm btn-success" href="{{ route('dishes.edit',$dish->id) }}"><i class="fa fa-fw fa-edit"></i> {{ __('Edit') }}</a>
                                                     @csrf
                                                     @method('DELETE')
-                                                    <button type="submit" class="btn btn-danger btn-sm"><i class="fa fa-fw fa-trash"></i> {{ __('Delete') }}</button>
-                                                </form>
+                                                    <button type="button" class="btn btn-danger btn-sm" onclick="confirmDelete('deleteForm_{{ $dish->id }}')">
+                                                    <i class="fa fa-fw fa-trash"></i> {{ __('Delete') }}
+                                                </button>
+                                            </form>
                                             </td>
                                         </tr>
                                     @endforeach
@@ -75,5 +119,26 @@
             </div>
         </div>
     </div>
+
+    <script>
+        // Función para mostrar una alerta de confirmación antes de eliminar un elemento
+        function confirmDelete(formId) {
+            Swal.fire({
+                title: '¿Estás seguro?',
+                text: "Esta acción no se puede revertir. ¿Quieres continuar?",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Sí, eliminar',
+                cancelButtonText: 'Cancelar'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    // Si el usuario confirma la eliminación, enviar el formulario
+                    document.getElementById(formId).submit();
+                }
+            });
+        }
+    </script>
 @endsection
 

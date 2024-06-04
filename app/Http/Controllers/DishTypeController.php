@@ -11,6 +11,11 @@ use Illuminate\Http\Request;
  */
 class DishTypeController extends Controller
 {
+
+    function __construct(){
+        $this->middleware('permission:ver-plato',['only'=>['index']]);
+
+    }
     /**
      * Display a listing of the resource.
      *
@@ -48,7 +53,7 @@ class DishTypeController extends Controller
         $dishType = DishType::create($request->all());
 
         return redirect()->route('dish-types.index')
-            ->with('success', 'DishType created successfully.');
+            ->with('success_add', 'DishType created successfully.');
     }
 
     /**
@@ -91,7 +96,7 @@ class DishTypeController extends Controller
         $dishType->update($request->all());
 
         return redirect()->route('dish-types.index')
-            ->with('success', 'DishType updated successfully');
+            ->with('success_edit', 'DishType updated successfully');
     }
 
     /**
@@ -104,6 +109,6 @@ class DishTypeController extends Controller
         $dishType = DishType::find($id)->delete();
 
         return redirect()->route('dish-types.index')
-            ->with('success', 'DishType deleted successfully');
+            ->with('success_del', 'DishType deleted successfully');
     }
 }

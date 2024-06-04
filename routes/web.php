@@ -30,7 +30,7 @@ use App\Http\Controllers\HomeController;
 
 // Welcome Routes
 Route::redirect('/', '/visitante');
-Route::get('/visitante', [VisitanteController::class, 'index']);
+Route::get('/visitante', [VisitanteController::class, 'index'])->name('visitante.index');
 Route::get('/menus/{menu}/public', [MenuController::class, 'showPublic'])->name('menus.showPublic');
 Route::get('/home', [HomeController::class, 'index'])->name('home');
 
@@ -62,11 +62,13 @@ Route::group(['middleware' =>['auth']], function(){
 });
 
 // Cart Routes
-Route::get('/shop', [CartController::class, 'shop'])->name('shop.index');
+Route::get('/menus/{id}/shop', [MenuController::class, 'shop'])->name('menus.shop');
 Route::get('/cart', [CartController::class, 'cart'])->name('cart.index');
-Route::post('/cart', [CartController::class, 'add'])->name('cart.store');
-Route::delete('/cart/{id}', [CartController::class, 'remove'])->name('cart.remove');
-Route::patch('/cart/{id}', [CartController::class, 'update'])->name('cart.update');
-Route::get('/cart/clear', [CartController::class, 'clear'])->name('cart.clear');
 Route::post('/cart/add', [CartController::class, 'add'])->name('cart.add');
+Route::post('/cart/update', [CartController::class, 'update'])->name('cart.update');
+Route::post('/cart/remove', [CartController::class, 'remove'])->name('cart.remove');
+Route::get('/cart/clear', [CartController::class, 'clear'])->name('cart.clear');
+Route::get('/menus/{menu}/shop', 'MenuController@showShop')->name('menus.shop');
+
+
 

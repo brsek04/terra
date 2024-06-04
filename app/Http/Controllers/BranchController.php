@@ -3,8 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Branch;
-use App\Models\Company; // Asegúrate de importar los modelos correctos
-use App\Models\Commune; // Asegúrate de importar los modelos correctos
+use App\Models\Company; 
+use App\Models\Commune; 
 use Illuminate\Http\Request;
 
 /**
@@ -13,6 +13,11 @@ use Illuminate\Http\Request;
  */
 class BranchController extends Controller
 {
+
+    function __construct(){
+        $this->middleware('permission:ver-ramas',['only'=>['index']]);
+
+    }
     /**
      * Display a listing of the resource.
      *
@@ -52,7 +57,7 @@ class BranchController extends Controller
         $branch = Branch::create($request->all());
 
         return redirect()->route('branches.index')
-            ->with('success', 'Branch created successfully.');
+            ->with('success_add', 'Branch created successfully.');
     }
 
     /**
@@ -96,7 +101,7 @@ class BranchController extends Controller
         $branch->update($request->all());
 
         return redirect()->route('branches.index')
-            ->with('success', 'Branch updated successfully');
+            ->with('success_edit', 'Branch updated successfully');
     }
 
     /**
@@ -109,6 +114,6 @@ class BranchController extends Controller
         $branch = Branch::find($id)->delete();
 
         return redirect()->route('branches.index')
-            ->with('success', 'Branch deleted successfully');
+            ->with('success_del', 'Branch deleted successfully');
     }
 }

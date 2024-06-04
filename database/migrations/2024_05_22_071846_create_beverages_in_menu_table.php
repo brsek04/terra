@@ -12,8 +12,8 @@ class CreateBeveragesInMenuTable extends Migration
             $table->id();
             $table->unsignedBigInteger('menu_id');
             $table->unsignedBigInteger('beverage_id');
-            $table->foreign('menu_id')->references('id')->on('menus');
-            $table->foreign('beverage_id')->references('id')->on('beverages');
+            $table->foreign('menu_id')->references('id')->on('menus')->onDelete('cascade');
+            $table->foreign('beverage_id')->references('id')->on('beverages')->onDelete('cascade');
             $table->timestamps();
         });
     }

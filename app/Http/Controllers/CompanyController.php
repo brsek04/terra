@@ -11,7 +11,13 @@ use Illuminate\Http\Request;
  */
 class CompanyController extends Controller
 {
+
+    function __construct(){
+        $this->middleware('permission:ver-compañias',['only'=>['index']]);
+
+    }
     /**
+     * 
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
@@ -48,7 +54,7 @@ class CompanyController extends Controller
         $company = Company::create($request->all());
 
         return redirect()->route('companies.index')
-            ->with('success', 'Company created successfully.');
+            ->with('success_add', 'Company created successfully.');
     }
 
     /**
@@ -91,7 +97,7 @@ class CompanyController extends Controller
         $company->update($request->all());
 
         return redirect()->route('companies.index')
-            ->with('success', 'Company updated successfully');
+            ->with('success_edit', 'Company updated successfully');
     }
 
     /**
@@ -104,6 +110,6 @@ class CompanyController extends Controller
         $company = Company::find($id)->delete();
 
         return redirect()->route('companies.index')
-            ->with('success', 'Company deleted successfully');
+            ->with('success_del', 'Company deleted successfully');
     }
 }
