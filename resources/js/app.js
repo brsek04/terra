@@ -1,4 +1,7 @@
 import 'flowbite';
+import  './funciones';
+
+
 
 import Alpine from "alpinejs";
 

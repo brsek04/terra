@@ -15,6 +15,7 @@ use App\Http\Controllers\BeverageController;
 use App\Http\Controllers\MenuController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\VisitanteController;
+use App\Http\Controllers\HomeController;
 
 /*
 |--------------------------------------------------------------------------
@@ -30,37 +31,17 @@ use App\Http\Controllers\VisitanteController;
 // Welcome Routes
 Route::redirect('/', '/visitante');
 Route::get('/visitante', [VisitanteController::class, 'index'])->name('visitante.index');
-Route::get('/menus/{menu}/public', [MenuController::class, 'showPublic'])->name('menus.showPublic');
 Route::get('/branch/{branch}/menus', [VisitanteController::class, 'showBranchMenus'])->name('branch.menus');
 
+// Home Route
+Route::get('/home', [HomeController::class, 'index'])->name('home');
 
-// Static Pages Routes
-Route::get('/cervezas', function () {
-    return view('cervezas');
-});
-Route::get('/armatupack', function () {
-    return view('armatupack');
-});
-Route::get('/product-pack6', function () {
-    return view('product-pack6');
-});
-Route::get('/product-pack12', function () {
-    return view('product-pack12');
-});
-Route::get('/contacto', function () {
-    return view('contacto');
-});
-Route::get('/nosotros', function () {
-    return view('nosotros');
-});
-Route::get('/packs', function () {
-    return view('packs');
-});
-Route::get('/dondeestamos', function () {
-    return view('dondeestamos');
-});
+// Menu Routes
 Route::get('/menus', [MenuController::class, 'index'])->name('menus.index');
 Route::get('/menus/{menu}', [MenuController::class, 'show'])->name('menus.show');
+Route::get('/menus/{menu}/public', [MenuController::class, 'showPublic'])->name('menus.showPublic');
+Route::get('/menus/{id}/shop', [MenuController::class, 'shop'])->name('menus.shop');
+
 // Post Routes
 Route::get('/posts/create', [PostController::class, 'create'])->name('posts.create');
 Route::post('/posts', [PostController::class, 'store'])->name('posts.store');
@@ -73,7 +54,7 @@ Route::delete('/posts/{post}', [PostController::class, 'destroy'])->name('posts.
 Auth::routes();
 
 // Protected Routes
-Route::group(['middleware' =>['auth']], function(){
+Route::group(['middleware' => ['auth']], function () {
     Route::resource('roles', RolController::class);
     Route::resource('usuarios', UsuarioController::class);
     Route::resource('suppliers', SupplierController::class);
@@ -87,10 +68,8 @@ Route::group(['middleware' =>['auth']], function(){
 });
 
 // Cart Routes
-Route::get('/menus/{id}/shop', [MenuController::class, 'shop'])->name('menus.shop');
 Route::get('/cart', [CartController::class, 'cart'])->name('cart.index');
 Route::post('/cart/add', [CartController::class, 'add'])->name('cart.add');
 Route::post('/cart/update', [CartController::class, 'update'])->name('cart.update');
 Route::post('/cart/remove', [CartController::class, 'remove'])->name('cart.remove');
 Route::get('/cart/clear', [CartController::class, 'clear'])->name('cart.clear');
-Route::get('/menus/{menu}/shop', 'MenuController@showShop')->name('menus.shop');
