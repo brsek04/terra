@@ -6,6 +6,7 @@
 
 @section('content')
     <div class="container-fluid">
+        uwu
         <div class="row">
             <div class="col-sm-12">
                 <div class="card">

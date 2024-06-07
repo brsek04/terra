@@ -30,7 +30,7 @@
     <title>@yield('title') | {{ config('app.name') }}</title>
 </head>
 <body class="font-sans antialiased w-full dark:bg-[#0F172A]">
-    <div class="min-h-screen bg-gray-100 flex flex-col">
+    <div class="min-h-screen bg-body-image w-full bg-cover dark:bg-[#0F172A]">
         <header class="max-w">
             @include('layouts.header')
         </header>
@@ -44,10 +44,7 @@
             </div>
          
         </main>
-        <footer>
-            ola
-        </footer>
-
+        
         <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.js"></script>
         <script src="{{mix('js/app.js')}}" ></script>
     </div>
