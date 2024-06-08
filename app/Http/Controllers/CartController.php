@@ -3,13 +3,13 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Dish;
+use App\Models\Menu;
 
 class CartController extends Controller
 {
     public function shop($menuId)
     {
-        $menu = Menu::with('dishes')->findOrFail($menuId);
+        $menu = Menu::with(['dishes', 'beverages'])->findOrFail($menuId);
         return view('shop', compact('menu'));
     }
 
@@ -27,14 +27,16 @@ class CartController extends Controller
 
     public function add(Request $request)
     {
+        $prefix = $request->type == 'dish' ? 'dish_' : 'beverage_';
+        
         \Cart::add([
-            'id' => $request->id,
+            'id' => $prefix . $request->id,
             'name' => $request->name,
             'price' => $request->price,
             'quantity' => $request->quantity,
             'attributes' => [
                 'photo' => $request->photo,
-                'type_id' => $request->type_id
+                'type' => $request->type
             ]
         ]);
         return redirect()->route('cart.index')->with('success_msg', 'Item added to your cart!');
@@ -57,3 +59,4 @@ class CartController extends Controller
         return redirect()->route('cart.index')->with('success_msg', 'Cart is cleared!');
     }
 }
+
