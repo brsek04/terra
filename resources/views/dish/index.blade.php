@@ -98,7 +98,7 @@
 											<td>{{ $dish->type_id }}</td>
 
                                             <td>
-                                                <form action="{{ route('dishes.destroy',$dish->id) }}" method="POST">
+                                            <form id="deleteForm_{{ $dish->id }}" action="{{ route('dishes.destroy',$dish->id) }}" method="POST">
                                                     <a class="btn btn-sm btn-primary " href="{{ route('dishes.show',$dish->id) }}"><i class="fa fa-fw fa-eye"></i> {{ __('Show') }}</a>
                                                     <a class="btn btn-sm btn-success" href="{{ route('dishes.edit',$dish->id) }}"><i class="fa fa-fw fa-edit"></i> {{ __('Edit') }}</a>
                                                     @csrf
