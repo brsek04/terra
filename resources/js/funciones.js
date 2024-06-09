@@ -95,3 +95,5 @@ window.resizeSidebar =function resizeSidebar() {
 }
 resizeSidebar();
 window.addEventListener('resize', resizeSidebar);
+
+//funcion modal

@@ -65,6 +65,7 @@ Route::group(['middleware' => ['auth']], function () {
     Route::resource('beverage_types', BeverageTypeController::class);
     Route::resource('beverages', BeverageController::class);
     Route::resource('menus', MenuController::class);
+    Route::post('/roles', [RolController::class, 'store'])->name('roles.store');    
 });
 
 // Cart Routes
@@ -73,3 +74,5 @@ Route::post('/cart/add', [CartController::class, 'add'])->name('cart.add');
 Route::post('/cart/update', [CartController::class, 'update'])->name('cart.update');
 Route::post('/cart/remove', [CartController::class, 'remove'])->name('cart.remove');
 Route::get('/cart/clear', [CartController::class, 'clear'])->name('cart.clear');
+
+

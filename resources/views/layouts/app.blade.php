@@ -30,24 +30,24 @@
     <title>@yield('title') | {{ config('app.name') }}</title>
 </head>
 <body class="font-sans antialiased w-full dark:bg-[#0F172A]">
-    <div class="min-h-screen bg-body-image w-full bg-cover dark:bg-[#0F172A]">
+    <div class="min-h-screen  w-full bg-cover dark:bg-[#0F172A]">
         <header class="max-w">
-            @include('layouts.header')
+            @include('elements.header-admin')
         </header>
         <div>
-            @include('layouts.sidebar-admin')
+            @include('elements.sidebar-admin')
         </div>
-
         <main >
-            <div class="content ml-12 transform ease-in-out duration-500 pt-20 px-2 md:px-5 pb-4 ">
+            <div class="content ml-12 ease-in-out duration-500 pt-20 px-2 md:px-5 pb-4 ">
                 @yield('content')
             </div>
-         
         </main>
-        
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.js"></script>
-        <script src="{{mix('js/app.js')}}" ></script>
+
+       <footer class="bg-blue-700">
+       </footer>
+
     </div>
- 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.js"></script>
+    <script src="{{mix('js/app.js')}}" ></script>
 </body>
 </html>
