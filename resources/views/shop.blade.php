@@ -22,14 +22,15 @@
                     <div class="row">
                         @foreach($menu->dishes as $dish)
                             <div class="col-lg-3">
-                                <div class="card" style="margin-bottom: 20px; height: auto;">
-                                    <img src="/images/{{ $dish->photo }}"
-                                         class="card-img-top mx-auto"
-                                         style="height: 150px; width: 150px; display: block;"
+                                <div class="card" style="margin-bottom: 20px;">
+                                    <img src="{{ asset($dish->photo) }}"
+                                         class="card-img-top mx-auto img-thumbnail"
+                                         width="200" height="200"
                                          alt="{{ $dish->name }}"
                                     >
                                     <div class="card-body">
                                         <a href=""><h6 class="card-title">{{ $dish->name }}</h6></a>
+                                        <p>{{ $dish->description }}</p>
                                         <p>${{ $dish->price }}</p>
                                         <form action="{{ route('cart.add') }}" method="POST">
                                             @csrf
@@ -59,14 +60,15 @@
                     <div class="row">
                         @foreach($menu->beverages as $beverage)
                             <div class="col-lg-3">
-                                <div class="card" style="margin-bottom: 20px; height: auto;">
-                                    <img src="/images/{{ $beverage->photo }}"
-                                         class="card-img-top mx-auto"
-                                         style="height: 150px; width: 150px; display: block;"
+                                <div class="card" style="margin-bottom: 20px;">
+                                    <img src="{{ asset($beverage->photo) }}"
+                                         class="card-img-top mx-auto img-thumbnail"
+                                         width="200" height="200"
                                          alt="{{ $beverage->name }}"
                                     >
                                     <div class="card-body">
                                         <a href=""><h6 class="card-title">{{ $beverage->name }}</h6></a>
+                                        <p>{{ $beverage->description }}</p>
                                         <p>${{ $beverage->price }}</p>
                                         <form action="{{ route('cart.add') }}" method="POST">
                                             @csrf

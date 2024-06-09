@@ -26,7 +26,7 @@
         @endif
         @if(count($errors) > 0)
             @foreach($errors->all() as $error)
-                <div class="alert alert-success alert-dismissible fade show" role="alert">
+                <div class="alert alert-danger alert-dismissible fade show" role="alert">
                     {{ $error }}
                     <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                         <span aria-hidden="true">×</span>
@@ -49,7 +49,7 @@
                     @if($item->attributes->type == 'dish')
                         <div class="row">
                             <div class="col-lg-3">
-                                <img src="/images/{{ $item->attributes->photo }}" class="img-thumbnail" width="200" height="200">
+                                <img src="{{ asset($item->attributes->photo) }}" class="img-thumbnail" width="200" height="200">
                             </div>
                             <div class="col-lg-5">
                                 <p>
@@ -90,7 +90,7 @@
                     @if($item->attributes->type == 'beverage')
                         <div class="row">
                             <div class="col-lg-3">
-                                <img src="/images/{{ $item->attributes->photo }}" class="img-thumbnail" width="200" height="200">
+                                <img src="{{ asset($item->attributes->photo) }}" class="img-thumbnail" width="200" height="200">
                             </div>
                             <div class="col-lg-5">
                                 <p>
