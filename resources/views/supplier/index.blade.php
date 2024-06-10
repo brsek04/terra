@@ -2,7 +2,7 @@
 
 @section('content')
     <div class="bg-white dark:bg-gray-800 shadow-md sm:rounded-lg">
-        <h3 class="text-gray-700 font-bold p-3"> {{ __('Supplier') }}</h3>
+        <h3 class="text-gray-700 font-bold p-3"> {{ __('Proveedor') }}</h3>
     </div>
 
     <div class="shadow-md rounded-lg pt-4 min-h">
