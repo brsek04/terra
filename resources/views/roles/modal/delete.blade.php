@@ -1,5 +1,6 @@
-<div x-data="{ showModal: false }" id="popup-delete-{{ $role->id }}" tabindex="-1" class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full">
+<div x-data="{ showModal: false }" id="popup-delete-{{ $role->id }}" tabindex="-1" class=" hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full">
     <div class="relative p-4 w-full max-w-md max-h-full">
+        <div  class="fixed inset-0 bg-black bg-opacity-50"></div>
         <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
             <button type="button" @click="showModal = false" class="absolute top-3 end-2.5 text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white" data-modal-hide="popup-delete-{{ $role->id }}">
                 <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
@@ -28,25 +29,3 @@
         </div>
     </div>
 </div>
-
-<script>
-    document.querySelectorAll('[data-modal-toggle]').forEach(button => {
-        button.addEventListener('click', () => {
-            const modalId = button.getAttribute('data-modal-toggle');
-            const modal = document.getElementById(modalId);
-            modal.classList.remove('hidden');
-            modal.classList.add('flex');
-            modal.setAttribute('aria-hidden', 'false');
-        });
-    });
-
-    document.querySelectorAll('[data-modal-hide]').forEach(button => {
-        button.addEventListener('click', () => {
-            const modalId = button.getAttribute('data-modal-hide');
-            const modal = document.getElementById(modalId);
-            modal.classList.add('hidden');
-            modal.classList.remove('flex');
-            modal.setAttribute('aria-hidden', 'true');
-        });
-    });
-</script>
