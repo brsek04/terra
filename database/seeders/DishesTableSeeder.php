@@ -22,6 +22,7 @@ class DishesTableSeeder extends Seeder
             'photo' => 'photo 1',
             'rating' => 5,
             'type_id' => 1,
+            'category_id' => 1,
         ]);
 
         Dish::create([
@@ -31,6 +32,7 @@ class DishesTableSeeder extends Seeder
             'photo' => 'photo 2',
             'rating' => 4,
             'type_id' => 2,
+            'category_id' => 2,
         ]);
 
         Dish::create([
@@ -40,6 +42,7 @@ class DishesTableSeeder extends Seeder
             'photo' => 'photo 3',
             'rating' => 3,
             'type_id' => 3,
+            'category_id' => 1,
         ]);
     }
 }

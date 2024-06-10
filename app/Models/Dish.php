@@ -15,20 +15,22 @@ use Illuminate\Database\Eloquent\Model;
  * @property $prep_time
  * @property $photo
  * @property $type_id
+ * @property $category_id
  * @property $created_at
  * @property $updated_at
  *
  * @property DishType $dishType
+ * @property Category $category
  * @package App
  * @mixin \Illuminate\Database\Eloquent\Builder
  */
 class Dish extends Model
 {
-    
     static $rules = [
-		'name' => 'required',
-		'price' => 'required',
-		'type_id' => 'required',
+        'name' => 'required',
+        'price' => 'required',
+        'type_id' => 'required',
+        'category_id' => 'required',
     ];
 
     protected $perPage = 20;
@@ -38,8 +40,7 @@ class Dish extends Model
      *
      * @var array
      */
-    protected $fillable = ['name','description','price','rating','prep_time','photo','type_id'];
-
+    protected $fillable = ['name', 'description', 'price', 'rating', 'prep_time', 'photo', 'type_id', 'category_id'];
 
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasOne
@@ -48,6 +49,12 @@ class Dish extends Model
     {
         return $this->hasOne('App\Models\DishType', 'id', 'type_id');
     }
-    
 
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function category()
+    {
+        return $this->hasOne('App\Models\Category', 'id', 'category_id');
+    }
 }

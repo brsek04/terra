@@ -75,6 +75,7 @@
                                         <th>Prep Time</th>
                                         <th>Photo</th>
                                         <th>Type</th>
+                                        <th>Category</th>
                                         <th></th>
                                     </tr>
                                 </thead>
@@ -95,7 +96,8 @@
                                                     Sin imagen
                                                 @endif </td>
                                             
-											<td>{{ $dish->type_id }}</td>
+											<td>{{ $dish->DishType->name }}</td>
+                                            <td>{{ $dish->Category->name }}</td>
 
                                             <td>
                                                 <form action="{{ route('dishes.destroy',$dish->id) }}" method="POST">

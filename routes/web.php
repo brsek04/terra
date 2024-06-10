@@ -15,6 +15,7 @@ use App\Http\Controllers\BeverageController;
 use App\Http\Controllers\MenuController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\VisitanteController;
+use App\Http\Controllers\CategoryController;
 
 /*
 |--------------------------------------------------------------------------
@@ -84,6 +85,7 @@ Route::group(['middleware' =>['auth']], function(){
     Route::resource('beverage_types', BeverageTypeController::class);
     Route::resource('beverages', BeverageController::class);
     Route::resource('menus', MenuController::class);
+    Route::resource('categories', CategoryController::class);
 });
 
 // Cart Routes

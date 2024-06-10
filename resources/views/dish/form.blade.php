@@ -36,9 +36,14 @@
             </div>
         @endif
         <div class="form-group">
-            {{ Form::label('type_id') }}
-            {{ Form::text('type_id', $dish->type_id ?? '', ['class' => 'form-control' . ($errors->has('type_id') ? ' is-invalid' : ''), 'placeholder' => 'Type Id']) }}
+            {{ Form::label('type_id', 'Type') }}
+            {{ Form::select('type_id', $types, $dish->type_id ?? '', ['class' => 'form-control' . ($errors->has('type_id') ? ' is-invalid' : ''), 'placeholder' => 'Select Type']) }}
             {!! $errors->first('type_id', '<div class="invalid-feedback">:message</div>') !!}
+        </div>
+        <div class="form-group">
+            {{ Form::label('category_id', 'Category') }}
+            {{ Form::select('category_id', $categories, $dish->category_id ?? '', ['class' => 'form-control' . ($errors->has('category_id') ? ' is-invalid' : ''), 'placeholder' => 'Select Category']) }}
+            {!! $errors->first('category_id', '<div class="invalid-feedback">:message</div>') !!}
         </div>
     </div>
     <div class="box-footer mt20">
