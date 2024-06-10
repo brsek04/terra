@@ -48,6 +48,9 @@
                         <th scope="col" class="px-6 py-3 text-center">
                             {{__('Tipo')}}
                         </th>
+                        <th scope="col" class="px-6 py-3 text-center">
+                            {{__('Acciones')}}
+                        </th>
                     </tr>
                 </thead>
                 <tbody>
