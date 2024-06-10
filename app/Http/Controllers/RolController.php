@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
 use Spatie\Permission\Models\Role;
 use Spatie\Permission\Models\Permission;
 
@@ -18,10 +17,11 @@ class RolController extends Controller
         $this->middleware('permission:borrar-rol', ['only' => ['destroy']]);
     }
 
-    public function index()
+    public function index(Request $request)
     {
         $roles = Role::paginate(5);
         $permission = Permission::get();
+        
         return view('roles.index', compact('roles','permission'));
     }
 
@@ -35,7 +35,7 @@ class RolController extends Controller
     {
         $this->validate($request, ['name' => 'required', 'permission' => 'required']);
         $role = Role::create(['name' => $request->input('name')]);
-
+        
         foreach ($request->input('permission') as $permissionName) {
             $permission = Permission::where('name', $permissionName)->firstOrFail();
             $role->givePermissionTo($permission);

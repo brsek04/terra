@@ -6459,8 +6459,6 @@ window.resizeSidebar = function resizeSidebar() {
 resizeSidebar();
 window.addEventListener('resize', resizeSidebar);
 
-//funcion modal
-
 /***/ }),
 
 /***/ "./node_modules/flowbite/lib/esm/components/accordion/index.js":
