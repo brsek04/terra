@@ -72,8 +72,7 @@ class SupplierController extends Controller
      */
     public function edit($id)
     {
-        $supplier = Supplier::find($id);
-
+        $supplier = Supplier::findOrFail($id);
         return view('supplier.edit', compact('supplier'));
     }
 

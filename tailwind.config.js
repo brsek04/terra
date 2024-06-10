@@ -8,7 +8,17 @@ module.exports = {
     
   ],
   theme: {
-    extend: {},
+    extend: {
+      width: {
+        '16': '4rem',
+        '64': '16rem',
+      },
+    },
+  },
+  variants: {
+    extend: {
+      display: ['group-hover'],
+    },
   },
   plugins: [
     require('@tailwindcss/forms'),

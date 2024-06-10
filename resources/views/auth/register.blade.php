@@ -21,14 +21,14 @@
                                      name="name"
                                      type="text"
                                      placeholder="Escribir Nombre"
-                                     class="border  p-2 w-full rounded-xl
+                                     class="border border-orange-300 p-2 w-full rounded-xl
                                      @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}"
                                      required autocomplete="name" 
                                      autofocus
                               >
                               @error('name')
                               <span class="invalid-feedback" role="alert">
-                                  <strong>{{ $message }}</strong>
+                                  {{ $message }}
                               </span>
                               @enderror   
                           </div>
@@ -40,13 +40,13 @@
                                      name="email"
                                      type="email"
                                      placeholder="correo@gmail.com"
-                                     class="border p-2 w-full rounded-xl
+                                     class="border border-orange-300 p-2 w-full rounded-xl
                                      @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}"
                                      required autocomplete="email" 
                               >
                               @error('email')
                                   <span class="invalid-feedback" role="alert">
-                                      <strong>{{ $message }}</strong>
+                                      {{ $message }}
                                   </span>
                               @enderror  
                           </div>
@@ -59,13 +59,13 @@
                                      name="password"
                                      type="password"
                                      placeholder="Escribe tu contraseña"
-                                     class="border  p-2 w-full rounded-xl
+                                     class="border border-orange-300 p-2 w-full rounded-xl
                                      @error('password') is-invalid @enderror" name="password" 
                                      required autocomplete="new-password" 
                               >
                               @error('password')
                                   <span class="invalid-feedback" role="alert">
-                                      <strong>{{ $message }}</strong>
+                                      {{ $message }}
                                   </span>
                               @enderror
                           </div>
@@ -77,13 +77,13 @@
                                      name="password_confirmation"
                                      type="password"
                                      placeholder="Repite tu contraseña"
-                                     class="border p-2 w-full rounded-xl
+                                     class="border border-orange-300 p-2 w-full rounded-xl
                                      @error('password_confirmation') is-invalid @enderror" name="password_confirmation" 
                                      required autocomplete="new-password" 
                               >
                               @error('password_confirmation')
                                   <span class="invalid-feedback" role="alert">
-                                      <strong>{{ $message }}</strong>
+                                      {{ $message }}
                                   </span>
                               @enderror
                           </div>

@@ -19,9 +19,11 @@
 <body class="font-sans antialiased w-full">
     <div class="min-h-screen bg-body-image w-full bg-cover dark:bg-[#0F172A]">
         <nav class="bg-gray-900 dark:bg-gray-900 fixed w-full z-20 top-0 start-0 border-b border-orange-700 dark:border-gray-600 shadow-xl">
-            @include('elements.header')
+            @include('elements.header-admin')
         </nav>
-        
+        <div>
+            @include('elements.sidebar-admin')
+        </div>
             @yield('contenido')
      
     </div>

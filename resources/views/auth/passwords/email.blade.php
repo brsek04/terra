@@ -22,7 +22,7 @@
                 <label for="name" class="block mt-2  text-gray-700 font-bold ">
                     Email
                 </label>
-                <input id="email" type="email" class=" border  p-2 w-full rounded-xl form-control{{ $errors->has('email') ? ' is-invalid' : '' }}"
+                <input id="email" type="email" class=" border border-orange-300 p-2 w-full rounded-xl form-control{{ $errors->has('email') ? ' is-invalid' : '' }}"
                 name="email" tabindex="1"  value="{{ old('email') }}" autofocus required>
                 <div class="invalid-feedback">
                     {{ $errors->first('email') }}

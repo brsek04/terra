@@ -2,7 +2,7 @@
 
 @section('content')
 
-    <div class="container">
+    <div class="content ml-12 transform ease-in-out duration-500 pt-20 px-2 md:px-5 pb-4">
         <div class="row justify-content-center">
             <div class="col-md-8">
                 <div class="card">
