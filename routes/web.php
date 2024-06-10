@@ -63,7 +63,7 @@ Route::group(['middleware' => ['auth']], function () {
     Route::resource('branches', BranchController::class);
     Route::resource('dish-types', DishTypeController::class);
     Route::resource('dishes', DishController::class);
-    Route::resource('beverage_types', BeverageTypeController::class);
+    Route::resource('beverage-types', BeverageTypeController::class);
     Route::resource('beverages', BeverageController::class);
     Route::resource('menus', MenuController::class);
     Route::resource('categories', CategoryController::class);
@@ -76,5 +76,7 @@ Route::post('/cart/add', [CartController::class, 'add'])->name('cart.add');
 Route::post('/cart/update', [CartController::class, 'update'])->name('cart.update');
 Route::post('/cart/remove', [CartController::class, 'remove'])->name('cart.remove');
 Route::get('/cart/clear', [CartController::class, 'clear'])->name('cart.clear');
+Route::get('/menus/{menu}/shop', 'MenuController@showShop')->name('menus.shop');
+
 
 

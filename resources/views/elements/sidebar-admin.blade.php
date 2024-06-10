@@ -166,7 +166,7 @@
             </li>
             <li>
                <div class =  "hover:ml-4 w-full transition  hover:bg-gray-500  text-white hover:text-purple-500 dark:hover:text-blue-500 bg-gray-700 p-2 pl-10 rounded-full transform ease-in-out duration-300 flex flex-row items-center space-x-3">
-                  <a href="{{ route('beverage_types.create') }}" class="flex items-center ">
+                  <a href="/beverage-types" class="flex items-center ">
                      <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 -960 960 960" width="24px" fill="#FFFFFF">
                         <path d="M444-600q-55 0-108 15.5T238-538l42 378h400l44-400h-28q-38 0-69-5.5T542-587q-23-7-48-10t-50-3Zm-216-25q51-27 105.5-41T445-680q30 0 59.5 4t58.5 12q50 14 76.5 19t56.5 5h37l17-160H210l18 175Zm51 545q-31 0-53.5-20T200-151l-80-729h720l-80 729q-3 31-25.5 51T681-80H279Zm165-80h236-400 164Z"/>
                      </svg>                                     
@@ -176,6 +176,19 @@
                   </a>              
                </div>
             </li>
+            <li>
+               <div class =  "hover:ml-4 w-full transition  hover:bg-gray-500  text-white hover:text-purple-500 dark:hover:text-blue-500 bg-gray-700 p-2 pl-10 rounded-full transform ease-in-out duration-300 flex flex-row items-center space-x-3">
+                  <a href="/categories" class="flex items-center ">
+                     <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 -960 960 960" width="24px" fill="#FFFFFF">
+                        <path d="M280-80v-366q-51-14-85.5-56T160-600v-280h80v280h40v-280h80v280h40v-280h80v280q0 56-34.5 98T360-446v366h-80Zm400 0v-320H560v-280q0-83 58.5-141.5T760-880v800h-80Z"/>
+                     </svg>                                     
+                     <div class="pl-2">
+                           Categorias de platos
+                     </div>  
+                  </a>              
+               </div>
+            </li>
+            
          </ul>
    </div>
    <!-- MINI SIDEBAR-->
