@@ -17,6 +17,7 @@ use App\Http\Controllers\CartController;
 use App\Http\Controllers\VisitanteController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\AboutController;
 
 /*
 |--------------------------------------------------------------------------
@@ -67,6 +68,7 @@ Route::group(['middleware' => ['auth']], function () {
     Route::resource('beverages', BeverageController::class);
     Route::resource('menus', MenuController::class);
     Route::resource('categories', CategoryController::class);
+    Route::resource('abouts', AboutController::class);
     Route::post('/roles', [RolController::class, 'store'])->name('roles.store');    
 });
 
