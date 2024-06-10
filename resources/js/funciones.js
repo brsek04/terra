@@ -113,3 +113,4 @@ document.querySelectorAll('[data-modal-hide]').forEach(button => {
         modal.setAttribute('aria-hidden', 'true');
     });
 });
+
