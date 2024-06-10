@@ -17,12 +17,12 @@ class RolController extends Controller
         $this->middleware('permission:borrar-rol', ['only' => ['destroy']]);
     }
 
-    public function index(Request $request)
+    public function index(Request $id)
     {
         $roles = Role::paginate(5);
         $permission = Permission::get();
-        
-        return view('roles.index', compact('roles','permission'));
+        $permissions = Permission::all();
+        return view('roles.index', compact('roles','permission', 'permissions'));
     }
 
     public function create()
@@ -55,7 +55,7 @@ class RolController extends Controller
         $permission = Permission::get();
         $rolePermissions = $role->permissions()->pluck('id')->toArray();
 
-        return view('roles.editar', compact('role', 'permission', 'rolePermissions'));
+        return view('roles.modal.editar', compact('role', 'permission', 'rolePermissions'));
     }
 
     public function update(Request $request, $id)

@@ -60,8 +60,6 @@ window.openNav =function openNav() {
 
 }
 
-
-
 window.resizeSidebar =function resizeSidebar() {
     var sidebar = document.getElementById('sidebar-admin');
     if (window.innerWidth < 768) { // Small screens
@@ -96,3 +94,22 @@ window.resizeSidebar =function resizeSidebar() {
 resizeSidebar();
 window.addEventListener('resize', resizeSidebar);
 
+document.querySelectorAll('[data-modal-toggle]').forEach(button => {
+    button.addEventListener('click', () => {
+        const modalId = button.getAttribute('data-modal-toggle');
+        const modal = document.getElementById(modalId);
+        modal.classList.remove('hidden');
+        modal.classList.add('flex');
+        modal.setAttribute('aria-hidden', 'false');
+    });
+});
+
+document.querySelectorAll('[data-modal-hide]').forEach(button => {
+    button.addEventListener('click', () => {
+        const modalId = button.getAttribute('data-modal-hide');
+        const modal = document.getElementById(modalId);
+        modal.classList.add('hidden');
+        modal.classList.remove('flex');
+        modal.setAttribute('aria-hidden', 'true');
+    });
+});

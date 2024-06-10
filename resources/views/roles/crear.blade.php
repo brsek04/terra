@@ -34,15 +34,18 @@
                                     </div>
                                 </div>
 
-                                <div class="row">
+                                <div class="row flex">
                                     <div class="col-sm-12">
-                                        <div class="form-group">
+                                        <div class="form-group flex">
                                             <label for="roles">Permisos</label>
                                             @foreach($permission as $value)
-                                            <label>
-                                            {{ Form::checkbox('permission[]', $value->name, false, ['class' => 'name']) }}
-                                            {{ $value->name }}
-                                            </label>
+                                            <div class="col-sm-4">
+                                                <label class="flex">
+                                                    {{ Form::checkbox('permission[]', $value->name, false, ['class' => 'name']) }}
+                                                    {{ $value->name }}
+                                                    </label>
+                                            </div>
+                                           
                                             @endforeach
                                         </div>
                                     </div>
