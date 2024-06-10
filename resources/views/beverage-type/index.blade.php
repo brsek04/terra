@@ -83,12 +83,14 @@
 											<td>{{ $beverageType->name }}</td>
 
                                             <td>
-                                                <form action="{{ route('beverage-types.destroy',$beverageType->id) }}" method="POST">
+                                            <form id="deleteForm_{{ $beverageType->id }}" action="{{ route('beverage-types.destroy',$beverageType->id) }}" method="POST">
                                                     <a class="btn btn-sm btn-primary " href="{{ route('beverage-types.show',$beverageType->id) }}"><i class="fa fa-fw fa-eye"></i> {{ __('Show') }}</a>
                                                     <a class="btn btn-sm btn-success" href="{{ route('beverage-types.edit',$beverageType->id) }}"><i class="fa fa-fw fa-edit"></i> {{ __('Edit') }}</a>
                                                     @csrf
                                                     @method('DELETE')
-                                                    <button type="submit" class="btn btn-danger btn-sm"><i class="fa fa-fw fa-trash"></i> {{ __('Delete') }}</button>
+                                                    <button type="button" class="btn btn-danger btn-sm" onclick="confirmDelete('deleteForm_{{ $beverageType->id }}')">
+                                                    <i class="fa fa-fw fa-trash"></i> {{ __('Delete') }}
+                                                </button>
                                                 </form>
                                             </td>
                                         </tr>
@@ -102,4 +104,27 @@
             </div>
         </div>
     </div>
+
+    <script>
+        // Función para mostrar una alerta de confirmación antes de eliminar un elemento
+        function confirmDelete(formId) {
+            Swal.fire({
+                title: '¿Estás seguro?',
+                text: "Esta acción no se puede revertir. ¿Quieres continuar?",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Sí, eliminar',
+                cancelButtonText: 'Cancelar'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    // Si el usuario confirma la eliminación, enviar el formulario
+                    document.getElementById(formId).submit();
+                }
+            });
+        }
+    </script>
+    
+
 @endsection

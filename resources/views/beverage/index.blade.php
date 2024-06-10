@@ -90,7 +90,12 @@
 											<td>{{ $beverage->description }}</td>
 											<td>{{ $beverage->price }}</td>
 											<td>{{ $beverage->alcohol }}</td>
-											<td>{{ $beverage->photo }}</td>
+											<td>@if($beverage->photo)
+                                                <img src="{{ asset($beverage->photo) }}" alt="Foto del beverage" style="max-width: 100px; max-height: 100px;">
+
+                                                @else
+                                                    Sin imagen
+                                                @endif </td>
 											<td>{{ $beverage->rating }}</td>
 											<td>{{ $beverage->beverageType->name }}</td>
 
