@@ -2,14 +2,14 @@
 
 @section('content')
     <div class="bg-white dark:bg-gray-800 shadow-md sm:rounded-lg">
-        <h3 class="text-gray-700 font-bold p-3"> {{ __('Supplier') }}</h3>
+        <h3 class="text-gray-700 font-bold p-3 dark:text-white"> {{ __('Proveedor') }}</h3>
     </div>
 
     <div class="shadow-md rounded-lg pt-4 min-h">
         <div class="flex bg-white pt-2 px-2 flex-column sm:flex-row flex-wrap space-y-4 sm:space-y-0 items-center justify-between pb-4 dark:bg-gray-800">
             <div class="pt-1 px-4">
                 <button type="button" data-modal-toggle="modal-create" data-modal-target="modal-create" class="flex-inline text-white bg-gradient-to-br from-pink-500 to-orange-400 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-pink-200 dark:from-cyan-500 dark:to-blue-500  dark:focus:ring-pink-800 font-medium rounded-lg text-sm px-5 py-2 text-center me-2 mb-2">
-                    {{ __('+ Nuevo Proveedor') }}
+                    {{ __('+ Nuevo proveedor') }}
                 </button>
                
             </div>
