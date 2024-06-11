@@ -78,7 +78,7 @@ Route::post('/cart/update', [CartController::class, 'update'])->name('cart.updat
 Route::post('/cart/remove', [CartController::class, 'remove'])->name('cart.remove');
 Route::get('/cart/clear', [CartController::class, 'clear'])->name('cart.clear');
 
-Route::get('/menus/{menu}/shop', 'MenuController@showShop')->name('menus.shop');
+//Route::get('/menus/{menu}/shop', 'MenuController@showShop')->name('menus.shop');
 Route::post('/cart/checkout', [CartController::class, 'checkout'])->name('cart.checkout');
 
 
