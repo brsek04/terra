@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Menu;
+use App\Models\Order; // Asegúrate de importar el modelo Order
+use Illuminate\Support\Facades\DB;
 
 class CartController extends Controller
 {
@@ -58,5 +60,45 @@ class CartController extends Controller
         \Cart::clear();
         return redirect()->route('cart.index')->with('success_msg', 'Cart is cleared!');
     }
+
+    public function checkout()
+{
+    $userId = auth()->id(); // Supongamos que tienes un sistema de autenticación y necesitas el ID del usuario
+
+    $order = Order::create([
+        'user_id' => $userId,
+        // Otros campos de la orden, si los hay
+    ]);
+
+    $cartCollection = \Cart::getContent();
+
+    foreach ($cartCollection as $item) {
+        if ($item->attributes->type == 'dish') {
+            // Obtener el ID del plato eliminando el prefijo 'dish_'
+            $dishId = (int)str_replace('dish_', '', $item->id);
+            
+            DB::table('dishes_in_order')->insert([
+                'order_id' => $order->id,
+                'dish_id' => $dishId,
+                'quantity' => $item->quantity,
+                // Otros campos, si los hay
+            ]);
+        } elseif ($item->attributes->type == 'beverage') {
+            // Obtener el ID del bebida eliminando el prefijo 'beverage_'
+            $beverageId = (int)str_replace('beverage_', '', $item->id);
+            
+            DB::table('beverages_in_order')->insert([
+                'order_id' => $order->id,
+                'beverage_id' => $beverageId,
+                'quantity' => $item->quantity,
+                // Otros campos, si los hay
+            ]);
+        }
+    }
+
+    \Cart::clear();
+
+    return redirect()->route('checkout.success')->with('success_msg', 'Pedido realizado con éxito.');
 }
 
+}

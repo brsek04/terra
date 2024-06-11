@@ -142,7 +142,10 @@
                         </ul>
                     </div>
                     <br><a href="/" class="btn btn-dark">Continuar en la tienda</a>
-                    <a href="/checkout" class="btn btn-success">Proceder al Checkout</a>
+                    <form action="{{ route('cart.checkout') }}" method="POST">
+                        {{ csrf_field() }}
+                        <button type="submit" class="btn btn-success">Proceder al Checkout</button>
+                    </form>
                 </div>
             @endif
         </div>
