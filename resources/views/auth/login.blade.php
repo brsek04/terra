@@ -1,8 +1,8 @@
-@extends('layouts.app-user')
+@extends('layouts.app')
 @section('title')
     Admin Login
 @endsection
-@section('contenido')
+@section('content')
 <section class="min-h-screen flex items-center justify-center">
     <div class="bg-gray-100 flex rounded-2xl shadow-lg max-w-3xl p-5 items-center">
         <div class="md:w-1/2 px-5 md:px-16">

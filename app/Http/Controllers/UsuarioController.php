@@ -26,7 +26,8 @@ class UsuarioController extends Controller
     {
         //
         $usuarios=User::all();
-        return view('usuarios.index', compact('usuarios'));
+        $roles = Role::pluck('name','name')->all();
+        return view('usuarios.index', compact('usuarios','roles'));
 
     }
 

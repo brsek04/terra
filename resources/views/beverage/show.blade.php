@@ -1,4 +1,4 @@
-@extends('layouts.app-admin')
+@extends('layouts.app')
 
 @section('template_title')
     {{ $beverage->name ?? "{{ __('Show') Beverage" }}

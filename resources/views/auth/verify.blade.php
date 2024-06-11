@@ -1,6 +1,6 @@
-@extends('layouts.app-user')
+@extends('layouts')
 
-@section('contenido')
+@section('content')
 
 <section class="flex min-h-screen justify-center items-center" >
     <div class="bg-gray-100 flex rounded-2xl shadow-xl max-w-3xl p-5 items-center">
