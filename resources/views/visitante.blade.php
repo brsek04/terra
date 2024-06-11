@@ -1,6 +1,15 @@
-@extends('layouts.app')
+@extends('layouts.app-user')
 
-@section('content')
+@section('contenido')
+
+
+
+
+
+
+
+
+
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-md-8">
@@ -10,7 +19,6 @@
                     <div class="card-body">
                         @foreach ($branches as $branch)
                             <div>
-                                <!-- Enlace a la página de menús de la sucursal -->
                                 <a href="{{ route('branch.menus', $branch->id) }}">{{ $branch->name }}</a>
                             </div>
                         @endforeach
@@ -19,4 +27,5 @@
             </div>
         </div>
     </div>
+
 @endsection
