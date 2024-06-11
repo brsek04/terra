@@ -6,6 +6,7 @@ use App\Models\Branch;
 use App\Models\Menu;
 use Illuminate\Http\Request;
 use App\Models\Dish;
+use App\Models\Beverage;
 
 /**
  * Class MenuController
@@ -36,8 +37,11 @@ class MenuController extends Controller
     $menu = new Menu();
     $dishes = Dish::all(); // Cargar todos los platos disponibles
     $selectedDishes = []; // No hay platos seleccionados en el caso de crear un nuevo menú
+    $beverages = Beverage::all(); // Cargar todos los platos disponibles
+    $selectedBeverages = []; // No hay platos seleccionados en el caso de crear un nuevo menú
 
-    return view('menu.create', compact('menu', 'dishes', 'selectedDishes'));
+
+    return view('menu.create', compact('menu', 'dishes', 'selectedDishes','beverages','selectedBeverages'));
 }
 
     /**

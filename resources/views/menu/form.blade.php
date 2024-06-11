@@ -25,6 +25,19 @@
                 @endforeach
             </div>
         </div>
+        <div class="form-group">
+            <label for="dishes">{{ __('Select beverages') }}</label>
+            <div class="checkbox-group">
+                @foreach($beverages as $beverage)
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" name="beverages[]" value="{{ $beverage->id }}" {{ in_array($beverage->id, $selectedBeverages) ? 'checked' : '' }}>
+                        <label class="form-check-label" for="dish{{ $beverage->id }}">
+                            {{ $beverage->name }}
+                        </label>
+                    </div>
+                @endforeach
+            </div>
+        </div>
     </div>
     <div class="box-footer mt20">
         <button type="submit" class="btn btn-primary">{{ __('Submit') }}</button>
