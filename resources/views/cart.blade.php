@@ -1,6 +1,10 @@
 @extends('layouts.app')
 
 @section('content')
+
+<div class="bg-orange-300 w-full">
+    hola
+</div>
     <div class="container" style="margin-top: 80px">
         <nav aria-label="breadcrumb">
             <ol class="breadcrumb">

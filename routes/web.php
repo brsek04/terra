@@ -15,6 +15,7 @@ use App\Http\Controllers\BeverageController;
 use App\Http\Controllers\MenuController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\VisitanteController;
+use App\Http\Controllers\AdminController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\AboutController;
@@ -32,7 +33,7 @@ use App\Http\Controllers\AboutController;
 
 // Welcome Routes
 Route::redirect('/', '/visitante');
-Route::get('/visitante', [VisitanteController::class, 'index'])->name('visitante.index');
+
 Route::get('/branch/{branch}/menus', [VisitanteController::class, 'showBranchMenus'])->name('branch.menus');
 
 // Home Route
@@ -40,6 +41,7 @@ Route::get('/home', [HomeController::class, 'index'])->name('home');
 
 // Menu Routes
 Route::get('/menus', [MenuController::class, 'index'])->name('menus.index');
+
 Route::get('/menus/{menu}/public', [MenuController::class, 'showPublic'])->name('menus.showPublic');
 Route::get('/menus/{menu}/shop', [CartController::class, 'shop'])->name('menus.shop');
 
@@ -68,6 +70,8 @@ Route::group(['middleware' => ['auth']], function () {
     Route::resource('menus', MenuController::class);
     Route::resource('categories', CategoryController::class);
     Route::resource('abouts', AboutController::class);
+    Route::get('/admin', [AdminController::class, 'index'])->name('admin.index');
+    Route::get('/visitante', [VisitanteController::class, 'index'])->name('visitante.index');
     Route::post('/roles', [RolController::class, 'store'])->name('roles.store');    
 });
 

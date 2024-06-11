@@ -1,8 +1,8 @@
-@extends('layouts.app-user')
+@extends('layouts.app')
 @section('title')
     Register
 @endsection
-@section('contenido')
+@section('content')
 
 
 <section class="flex min-h-screen justify-center items-center">
@@ -89,7 +89,7 @@
                           </div>
                       </div>
     
-                  <button class="bg-orange-400 rounded-xl text-white py-2 mx-2 hover:scale-105 duration-300">
+                  <button type="submit" class="bg-orange-400 rounded-xl text-white py-2 mx-2 hover:scale-105 duration-300">
                       {{ __('Register') }}
                   </button>
               </form>

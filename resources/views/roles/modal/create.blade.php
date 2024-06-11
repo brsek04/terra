@@ -1,6 +1,4 @@
-<form action="{{route('roles.store')}}" method="POST" enctype="multipart/form-data" class="p-2">
-    {{ csrf_field()}}
-    <div id="modal-create" aria-hidden="true" class=" fixed hidden overflow-y-auto overflow-x-hidden top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full"  tabindex="-1">
+<div id="modal-create" aria-hidden="true" class=" fixed hidden overflow-y-auto overflow-x-hidden top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full"  tabindex="-1">
         <div class="relative p-4 w-full max-w-md max-h-full" >
             <div class="relative bg-white rounded-lg shadow dark:bg-gray-700 px-5 py-4">
                 <div class="flex items-center justify-between p-4 md:p-5 border-b rounded-t dark:border-gray-600">
@@ -13,7 +11,8 @@
                     </button>
                 </div>
                 <!--modal body-->
-                <form class="p-10 md:p-5">
+                <form action="{{route('roles.store')}}" method="POST" enctype="multipart/form-data" class="p-2 md:p-5">
+                    {{ csrf_field()}}
                     <div class="grid gap-4 mb-4 grid-cols-2">
                         <div class="col-span-2 pt-5">
                             <label for="name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Nombre</label>
@@ -26,16 +25,15 @@
                         </div>
                         <div class="col-span-2 ">
                             <label for="category" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Permisos</label>
-                                <div class="flex items-center p-2">
+                                <div class="flex-wrap items-center p-2 grid grid-cols-3">
                                     @foreach($permission as $perm)
-                                        <div class="flex items-center">
+                                        <div class="flex  items-center">
                                             <input id="perm-{{ $perm->id }}" name="permission[]" type="checkbox" value="{{ $perm->id }}" class="w-4 h-4 text-orange-600 bg-gray-100 border-gray-300 rounded focus:ring-orange-500 dark:focus:ring-orange-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
                                             <label for="perm-{{ $perm->id }}" class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300 pr-2">{{ $perm->name }}</label>
                                         </div>
                                     @endforeach
                                 </div>             
-                      
-                        </div>
+                         </div>
 
                     </div>
                     <div class="pb-4"> 
@@ -48,7 +46,7 @@
                 </form>
             </div>
         </div>
-    </div>
-</form>
+</div>
+
 
 

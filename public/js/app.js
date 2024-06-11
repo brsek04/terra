@@ -6458,6 +6458,24 @@ window.resizeSidebar = function resizeSidebar() {
 };
 resizeSidebar();
 window.addEventListener('resize', resizeSidebar);
+document.querySelectorAll('[data-modal-toggle]').forEach(function (button) {
+  button.addEventListener('click', function () {
+    var modalId = button.getAttribute('data-modal-toggle');
+    var modal = document.getElementById(modalId);
+    modal.classList.remove('hidden');
+    modal.classList.add('flex');
+    modal.setAttribute('aria-hidden', 'false');
+  });
+});
+document.querySelectorAll('[data-modal-hide]').forEach(function (button) {
+  button.addEventListener('click', function () {
+    var modalId = button.getAttribute('data-modal-hide');
+    var modal = document.getElementById(modalId);
+    modal.classList.add('hidden');
+    modal.classList.remove('flex');
+    modal.setAttribute('aria-hidden', 'true');
+  });
+});
 
 /***/ }),
 
