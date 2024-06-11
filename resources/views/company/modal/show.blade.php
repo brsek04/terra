@@ -11,7 +11,7 @@
                         <span class="sr-only">Cerrar modal</span>
                     </button>
             </div>
-            <div class="grid gap-4 px-2 py-2 dark: text-white">
+            <div class="grid gap-4 px-2 py-2 dark:text-white">
                 <div class="form-group">
                     <strong>{{ __('Nombre') }}:</strong>
                     {{ $company->name }}

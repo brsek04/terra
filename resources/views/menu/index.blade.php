@@ -74,7 +74,7 @@
                         </svg>
                     </button>
                    @include('menu.modal.show')
-                    
+                    @include('menu.modal.delete')
                 </td>
             </tr>
                 @endforeach
