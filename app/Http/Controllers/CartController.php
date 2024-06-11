@@ -4,14 +4,44 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Menu;
+use App\Models\DishType;
+use App\Models\BeverageType;
 
 class CartController extends Controller
 {
     public function shop($menuId)
     {
         $menu = Menu::with(['dishes', 'beverages'])->findOrFail($menuId);
-        return view('shop', compact('menu'));
+        $dishTypes = DishType::all();
+        $beverageTypes = BeverageType::all();
+
+        return view('shop', compact('menu', 'dishTypes', 'beverageTypes'));
     }
+
+    public function filter(Request $request, $menuId)
+{
+    $menu = Menu::with(['dishes', 'beverages'])->findOrFail($menuId);
+    $dishTypes = DishType::all();
+    $beverageTypes = BeverageType::all();
+
+    $type = $request->query('type');
+    $typeId = $request->query('typeId');
+
+    // Obtener el nombre del tipo de plato correspondiente a la ID
+    $typeName = '';
+    if ($type == 'dish') {
+        $typeName = DishType::findOrFail($typeId)->name;
+        $items = $menu->dishes()->where('type_id', $typeId)->get();
+    } elseif ($type == 'beverage') {
+        $typeName = BeverageType::findOrFail($typeId)->name;
+        $items = $menu->beverages()->where('type_id', $typeId)->get();
+    } else {
+        $items = [];
+    }
+
+    return view('shop', compact('menu', 'dishTypes', 'beverageTypes', 'items', 'type', 'typeName'));
+}
+
 
     public function cart()
     {
@@ -28,7 +58,7 @@ class CartController extends Controller
     public function add(Request $request)
     {
         $prefix = $request->type == 'dish' ? 'dish_' : 'beverage_';
-        
+
         \Cart::add([
             'id' => $prefix . $request->id,
             'name' => $request->name,
@@ -59,4 +89,3 @@ class CartController extends Controller
         return redirect()->route('cart.index')->with('success_msg', 'Cart is cleared!');
     }
 }
-

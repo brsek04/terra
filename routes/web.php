@@ -24,8 +24,8 @@ use App\Http\Controllers\AboutController;
 | Web Routes
 |--------------------------------------------------------------------------
 |
-| Here is where you can register web routes for your application.
-| These routes are loaded by the RouteServiceProvider within a group which
+| Here is where you can register web routes for your application. These
+| routes are loaded by the RouteServiceProvider within a group which
 | contains the "web" middleware group. Now create something great!
 |
 */
@@ -42,7 +42,7 @@ Route::get('/home', [HomeController::class, 'index'])->name('home');
 Route::get('/menus', [MenuController::class, 'index'])->name('menus.index');
 Route::get('/menus/{menu}', [MenuController::class, 'show'])->name('menus.show');
 Route::get('/menus/{menu}/public', [MenuController::class, 'showPublic'])->name('menus.showPublic');
-Route::get('/menus/{id}/shop', [MenuController::class, 'shop'])->name('menus.shop');
+Route::get('/menus/{menu}/shop', [CartController::class, 'shop'])->name('menus.shop');
 
 // Post Routes
 Route::get('/posts/create', [PostController::class, 'create'])->name('posts.create');
@@ -78,7 +78,7 @@ Route::post('/cart/add', [CartController::class, 'add'])->name('cart.add');
 Route::post('/cart/update', [CartController::class, 'update'])->name('cart.update');
 Route::post('/cart/remove', [CartController::class, 'remove'])->name('cart.remove');
 Route::get('/cart/clear', [CartController::class, 'clear'])->name('cart.clear');
-Route::get('/menus/{menu}/shop', 'MenuController@showShop')->name('menus.shop');
 
-
-
+// Shop Routes
+Route::get('/shop/{menuId}', [CartController::class, 'shop'])->name('shop.index');
+Route::get('/shop/{menuId}/filter', [CartController::class, 'filter'])->name('shop.filter');
