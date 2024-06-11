@@ -29,14 +29,17 @@
    
     <title>@yield('title') | {{ config('app.name') }}</title>
 </head>
-<body class="font-sans antialiased w-full dark:bg-[#0F172A]">
+<body class="font-sans antialiased bg-gray-700 w-full dark:bg-[#0F172A]">
     <div class="min-h-screen  w-full bg-cover dark:bg-[#0F172A]">
-        <header class="max-w">
-            @include('elements.header-admin')
-        </header>
+        <nav class="bg-gray-900 dark:bg-gray-900 fixed w-full z-20 top-0 start-0  dark:border-gray-600 shadow-xl">
+            @include('elements.header')
+        </nav>
         <div>
+            @auth
+                @if(Auth::user()->hasRole('admin'))
             @include('elements.sidebar-admin')
-        </div>
+            @endif
+            @endauth
         <main >
             <div class="content ml-12 ease-in-out duration-500 pt-20 px-2 md:px-5 pb-4 ">
                 @yield('content')

@@ -58,8 +58,8 @@
                 <td scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white text-center">{{ $menu->name }}</td>
                 <td scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white text-center">{{ $menu->branch->name }}</td>
                 <td class="px-6 py-4 text-center">
-                    <button type="button" data-modal-target="popup-edit" data-modal-toggle="popup-edit" class="text-cyan-700 hover:text-white border border-cyan-600 hover:bg-cyan-700 focus:ring-4 focus:outline-none focus:ring-cyan-300 font-medium rounded-lg text-sm p-2 text-center me-2 mb-2 dark:border-cyan-500 dark:text-cyan-500 dark:hover:text-white dark:hover:bg-cyan-600 dark:focus:ring-cyan-800">
-                        <a href="#" class="flex items-center">
+                    <button type="button" class="text-cyan-700 hover:text-white border border-cyan-600 hover:bg-cyan-700 focus:ring-4 focus:outline-none focus:ring-cyan-300 font-medium rounded-lg text-sm p-2 text-center me-2 mb-2 dark:border-cyan-500 dark:text-cyan-500 dark:hover:text-white dark:hover:bg-cyan-600 dark:focus:ring-cyan-800">
+                        <a href="{{ route('menus.edit', $menu->id) }}" class="flex items-center">
                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
                                 <path stroke-linecap="round" stroke-linejoin="round" d="m16.862 4.487 1.687-1.688a1.875 1.875 0 1 1 2.652 2.652L10.582 16.07a4.5 4.5 0 0 1-1.897 1.13L6 18l.8-2.685a4.5 4.5 0 0 1 1.13-1.897l8.932-8.931Zm0 0L19.5 7.125M18 14v4.75A2.25 2.25 0 0 1 15.75 21H5.25A2.25 2.25 0 0 1 3 18.75V8.25A2.25 2.25 0 0 1 5.25 6H10" />
                             </svg>
@@ -83,70 +83,4 @@
     </div>
 </div>
 
-<!--
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col-sm-12">
-                <div class="card">
-                    <div class="card-header">
-                        <div style="display: flex; justify-content: space-between; align-items: center;">
-
-                            <span id="card_title">
-                                {{ __('Menu') }}
-                            </span>
-
-                            <div class="float-right">
-                                <a href="{{ route('menus.create') }}" class="btn btn-primary btn-sm float-right" data-placement="left">
-                                    {{ __('Create New') }}
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                    @if ($message = Session::get('success'))
-                        <div class="alert alert-success">
-                            <p>{{ $message }}</p>
-                        </div>
-                    @endif
-
-                    <div class="card-body">
-                        <div class="table-responsive">
-                            <table class="table table-striped table-hover">
-                                <thead class="thead">
-                                <tr>
-                                    <th>No</th>
-                                    <th>Name</th>
-                                    <th>Branch</th> 
-
-                                    <th></th>
-                                </tr>
-                                </thead>
-                                <tbody>
-                                @foreach ($menus as $menu)
-                                    <tr>
-                                        <td>{{ ++$i }}</td>
-
-                                        <td>{{ $menu->name }}</td>
-                                        <td>{{ $menu->branch->name }}</td> 
-
-                                        <td>
-                                            <form action="{{ route('menus.destroy',$menu->id) }}" method="POST">
-                                                <a class="btn btn-sm btn-primary " href="{{ route('menus.show',$menu->id) }}"><i class="fa fa-fw fa-eye"></i> {{ __('Show') }}</a>
-                                                <a class="btn btn-sm btn-success" href="{{ route('menus.edit',$menu->id) }}"><i class="fa fa-fw fa-edit"></i> {{ __('Edit') }}</a>
-                                                @csrf
-                                                @method('DELETE')
-                                                <button type="submit" class="btn btn-danger btn-sm"><i class="fa fa-fw fa-trash"></i> {{ __('Delete') }}</button>
-                                            </form>
-                                        </td>
-                                    </tr>
-                                @endforeach
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-                </div>
-                {!! $menus->links() !!}
-            </div>
-        </div>
-    </div>
--->
 @endsection
