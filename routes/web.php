@@ -40,7 +40,6 @@ Route::get('/home', [HomeController::class, 'index'])->name('home');
 
 // Menu Routes
 Route::get('/menus', [MenuController::class, 'index'])->name('menus.index');
-Route::get('/menus/{menu}', [MenuController::class, 'show'])->name('menus.show');
 Route::get('/menus/{menu}/public', [MenuController::class, 'showPublic'])->name('menus.showPublic');
 Route::get('/menus/{id}/shop', [MenuController::class, 'shop'])->name('menus.shop');
 
