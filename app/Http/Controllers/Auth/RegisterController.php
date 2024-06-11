@@ -9,12 +9,13 @@ use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
+use App\Providers\RouteServiceProvider;
 
 class RegisterController extends Controller
 {
     use RegistersUsers;
 
-    protected $redirectTo = '/home';
+    protected $redirectTo = RouteServiceProvider::HOME;
 
     public function __construct()
     {
