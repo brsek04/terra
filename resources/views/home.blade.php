@@ -1,6 +1,6 @@
-@extends('layouts.app')
+@extends('layouts.app-user')
 
-@section('content')
+@section('contenido')
     <section class="section">
         <div class="section-header">
             <h3 class="page__heading">Dashboard</h3>
