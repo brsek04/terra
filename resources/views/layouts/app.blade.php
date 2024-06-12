@@ -41,13 +41,29 @@
             @endif
             @endauth
             
-        <main >
-            <div class="content ml-12 ease-in-out duration-500 pt-20 px-2 md:px-5 pb-4 ">
+        <main>
+            @auth
+                @if(Auth::user()->hasRole('admin'))
+                <div class="content ml-12 ease-in-out duration-500 pt-20 px-2 md:px-5 pb-4 ">
+                    @yield('content')
+                </div>
+                @else
+                    <div>
+                        @yield('content')
+                    </div>
+                   
+                @endif
+            @else
+            <div>
                 @yield('content')
             </div>
+           
+            @endauth
+            
         </main>
 
-       <footer class="bg-blue-700">
+       <footer class="bg-gradient-to-r from-gray-100 via-[#bce1ff] to-gray-100">
+            aaaaaaaaaaaa
        </footer>
 
     </div>
