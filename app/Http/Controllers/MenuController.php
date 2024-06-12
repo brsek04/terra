@@ -13,8 +13,12 @@ class MenuController extends Controller
     public function index()
     {
         $menus = Menu::paginate();
+        $dishes = Dish::all(); // Cargar todos los platos disponibles
+        $beverages = Beverage::all(); // Cargar todas las bebidas disponibles
+        $selectedDishes = []; // No hay platos seleccionados en el caso de crear un nuevo menú
+        $selectedBeverages = []; // No hay bebidas seleccionadas en el caso de crear un nuevo menú
 
-        return view('menu.index', compact('menus'))
+        return view('menu.index', compact('menus', 'dishes', 'beverages', 'selectedDishes', 'selectedBeverages'))
             ->with('i', (request()->input('page', 1) - 1) * $menus->perPage());
     }
 
@@ -34,6 +38,9 @@ class MenuController extends Controller
         $request->validate(Menu::$rules);
 
         $menu = Menu::create($request->all());
+
+        // Sincronizar los platos seleccionados con el menú recién creado
+        $menu->dishes()->sync($request->input('dishes', []));
 
         // Sincronizar las bebidas seleccionadas con el menú recién creado
         $menu->beverages()->sync($request->input('beverages', []));

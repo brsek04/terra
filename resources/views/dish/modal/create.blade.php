@@ -14,39 +14,45 @@
             <form id="user-form" action="{{ route('dishes.store') }}" method="POST" enctype="multipart/form-data" class="p-2 md:p-5">
                 {{ csrf_field() }}
                 <div class="mb-4">
-                    <div>
-                        <label for="name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Nombre</label>
-                        <input type="text" name="name" id="name" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="Nombre">
-                        {!! $errors->first('name', '<div class="invalid-feedback p-4  text-sm text-red-700  dark:text-red-800"">:message</div>') !!}
+                    <div class="form-group">
+                        {{ Form::label('name', 'Nombre', ['class' => 'block mb-2 text-sm font-medium text-gray-900 dark:text-white']) }}
+                        {{ Form::text('name', '', ['id' => 'name', 'class' => 'bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500', 'placeholder' => 'Nombre']) }}
+                        {!! $errors->first('name', '<div class="invalid-feedback p-4 text-sm text-red-700 dark:text-red-800">:message</div>') !!}
                     </div>
-                    <div>
-                        <label for="description" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Descripcion</label>
-                        <input type="text" name="description" id="description" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="Descripcion">
-                        {!! $errors->first('description', '<div class="invalid-feedback p-4 text-sm text-red-700  dark:text-red-800"">:message</div>') !!}
+                    <div class="form-group">
+                        {{ Form::label('description', 'Descripción', ['class' => 'block mb-2 text-sm font-medium text-gray-900 dark:text-white']) }}
+                        {{ Form::text('description', '', ['id' => 'description', 'class' => 'bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500', 'placeholder' => 'Descripción']) }}
+                        {!! $errors->first('description', '<div class="invalid-feedback p-4 text-sm text-red-700 dark:text-red-800">:message</div>') !!}
                     </div>
-                    <div>
-                        <label for="price" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Precio</label>
-                        <input type="price" name="price" id="price" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="Precio">
-                        {!! $errors->first('price', '<div class="invalid-feedback p-4  text-sm text-red-700  dark:text-red-800">:message</div>') !!}
+                    <div class="form-group">
+                        {{ Form::label('price', 'Precio', ['class' => 'block mb-2 text-sm font-medium text-gray-900 dark:text-white']) }}
+                        {{ Form::number('price', '', ['id' => 'price', 'class' => 'bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500', 'placeholder' => 'Precio']) }}
+                        {!! $errors->first('price', '<div class="invalid-feedback p-4 text-sm text-red-700 dark:text-red-800">:message</div>') !!}
                     </div>
-                    <div>
-                        <label for="rating" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Valoracion</label>
-                        <input type="text" name="rating" id="rating" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="Valoracion">
-                        {!! $errors->first('rating', '<div class="invalid-feedback p-4 text-sm text-red-700  dark:text-red-800"">:message</div>') !!}
+                    <div class="form-group">
+                        {{ Form::label('rating', 'Valoración', ['class' => 'block mb-2 text-sm font-medium text-gray-900 dark:text-white']) }}
+                        {{ Form::text('rating', '', ['id' => 'rating', 'class' => 'bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500', 'placeholder' => 'Valoración']) }}
+                        {!! $errors->first('rating', '<div class="invalid-feedback p-4 text-sm text-red-700 dark:text-red-800">:message</div>') !!}
                     </div>
-                    <div>
-                        <label for="prep_time" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Tiempo de preparacion</label>
-                        <input type="text" name="prep_time" id="prep_time" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="Tiempo de preparacion">
-                        {!! $errors->first('prep_time', '<div class="invalid-feedback p-4 text-sm text-red-700  dark:text-red-800"">:message</div>') !!}
+                    <div class="form-group">
+                        {{ Form::label('prep_time', 'Tiempo de preparación', ['class' => 'block mb-2 text-sm font-medium text-gray-900 dark:text-white']) }}
+                        {{ Form::number('prep_time', '', ['id' => 'prep_time', 'class' => 'bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500', 'placeholder' => 'Tiempo de preparación']) }}
+                        {!! $errors->first('prep_time', '<div class="invalid-feedback p-4 text-sm text-red-700 dark:text-red-800">:message</div>') !!}
                     </div>
-                    <div class="col-span-2 sm:col-span-1">
-                        <label for="dishTypes" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Tipo de plato</label>
-                        <select name="dishTypes[]" id="dishTypes" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
-                            <option selected="">Seleccionar</option>
-                            @foreach($types as $dishType)
-                            <option value="{{$dishType}}">{{$dishType}}</option>
-                            @endforeach
-                        </select>
+                    <div class="form-group">
+                        {{ Form::label('photo', 'Foto', ['class' => 'block mb-2 text-sm font-medium text-gray-900 dark:text-white']) }}
+                        {{ Form::file('photo', ['id' => 'photo', 'class' => 'bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500']) }}
+                        {!! $errors->first('photo', '<div class="invalid-feedback p-4 text-sm text-red-700 dark:text-red-800">:message</div>') !!}
+                    </div>
+                    <div class="form-group">
+                        {{ Form::label('type_id', 'Tipo de plato', ['class' => 'block mb-2 text-sm font-medium text-gray-900 dark:text-white']) }}
+                        {{ Form::select('type_id', $types, '', ['id' => 'type_id', 'class' => 'bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500', 'placeholder' => 'Seleccionar']) }}
+                        {!! $errors->first('type_id', '<div class="invalid-feedback p-4 text-sm text-red-700 dark:text-red-800">:message</div>') !!}
+                    </div>
+                    <div class="form-group">
+                        {{ Form::label('category_id', 'Categoría', ['class' => 'block mb-2 text-sm font-medium text-gray-900 dark:text-white']) }}
+                        {{ Form::select('category_id', $categories, '', ['id' => 'category_id', 'class' => 'bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500', 'placeholder' => 'Seleccionar']) }}
+                        {!! $errors->first('category_id', '<div class="invalid-feedback p-4 text-sm text-red-700 dark:text-red-800">:message</div>') !!}
                     </div>
                 </div>
                 <div class="pb-4">
@@ -58,4 +64,3 @@
         </div>
     </div>
 </div>
-
