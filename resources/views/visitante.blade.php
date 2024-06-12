@@ -34,7 +34,7 @@
                         donde te garantizamos encontrarás la calidad y atención que mereces.</p>
                 </div>
                 <div class="mt-12">
-                    <a href="#" class="bg-primary border border-primary text-white px-8 py-3 font-medium 
+                    <a href="#" class="bg-orange-400 border border-primary text-white px-8 py-3 font-medium 
                         rounded-md hover:bg-transparent hover:text-primary">Shop Now</a>
                 </div>
             </div>
