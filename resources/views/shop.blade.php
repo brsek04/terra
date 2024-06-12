@@ -1,5 +1,7 @@
 @extends('layouts.app')
-
+@section('title')
+    Carrito
+@endsection
 @section('content')
 
 <div class="bg-gray-800 antialiased dark:bg-gray-900 py-10 flex flex-col items-center">
@@ -7,7 +9,7 @@
         <h4 class="text-white font-serif font-bold text-2xl dark:text-white mb-4">Estás comprando en {{ $menu->name }}</h4>
     </div>
 </div>
-<div class="w-full">
+<div class="w-full max-h-max">
     <div class="w-full px-2">
         <div class="py-2">
                     <div class="grid grid-cols-1 md:grid-cols-3 px-4 items-start gap-4">
