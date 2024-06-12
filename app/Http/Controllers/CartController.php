@@ -8,6 +8,10 @@ use App\Models\Order;
 use Illuminate\Support\Facades\DB;
 use App\Models\DishType;
 use App\Models\BeverageType;
+use Endroid\QrCode\QrCode;
+use Endroid\QrCode\Writer\PngWriter;
+use Illuminate\Support\Facades\Response;
+
 
 class CartController extends Controller
 {
@@ -92,43 +96,74 @@ class CartController extends Controller
     }
 
     public function checkout()
-{
-    $userId = auth()->id(); // Supongamos que tienes un sistema de autenticación y necesitas el ID del usuario
+    {
+        $userId = auth()->id(); // Supongamos que tienes un sistema de autenticación y necesitas el ID del usuario
 
-    $order = Order::create([
-        'user_id' => $userId,
-        // Otros campos de la orden, si los hay
-    ]);
+        $order = Order::create([
+            'user_id' => $userId,
+            // Otros campos de la orden, si los hay
+        ]);
 
-    $cartCollection = \Cart::getContent();
+        $cartCollection = \Cart::getContent();
 
-    foreach ($cartCollection as $item) {
-        if ($item->attributes->type == 'dish') {
-            // Obtener el ID del plato eliminando el prefijo 'dish_'
-            $dishId = (int)str_replace('dish_', '', $item->id);
-            
-            DB::table('dishes_in_order')->insert([
-                'order_id' => $order->id,
-                'dish_id' => $dishId,
-                'quantity' => $item->quantity,
-                // Otros campos, si los hay
-            ]);
-        } elseif ($item->attributes->type == 'beverage') {
-            // Obtener el ID del bebida eliminando el prefijo 'beverage_'
-            $beverageId = (int)str_replace('beverage_', '', $item->id);
-            
-            DB::table('beverages_in_order')->insert([
-                'order_id' => $order->id,
-                'beverage_id' => $beverageId,
-                'quantity' => $item->quantity,
-                // Otros campos, si los hay
-            ]);
+        foreach ($cartCollection as $item) {
+            if ($item->attributes->type == 'dish') {
+                // Obtener el ID del plato eliminando el prefijo 'dish_'
+                $dishId = (int)str_replace('dish_', '', $item->id);
+                
+                DB::table('dishes_in_order')->insert([
+                    'order_id' => $order->id,
+                    'dish_id' => $dishId,
+                    'quantity' => $item->quantity,
+                    // Otros campos, si los hay
+                ]);
+            } elseif ($item->attributes->type == 'beverage') {
+                // Obtener el ID del bebida eliminando el prefijo 'beverage_'
+                $beverageId = (int)str_replace('beverage_', '', $item->id);
+                
+                DB::table('beverages_in_order')->insert([
+                    'order_id' => $order->id,
+                    'beverage_id' => $beverageId,
+                    'quantity' => $item->quantity,
+                    // Otros campos, si los hay
+                ]);
+            }
         }
+
+        \Cart::clear();
+
+        // Generar el código QR
+        $qrCode = new QrCode($order->id);
+        $qrCode->setSize(300);
+
+        // Crear un objeto PngWriter
+        $qrCodeWriter = new PngWriter();
+
+        // Generar el contenido del código QR como una cadena
+        $qrCodeData = $qrCodeWriter->write($qrCode)->getString();
+
+        // Devolver el código QR como una respuesta HTTP con el contenido de la cadena
+        return Response::make($qrCodeData, 200, [
+            'Content-Type' => 'image/png',
+            'Content-Disposition' => 'inline; filename="qrcode.png"',
+        ]);
     }
 
-    \Cart::clear();
+    public function qrCode($qrCodePath)
+    {
+        $filePath = Storage::path($qrCodePath);
 
-    return redirect()->route('checkout.success')->with('success_msg', 'Pedido realizado con éxito.');
-}
+        if (!Storage::exists($qrCodePath)) {
+            abort(404);
+        }
+
+        $fileContents = file_get_contents($filePath);
+
+        return Response::make($fileContents, 200, [
+            'Content-Type' => 'image/png',
+            'Content-Disposition' => 'inline; filename="qrcode.png"',
+        ]);
+    }
+
 
 }

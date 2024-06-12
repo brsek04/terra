@@ -89,3 +89,6 @@ Route::post('/cart/checkout', [CartController::class, 'checkout'])->name('cart.c
 // Shop Routes
 Route::get('/shop/{menuId}', [CartController::class, 'shop'])->name('shop.index');
 Route::get('/shop/{menuId}/filter', [CartController::class, 'filter'])->name('shop.filter');
+
+Route::get('/qr/{qrCodePath}', 'CartController@qrCode')->name('qr');
+
