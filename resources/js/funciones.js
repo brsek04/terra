@@ -16,17 +16,11 @@ const content = document.querySelector('.content')
 const moon = document.querySelector(".moon")
 const sun = document.querySelector(".sun")
 
-window.setDark = function setDark(val){
-    if(val === "dark"){
-        document.documentElement.classList.add('dark')
-        moon.classList.add("hidden")
-        sun.classList.remove("hidden")
-    }else{
-        document.documentElement.classList.remove('dark')
-        sun.classList.add("hidden")
-        moon.classList.remove("hidden")
-    }
-}
+
+        
+    
+
+// Aplicar el tema guardado en el almacenamiento local al cargar la página
 
 window.openNav =function openNav() {
     if(sidebar.classList.contains('-translate-x-48')){
@@ -113,6 +107,9 @@ document.querySelectorAll('[data-modal-hide]').forEach(button => {
         modal.setAttribute('aria-hidden', 'true');
     });
 });
+
+
+  
 
 
 
