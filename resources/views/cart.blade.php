@@ -151,7 +151,7 @@
                         {{ csrf_field() }}
                         <button type="submit" class="mt-6 w-full rounded-md bg-orange-500 py-1.5 font-medium text-blue-50 hover:bg-orange-600">Check out</button>
                      </form> 
-                    <button class="mt-6 w-full rounded-md bg-green-500 py-1.5 font-medium text-blue-50 hover:bg-green-600"><a href="/">Continuar en la tienda</a></button>
+                     <button class="mt-6 w-full rounded-md bg-green-500 py-1.5 font-medium text-blue-50 hover:bg-green-600" onclick="goBack()">Volver a la tienda</button>
                 </div>
                 @endif
             </div>
@@ -281,3 +281,8 @@
 -->
 @endsection
 
+<script>
+function goBack() {
+  window.history.back();
+}
+</script>
