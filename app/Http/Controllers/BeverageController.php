@@ -17,12 +17,13 @@ class BeverageController extends Controller
     }
     public function index()
     {
-        $beverages = Beverage::with('beverageType')->latest()->paginate(5);
+        $beverages = Beverage::with('beverageType')->oldest()->paginate(5);
         $types = BeverageType::pluck('name', 'id');
 
         return view('beverage.index', compact('beverages', 'types'))
             ->with('i', (request()->input('page', 1) - 1) * $beverages->perPage());
     }
+
 
     public function create()
     {
@@ -32,28 +33,32 @@ class BeverageController extends Controller
     }
 
     public function store(Request $request)
-    {
-        // Validar la solicitud para asegurarse de que se envió una imagen
-        $request->validate([
-            'photo' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048', // ajusta las reglas según tus necesidades
-        ]);
-    
-        // Obtener la imagen del formulario
-        $image = $request->file('photo');
-    
-        // Generar un nombre único para la imagen
-        $imageName = time().'.'.$image->extension();
-    
-        // Guardar la imagen en la carpeta public/images
-        $image->move(public_path('images'), $imageName);
-    
-        // Crear el nuevo plato con la ruta de la imagen
-        $beverage = Beverage::create(array_merge($request->all(), ['photo' => 'images/'.$imageName]));
-    
-        // Redireccionar a la vista de index con un mensaje de éxito
-        return redirect()->route('beverages.index')
-            ->with('success_add', 'beverages created successfully.');
-    }
+{
+    // Validar la solicitud para asegurarse de que se envió una imagen
+    $request->validate([
+        'photo' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048', // ajusta las reglas según tus necesidades
+    ]);
+
+    // Obtener la imagen del formulario
+    $image = $request->file('photo');
+
+    // Generar un nombre único para la imagen
+    $imageName = time().'.'.$image->extension();
+
+    // Guardar la imagen en la carpeta public/images
+    $image->move(public_path('images'), $imageName);
+
+    // Crear el nuevo plato con la ruta de la imagen
+    $beverage = Beverage::create(array_merge($request->all(), ['photo' => 'images/'.$imageName]));
+
+    // Obtener todos los bebibles ordenados por id de manera descendente
+    $beverages = Beverage::with('beverageType')->latest()->paginate(5);
+
+    // Redireccionar a la vista de index con un mensaje de éxito
+    return redirect()->route('beverages.index', compact('beverages'))
+        ->with('success_add', 'Bebida creada exitosamente.');
+}
+
 
     // Other methods (show, edit, update, destroy) remain unchanged...
 
