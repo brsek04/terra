@@ -22,26 +22,23 @@
 
 
 
-    <div class="w-full min-h-[50vh] bg-opacity-50  flex justify-center bg-cover p-10">
-        <div class="bg-cover bg-no-repeat bg-center py-20" style="background-image: url('');">
-            <div class="container">
-                <h1 class="text-6xl text-white font-medium mb-4 ">
+    <div class="w-full min-h-[50vh] bg-opacity-50 flex justify-center bg-cover p-10">
+        <div class="bg-cover bg-no-repeat bg-center p-10" style="background-image: url('images/logos/appsbg.jpg');">
+            <div class="container p-10 rounded-lg" style="backdrop-filter: blur(10px);">
+                <h1 class="text-6xl text-orange-300 font-medium mb-4 ">
                     Hola y bienvenidos a  <br> nuestra página principal
                 </h1>
                 <div class="flex flex-wrap w-1/2">
                     <p class="text-white">Nos enorgullece presentarte nuestras tres sucursales, cada una diseñada para brindarte la mejor experiencia posible.
                         Descubre nuestras instalaciones y servicios únicos en cada ubicación, 
-                       donde te garantizamos encontrarás la calidad y atención que mereces.</p>
+                        donde te garantizamos encontrarás la calidad y atención que mereces.</p>
                 </div>
-                
-
                 <div class="mt-12">
                     <a href="#" class="bg-primary border border-primary text-white px-8 py-3 font-medium 
                         rounded-md hover:bg-transparent hover:text-primary">Shop Now</a>
                 </div>
             </div>
         </div>
-    </div >
-
+    </div>
 </div>
 @endsection
