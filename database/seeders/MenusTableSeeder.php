@@ -3,7 +3,7 @@
 namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
-use App\Models\menu;
+use App\Models\Menu;
 
 class MenusTableSeeder extends Seeder
 {
@@ -15,17 +15,17 @@ class MenusTableSeeder extends Seeder
     public function run()
     {
         
-        menu::create([
+        Menu::create([
             'name' => 'Menu 1',
             'branch_id' => 1,
         ]);
 
-        menu::create([
+        Menu::create([
             'name' => 'Menu 2',
             'branch_id' => 2,
         ]);
 
-        menu::create([
+        Menu::create([
             'name' => 'Menu 3',
             'branch_id' => 3,
         ]);
