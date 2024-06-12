@@ -4,7 +4,7 @@
         <div  class="fixed inset-0 bg-black bg-opacity-50"></div>
         <div class="relative bg-white rounded-lg shadow dark:bg-gray-700 px-5 py-4">
             <div class="flex items-center justify-between p-4 md:p-5 border-b rounded-t dark:border-gray-600">
-                <h3 class="text-lg font-semibold text-gray-900 dark:text-white">Editar Proveedor</h3>
+                <h3 class="text-lg font-semibold text-gray-900 dark:text-white">Editar proveedor</h3>
                 <button type="button" class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center dark:hover:bg-orange-600 dark:hover:text-white" data-modal-hide="popup-edit-{{$supplier->id}}">
                     <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
                         <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6"/>
@@ -17,18 +17,18 @@
                 @csrf
                 <div class="grid gap-4 pb-5 grid-cols-2">
                     <div class="col-span-2 pt-5">
-                        {{ Form::label('name', null, ['class' => 'block mb-2 text-sm font-medium text-gray-900 dark:text-white text-left']) }}
-                        {{ Form::text('name', $supplier->name, ['class' => 'bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500' . ($errors->has('name') ? ' is-invalid' : ''), 'placeholder' => 'Name']) }}
+                        {{ Form::label('Nombre', null, ['class' => 'block mb-2 text-sm font-medium text-gray-900 dark:text-white text-left']) }}
+                        {{ Form::text('name', $supplier->name, ['class' => 'bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500' . ($errors->has('name') ? ' is-invalid' : ''), 'placeholder' => 'Nombre']) }}
                         {!! $errors->first('name', '<div class="invalid-feedback">:message</div>') !!}
                     </div>
                     <div class="col-span-2 pt-5">
-                        {{ Form::label('address', null, ['class' => 'block mb-2 text-sm font-medium text-gray-900 dark:text-white text-left']) }}
-                        {{ Form::text('address', $supplier->address, ['class' => 'bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500' . ($errors->has('address') ? ' is-invalid' : ''), 'placeholder' => 'Address']) }}
+                        {{ Form::label('Direccion', null, ['class' => 'block mb-2 text-sm font-medium text-gray-900 dark:text-white text-left']) }}
+                        {{ Form::text('address', $supplier->address, ['class' => 'bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500' . ($errors->has('address') ? ' is-invalid' : ''), 'placeholder' => 'Direccion']) }}
                         {!! $errors->first('address', '<div class="invalid-feedback">:message</div>') !!}
                     </div>
                     <div class="col-span-2 pt-5">
-                        {{ Form::label('phone', null, ['class' => 'block mb-2 text-sm font-medium text-gray-900 dark:text-white text-left']) }}
-                        {{ Form::text('phone', $supplier->phone, ['class' => 'bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500' . ($errors->has('phone') ? ' is-invalid' : ''), 'placeholder' => 'Phone']) }}
+                        {{ Form::label('Telefono', null, ['class' => 'block mb-2 text-sm font-medium text-gray-900 dark:text-white text-left']) }}
+                        {{ Form::text('phone', $supplier->phone, ['class' => 'bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500' . ($errors->has('phone') ? ' is-invalid' : ''), 'placeholder' => 'Telefono']) }}
                         {!! $errors->first('phone', '<div class="invalid-feedback">:message</div>') !!}
                     </div>
                 </div>

@@ -16,8 +16,8 @@
                 @csrf
                 <div class="grid gap-4 mb-4 grid-cols-2">
                     <div class="col-span-2">
-                        {{ Form::label('name', null, ['class' => 'block mb-2 text-sm font-medium text-gray-900 dark:text-white text-left']) }}
-                        {{ Form::text('name', $role->name, ['class' => 'bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-orange-500 focus:border-orange-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500' . ($errors->has('name') ? ' is-invalid' : ''), 'placeholder' => 'Name']) }}
+                        {{ Form::label('Nombre', null, ['class' => 'block mb-2 text-sm font-medium text-gray-900 dark:text-white text-left']) }}
+                        {{ Form::text('name', $role->name, ['class' => 'bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-orange-500 focus:border-orange-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500' . ($errors->has('name') ? ' is-invalid' : ''), 'placeholder' => 'Nombre']) }}
                         {!! $errors->first('name', '<div class="invalid-feedback">:message</div>') !!}
                     </div>
                     <div class="col-span-2 ">
