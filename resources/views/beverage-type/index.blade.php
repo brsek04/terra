@@ -1,5 +1,7 @@
 @extends('layouts.app')
-
+@section('title')
+    Tipo Bebestible
+@endsection
 @section('content')
     <div class="bg-white dark:bg-gray-800 shadow-md sm:rounded-lg">
         <h3 class="text-gray-700 font-bold p-3 dark:text-white"> {{ __('Tipo de bebestible') }}</h3>
