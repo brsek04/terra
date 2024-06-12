@@ -66,11 +66,16 @@
                                         <p class="mt-1 text-xs text-gray-700"><b>Subtotal:</b> ${{ \Cart::get($item->id)->getPriceSum() }}</p>
                                     </div>
                                     <div class="mt-4 flex justify-between sm:space-y-6 sm:mt-0 sm:block sm:space-x-6">
-                                        <div class="flex items-center border-gray-100">
-                                            <span class="cursor-pointer rounded-l bg-gray-100 py-1 px-3.5 duration-100 hover:bg-blue-500 hover:text-blue-50" onclick="updateQuantity('{{ $item->id }}', 'decrease')">-</span>
-                                            <input class="h-8 w-8 border bg-white text-center text-xs outline-none" type="number" value="{{ $item->quantity }}" min="1" readonly id="quantity-{{ $item->id }}">
-                                            <span class="cursor-pointer rounded-r bg-gray-100 py-1 px-3 duration-100 hover:bg-blue-500 hover:text-blue-50" onclick="updateQuantity('{{ $item->id }}', 'increase')">+</span>
-                                        </div>
+                                        <form action="{{ route('cart.update') }}" method="POST">
+                                            {{ csrf_field() }}
+                                            <div class="form-group flex">
+                                                <input type="hidden" value="{{ $item->id }}" id="id" name="id">
+                                                <input type="number" class="form-control form-control-sm" value="{{ $item->quantity }}" id="quantity" name="quantity" style="width: 70px; margin-right: 10px;">
+                                                <button class="btn btn-secondary btn-sm" style="margin-right: 25px;">
+                                                    <i class="fa fa-edit"></i>
+                                                </button>
+                                            </div>
+                                        </form>
                                         <div class="flex items-center space-x-4">
                                             <form action="{{ route('cart.remove') }}" method="POST">
                                                 {{ csrf_field() }}
@@ -267,3 +272,4 @@
     </div>
 -->
 @endsection
+
