@@ -22,8 +22,10 @@ class DishController extends Controller
     public function index()
     {
         $dishes = Dish::paginate();
+        $types = DishType::pluck('name', 'id');
+        $categories = Category::pluck('name', 'id');
 
-        return view('dish.index', compact('dishes'))
+        return view('dish.index', compact('dishes', 'types', 'categories'))
             ->with('i', (request()->input('page', 1) - 1) * $dishes->perPage());
     }
 
