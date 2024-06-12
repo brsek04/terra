@@ -1,5 +1,7 @@
 @extends('layouts.app')
-
+@section('title')
+    Menú
+@endsection
 @section('content')
 
 <div class="bg-white dark:bg-gray-800 shadow-md sm:rounded-lg">

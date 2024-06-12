@@ -1,5 +1,7 @@
 @extends('layouts.app')
-
+@section('title')
+    Roles
+@endsection
 @section('content')
 <section class="">
     <div class="section-header  bg-white dark:bg-gray-800 shadow-md sm:rounded-lg">
