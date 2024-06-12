@@ -145,6 +145,8 @@
         
 
 </div>
+
+<!--
     <div class="container" style="margin-top: 80px">
         <div class="row justify-content-center">
             <div class="col-lg-7">
@@ -263,4 +265,5 @@
         </div>
         <br><br>
     </div>
+-->
 @endsection
