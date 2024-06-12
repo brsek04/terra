@@ -56,7 +56,7 @@
                             {{ \Illuminate\Support\Facades\Auth::user()->email }}
                         </p>
                     </div>
-                    <a href="#" class=" block px-4 py-2 text-sm text-gray-700 transition duration-75 pl-11 group hover:bg-gray-700 dark:text-white dark:hover:bg-gray-700" role="menuitem" tabindex="-1" id="user-menu-item-0">Dashboard</a>
+                    <a href="#" class=" block px-4 py-2 text-sm text-gray-700 transition duration-75 pl-11 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700" role="menuitem" tabindex="-1" id="user-menu-item-0">Dashboard</a>
                     <a href="#" class="block px-4 py-2 text-sm text-gray-700 transition duration-75 pl-11 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700" role="menuitem" tabindex="-1" id="user-menu-item-1">Configuración</a>
                     <a href="{{ route('logout') }}" class="block px-4 py-2 text-sm text-gray-700 transition duration-75 pl-11 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700" role="menuitem" tabindex="-1" id="user-menu-item-3" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Cerrar Sesión</a>
                     <form id="logout-form" action="{{ route('logout') }}" method="POST" class="hidden">
