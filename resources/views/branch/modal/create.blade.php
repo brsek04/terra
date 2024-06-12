@@ -15,21 +15,40 @@
                 {{ csrf_field() }}
                 <div class="mb-4">
                     <div>
-                        <label for="Nombre" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Nombre</label>
+                        <label for="name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Nombre</label>
                         <input type="text" name="name" id="name" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="Nombre">
                         {!! $errors->first('name', '<div class="invalid-feedback p-4  text-sm text-red-700  dark:text-red-800"">:message</div>') !!}
                     </div>
                     <div>
-                        <label for="Direccion" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Direccion</label>
-                        <input type="text" name="email" id="email" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="Direccion">
-                        {!! $errors->first('adress', '<div class="invalid-feedback p-4 text-sm text-red-700  dark:text-red-800"">:message</div>') !!}
+                        <label for="address" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Dirección</label>
+                        <input type="text" name="address" id="address" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="Dirección">
+                        {!! $errors->first('address', '<div class="invalid-feedback p-4 text-sm text-red-700  dark:text-red-800"">:message</div>') !!}
                     </div>
                     <div>
-                        <label for="Telefono" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Telefono</label>
-                        <input type="password" name="password" id="password" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="Telefono">
+                        <label for="phone" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Teléfono</label>
+                        <input type="text" name="phone" id="phone" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="Teléfono">
                         {!! $errors->first('phone', '<div class="invalid-feedback p-4  text-sm text-red-700  dark:text-red-800">:message</div>') !!}
                     </div>
-
+                    <div>
+                        <label for="company_id" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Empresa</label>
+                        <select name="company_id" id="company_id" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
+                            <option value="">Seleccione</option>
+                            @foreach($companies as $companyId => $companyName)
+                                <option value="{{ $companyId }}">{{ $companyName }}</option>
+                            @endforeach
+                        </select>
+                        {!! $errors->first('company_id', '<div class="invalid-feedback p-4 text-sm text-red-700 dark:text-red-800">:message</div>') !!}
+                    </div>
+                    <div>
+                        <label for="commune_id" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Comuna</label>
+                        <select name="commune_id" id="commune_id" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
+                            <option value="">Seleccione</option>
+                            @foreach($communes as $communeId => $communeName)
+                                <option value="{{ $communeId }}">{{ $communeName }}</option>
+                            @endforeach
+                        </select>
+                        {!! $errors->first('commune_id', '<div class="invalid-feedback p-4 text-sm text-red-700 dark:text-red-800">:message</div>') !!}
+                    </div>
                 </div>
                 <div class="pb-4">
                     <button id="submit-button" type="submit" class="text-white inline-flex items-center bg-orange-500 hover:bg-orange-800 focus:ring-4 focus:outline-none focus:ring-orange-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-orange-600 dark:hover:bg-orange-700 dark:focus:ring-blue-orange">
@@ -40,4 +59,3 @@
         </div>
     </div>
 </div>
-

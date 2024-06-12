@@ -26,8 +26,10 @@ class BranchController extends Controller
     public function index()
     {
         $branches = Branch::paginate();
+        $companies = Company::pluck('name', 'id');
+        $communes = Commune::pluck('name', 'id');
 
-        return view('branch.index', compact('branches'))
+        return view('branch.index', compact('branches', 'companies', 'communes'))
             ->with('i', (request()->input('page', 1) - 1) * $branches->perPage());
     }
 

@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\Beverage;
 use App\Models\BeverageType;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
+
 
 class BeverageController extends Controller
 {
@@ -16,8 +18,9 @@ class BeverageController extends Controller
     public function index()
     {
         $beverages = Beverage::with('beverageType')->latest()->paginate(5);
+        $types = BeverageType::pluck('name', 'id');
 
-        return view('beverage.index', compact('beverages'))
+        return view('beverage.index', compact('beverages', 'types'))
             ->with('i', (request()->input('page', 1) - 1) * $beverages->perPage());
     }
 

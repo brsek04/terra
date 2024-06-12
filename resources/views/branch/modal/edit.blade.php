@@ -12,7 +12,7 @@
                     <span class="sr-only">Cerrar modal</span>
                 </button>
             </div>
-            <form action="{{ route('branches.update', $branch->id) }}" method="POST"  enctype="multipart/form-data" class="p-2">
+            <form action="{{ route('branches.update', $branch->id) }}" method="POST" enctype="multipart/form-data" class="p-2">
                 {{ method_field('PATCH') }}
                 @csrf
                 <div class="grid gap-4 pb-5 grid-cols-2">
@@ -31,6 +31,16 @@
                         {{ Form::text('phone', $branch->phone, ['class' => 'bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500' . ($errors->has('phone') ? ' is-invalid' : ''), 'placeholder' => 'Telefono']) }}
                         {!! $errors->first('phone', '<div class="invalid-feedback">:message</div>') !!}
                     </div>
+                    <div class="col-span-2 pt-5">
+                        {{ Form::label('Compañía', null, ['class' => 'block mb-2 text-sm font-medium text-gray-900 dark:text-white text-left']) }}
+                        {{ Form::select('company_id', $companies, $branch->company_id, ['class' => 'bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500' . ($errors->has('company_id') ? ' is-invalid' : ''), 'placeholder' => 'Selecciona una compañía']) }}
+                        {!! $errors->first('company_id', '<div class="invalid-feedback">:message</div>') !!}
+                    </div>
+                    <div class="col-span-2 pt-5">
+                        {{ Form::label('Comuna', null, ['class' => 'block mb-2 text-sm font-medium text-gray-900 dark:text-white text-left']) }}
+                        {{ Form::select('commune_id', $communes, $branch->commune_id, ['class' => 'bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500' . ($errors->has('commune_id') ? ' is-invalid' : ''), 'placeholder' => 'Selecciona una comuna']) }}
+                        {!! $errors->first('commune_id', '<div class="invalid-feedback">:message</div>') !!}
+                    </div>
                 </div>
                 <div class="flex justify-center items-center">
                     <button type="submit" class="text-white inline-flex items-center bg-orange-500 hover:bg-orange-800 focus:ring-4 focus:outline-none focus:ring-orange-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-orange-600 dark:hover:bg-orange-700 dark:focus:ring-blue-orange">
@@ -41,6 +51,7 @@
                     </button>
                 </div>
             </form>
+
         </div>
     </div>
 </div>
