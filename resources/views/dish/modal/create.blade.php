@@ -3,7 +3,7 @@
         <div class="fixed inset-0 bg-black bg-opacity-20"></div>
         <div class="relative bg-white rounded-lg shadow dark:bg-gray-700 px-5 py-4">
             <div class="flex items-center justify-between p-4 md:p-5 border-b rounded-t dark:border-gray-600">
-                <h3 class="text-lg font-semibold text-gray-900 dark:text-white">Crear Usuario</h3>
+                <h3 class="text-lg font-semibold text-gray-900 dark:text-white">Crear plato</h3>
                 <button type="button" class="text-gray-400 bg-transparent hover:bg-orange-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center dark:hover:bg-orange-600 dark:hover:text-white" data-modal-toggle="modal-create">
                     <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
                         <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6"/>
@@ -16,30 +16,35 @@
                 <div class="mb-4">
                     <div>
                         <label for="name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Nombre</label>
-                        <input type="text" name="name" id="name" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="Name">
+                        <input type="text" name="name" id="name" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="Nombre">
                         {!! $errors->first('name', '<div class="invalid-feedback p-4  text-sm text-red-700  dark:text-red-800"">:message</div>') !!}
                     </div>
                     <div>
-                        <label for="email" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Email</label>
-                        <input type="text" name="email" id="email" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="Email">
-                        {!! $errors->first('email', '<div class="invalid-feedback p-4 text-sm text-red-700  dark:text-red-800"">:message</div>') !!}
+                        <label for="description" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Descripcion</label>
+                        <input type="text" name="description" id="description" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="Descripcion">
+                        {!! $errors->first('description', '<div class="invalid-feedback p-4 text-sm text-red-700  dark:text-red-800"">:message</div>') !!}
                     </div>
                     <div>
-                        <label for="password" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Password</label>
-                        <input type="password" name="password" id="password" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="Password">
-                        {!! $errors->first('password', '<div class="invalid-feedback p-4  text-sm text-red-700  dark:text-red-800">:message</div>') !!}
+                        <label for="price" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Precio</label>
+                        <input type="price" name="price" id="price" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="Precio">
+                        {!! $errors->first('price', '<div class="invalid-feedback p-4  text-sm text-red-700  dark:text-red-800">:message</div>') !!}
                     </div>
                     <div>
-                        <label for="confirm-password" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Confirmar Password</label>
-                        <input type="password" name="confirm-password" id="confirm-password" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="Confirmar Password">
-                        {!! $errors->first('confirm-password', '<div class="invalid-feedback p-4 text-sm text-red-700  dark:text-red-800"">:message</div>') !!}
+                        <label for="rating" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Valoracion</label>
+                        <input type="text" name="rating" id="rating" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="Valoracion">
+                        {!! $errors->first('rating', '<div class="invalid-feedback p-4 text-sm text-red-700  dark:text-red-800"">:message</div>') !!}
+                    </div>
+                    <div>
+                        <label for="prep_time" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Tiempo de preparacion</label>
+                        <input type="text" name="prep_time" id="prep_time" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="Tiempo de preparacion">
+                        {!! $errors->first('prep_time', '<div class="invalid-feedback p-4 text-sm text-red-700  dark:text-red-800"">:message</div>') !!}
                     </div>
                     <div class="col-span-2 sm:col-span-1">
-                        <label for="roles" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Category</label>
-                        <select name="roles[]" id="roles" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
+                        <label for="dishTypes" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Category</label>
+                        <select name="dishTypes[]" id="dishTypes" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
                             <option selected="">Select category</option>
-                            @foreach($roles as $role)
-                            <option value="{{$role}}">{{$role}}</option>
+                            @foreach($dishTypes as $dishType)
+                            <option value="{{$dishType}}">{{$dishType}}</option>
                             @endforeach
                         </select>
                     </div>

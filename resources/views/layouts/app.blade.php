@@ -37,8 +37,8 @@
         <div>
             @auth
                 @if(Auth::user()->hasRole('admin'))
-            @include('elements.sidebar-admin')
-            @endif
+                    @include('elements.sidebar-admin')
+                @endif
             @endauth
             
         <main>

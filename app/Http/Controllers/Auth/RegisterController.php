@@ -15,7 +15,7 @@ class RegisterController extends Controller
 {
     use RegistersUsers;
 
-    protected $redirectTo = "/visitante"; // "protected $redirectTo = RouteServiceProvider::HOME;
+    protected $redirectTo = RouteServiceProvider::HOME;
 
     public function __construct()
     {

@@ -2083,10 +2083,6 @@ input:checked + .toggle-bg {
 .bg-no-repeat {
   background-repeat: no-repeat;
 }
-.object-cover {
-  -o-object-fit: cover;
-     object-fit: cover;
-}
 .p-0 {
   padding: 0px;
 }

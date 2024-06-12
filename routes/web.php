@@ -32,6 +32,7 @@ use App\Http\Controllers\AboutController;
 */
 
 // Welcome Routes
+Route::get('/visitante', [VisitanteController::class, 'index'])->name('visitante.index');
 Route::redirect('/', '/visitante');
 
 Route::get('/branch/{branch}/menus', [VisitanteController::class, 'showBranchMenus'])->name('branch.menus');
@@ -71,7 +72,6 @@ Route::group(['middleware' => ['auth']], function () {
     Route::resource('categories', CategoryController::class);
     Route::resource('abouts', AboutController::class);
     Route::get('/admin', [AdminController::class, 'index'])->name('admin.index');
-    Route::get('/visitante', [VisitanteController::class, 'index'])->name('visitante.index');
     Route::post('/roles', [RolController::class, 'store'])->name('roles.store');    
 });
 
