@@ -26,11 +26,11 @@
                 </div>
                 <div class="form-group">
                     <strong>{{ __('Compañia') }}:</strong>
-                    {{ $branch->phone }}
+                    {{ $branch->company->name }}
                 </div>
                 <div class="form-group">
                     <strong>{{ __('Comuna') }}:</strong>
-                    {{ $branch->phone }}
+                    {{ $branch->commune->name }}
                 </div>
             </div>
         </div>

@@ -18,7 +18,7 @@
                 </div>
                 <div class="form-group">
                     <strong>{{ __('Descripción') }}:</strong>
-                    {{ $category->address}}
+                    {{ $category->description}}
                 </div>
 
             </div>
