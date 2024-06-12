@@ -1,4 +1,4 @@
-<nav class="fixed flex-wrap top-0 z-50 w-full bg-white border-b border-gray-200 dark:bg-[#0F172A] dark:border-gray-700">
+<nav class="fixed flex-wrap top-0 z-50 w-full  dark:bg-[#0F172A] dark:border-gray-700">
     <div class="px-1 py-3 lg:px-5 lg:pl-3">
         <div class="flex items-center justify-between">
             <div class="flex items-center justify-start">

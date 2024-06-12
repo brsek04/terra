@@ -1,4 +1,4 @@
-<nav class="fixed flex-wrap top-0 z-50 w-full bg-white border-b border-gray-200 dark:bg-[#0F172A] dark:border-gray-700">
+<nav class="fixed flex-wrap top-0 z-50 w-full  dark:bg-[#0F172A] dark:border-gray-700">
     <div class="px-1 lg:px-5 lg:py-2.5 lg:pl-3 bg-black flex justify-between items-center">
         <div class="flex items-center">
             <a href="#" class="logo ml-16 text-white dark:text-white transform ease-in-out duration-500 flex-none h-full flex items-center justify-center">
@@ -41,7 +41,7 @@
         <div class="flex items-center ms-3 justify-end">
             @if(\Illuminate\Support\Facades\Auth::check())
             <div class=" p-2">
-                <p class="text-sm text-gray-500 dark:text-white font-bold" role="none">
+                <p class="text-sm text-gray-50 dark:text-white font-bold" role="none">
                     Hola, {{ \Illuminate\Support\Facades\Auth::user()->name }}
                  </p>
             </div>

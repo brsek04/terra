@@ -48,22 +48,19 @@
                     @yield('content')
                 </div>
                 @else
-                    <div>
-                        @yield('content')
-                    </div>
-                   
+                <div>
+                    @yield('content')
+                </div>
                 @endif
             @else
             <div>
                 @yield('content')
             </div>
-           
             @endauth
-            
         </main>
 
-       <footer class="bg-gradient-to-r from-gray-100 via-[#bce1ff] to-gray-100">
-            aaaaaaaaaaaa
+       <footer class="bg-black">
+         a
        </footer>
 
     </div>

@@ -17,8 +17,6 @@ const moon = document.querySelector(".moon")
 const sun = document.querySelector(".sun")
 
 
-        
-    
 
 // Aplicar el tema guardado en el almacenamiento local al cargar la página
 
@@ -109,7 +107,6 @@ document.querySelectorAll('[data-modal-hide]').forEach(button => {
 });
 
 
-  
 
 
 
