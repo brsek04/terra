@@ -29,7 +29,7 @@
    
     <title>@yield('title') | {{ config('app.name') }}</title>
 </head>
-<body class="font-sans antialiased bg-gray-700 w-full dark:bg-[#0F172A]">
+<body class="font-sans antialiased bg-gray-50 w-full dark:bg-[#0F172A]">
     <div class="min-h-screen  w-full bg-cover dark:bg-[#0F172A]">
         <nav class="bg-gray-900 dark:bg-gray-900 fixed w-full z-20 top-0 start-0  dark:border-gray-600 shadow-xl">
             @include('elements.header')
