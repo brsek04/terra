@@ -6386,17 +6386,9 @@ var logo = document.querySelector('.logo');
 var content = document.querySelector('.content');
 var moon = document.querySelector(".moon");
 var sun = document.querySelector(".sun");
-window.setDark = function setDark(val) {
-  if (val === "dark") {
-    document.documentElement.classList.add('dark');
-    moon.classList.add("hidden");
-    sun.classList.remove("hidden");
-  } else {
-    document.documentElement.classList.remove('dark');
-    sun.classList.add("hidden");
-    moon.classList.remove("hidden");
-  }
-};
+
+// Aplicar el tema guardado en el almacenamiento local al cargar la página
+
 window.openNav = function openNav() {
   if (sidebar.classList.contains('-translate-x-48')) {
     // max sidebar 
