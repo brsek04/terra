@@ -44,12 +44,16 @@
     <div class="w-full">
         <div class="h-screen  pt-20">
             @if(\Cart::getTotalQuantity() > 0)
-            <h1 class="mb-10 text-center text-2xl font-bold">{{ \Cart::getTotalQuantity() }} Producto(s) en el carrito</h1>
+                <h1 class="mb-10 text-center text-2xl font-bold">{{ \Cart::getTotalQuantity() }} Producto(s) en el carrito</h1>
              @else
-             <h1 class="mb-10 text-center text-2xl font-bold">No hay productos en tu carrito</h1>
-             <a href="/" class="btn btn-dark">Continuar en la tienda</a>
+             <div class="flex flex-col items-center justify-center">
+                <h1 class="mb-10 text-center text-2xl font-bold">No hay productos en tu carrito</h1>
+                <button class="mt-6 w-40 rounded-md bg-green-500 py-1.5 font-medium text-blue-50 hover:bg-green-600">
+                    <a href="/">Continuar en la tienda</a>
+                </button>
+            </div>
              @endif
-             <div class="mx-auto max-w-5xl justify-center px-6 md:flex md:space-x-6 xl:px-0">
+             <div class=" mx-auto max-w-5xl justify-center px-6 md:flex md:space-x-6 xl:px-0">
                 <div class="rounded-lg md:w-2/3">
                     @foreach($cartCollection as $item)
                         @if($item->attributes->type == 'dish')
@@ -84,7 +88,42 @@
                         @endif
                     @endforeach
                 </div>
+                <div class="rounded-lg md:w-2/3">
+                    @foreach($cartCollection as $item)
+                        @if($item->attributes->type == 'beverage')
+                            <div class="justify-between mb-6 rounded-lg bg-white p-6 shadow-md sm:flex sm:justify-start">
+                                <img src="{{ asset($item->attributes->photo) }}" alt="{{ $item->name }}" class="w-full rounded-lg sm:w-40">
+                                <div class="sm:ml-4 sm:flex sm:w-full sm:justify-between">
+                                    <div class="mt-5 sm:mt-0">
+                                        <h2 class="text-lg font-bold text-gray-900">{{ $item->name }}</h2>
+                                        <p class="mt-1 text-xs text-gray-700"><b>Precio:</b> ${{ $item->price }}</p>
+                                        <p class="mt-1 text-xs text-gray-700"><b>Subtotal:</b> ${{ \Cart::get($item->id)->getPriceSum() }}</p>
+                                    </div>
+                                    <div class="mt-4 flex justify-between sm:space-y-6 sm:mt-0 sm:block sm:space-x-6">
+                                        <div class="flex items-center border-gray-100">
+                                            <span class="cursor-pointer rounded-l bg-gray-100 py-1 px-3.5 duration-100 hover:bg-blue-500 hover:text-blue-50" onclick="updateQuantity('{{ $item->id }}', 'decrease')">-</span>
+                                            <input class="h-8 w-8 border bg-white text-center text-xs outline-none" type="number" value="{{ $item->quantity }}" min="1" readonly id="quantity-{{ $item->id }}">
+                                            <span class="cursor-pointer rounded-r bg-gray-100 py-1 px-3 duration-100 hover:bg-blue-500 hover:text-blue-50" onclick="updateQuantity('{{ $item->id }}', 'increase')">+</span>
+                                        </div>
+                                        <div class="flex items-center space-x-4">
+                                            <form action="{{ route('cart.remove') }}" method="POST">
+                                                {{ csrf_field() }}
+                                                <input type="hidden" value="{{ $item->id }}" id="id" name="id">
+                                                <button class="focus:outline-none text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm px-2 py-2 me-2 mb-2 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-900">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 text-white">
+                                                        <path stroke-linecap="round" stroke-linejoin="round" d="m14.74 9-.346 9m-4.788 0L9.26 9m9.968-3.21c.342.052.682.107 1.022.166m-1.022-.165L18.16 19.673a2.25 2.25 0 0 1-2.244 2.077H8.084a2.25 2.25 0 0 1-2.244-2.077L4.772 5.79m14.456 0a48.108 48.108 0 0 0-3.478-.397m-12 .562c.34-.059.68-.114 1.022-.165m0 0a48.11 48.11 0 0 1 3.478-.397m7.5 0v-.916c0-1.18-.91-2.164-2.09-2.201a51.964 51.964 0 0 0-3.32 0c-1.18.037-2.09 1.022-2.09 2.201v.916m7.5 0a48.667 48.667 0 0 0-7.5 0" />
+                                                    </svg>
+                                                </button>                                                
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        @endif
+                    @endforeach
+                </div>
                 <!-- Sub total -->
+                @if(\Cart::getTotalQuantity() > 0)
                 <div class="mt-6 h-full rounded-lg border bg-white p-6 shadow-md md:mt-0 md:w-1/3">
                     <div class="mb-2 flex justify-between">
                         <p class="text-gray-700">Subtotal</p>
@@ -99,9 +138,11 @@
                         </div>
                     </div>
                     <button class="mt-6 w-full rounded-md bg-orange-500 py-1.5 font-medium text-blue-50 hover:bg-orange-600">Check out</button>
+                    <button class="mt-6 w-full rounded-md bg-green-500 py-1.5 font-medium text-blue-50 hover:bg-green-600"><a href="/">Continuar en la tienda</a></button>
                 </div>
+                @endif
             </div>
-            
+        
 
 </div>
     <div class="container" style="margin-top: 80px">
